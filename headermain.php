@@ -294,6 +294,21 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="const-matlist.php" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Constrcution</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="reporting.php">Generate Report</a></li>
+                            <li><a href="report-manage.php">Manage Report</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
                         </a>
@@ -353,11 +368,6 @@
                     <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="const_matlist.php" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Constrcution</span>
                         </a>
                     </li>
                     <li class="nav-label">Forms</li>
