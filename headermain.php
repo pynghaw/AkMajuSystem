@@ -180,6 +180,11 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="invoice-manage.php" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Invoice</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
                         </a>
