@@ -330,6 +330,16 @@
                             <li><a href="./chart-peity.html">Peity</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./email-inbox.html">Inbox</a></li>
+                            <li><a href="./email-read.html">Read</a></li>
+                            <li><a href="./email-compose.html">Compose</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-label">UI Components</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">

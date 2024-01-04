@@ -55,8 +55,8 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['r_name'] . '</td>';
                                     echo '<td>' . $row['r_date'] . '</td>';
                                     echo '<td>' . $row['r_desc'] . '</td>';
-                                    echo "<td><a href='$pdfPath' target='_blank' class='btn btn-outline-secondary'>View</a> &nbsp;";
-                                    echo '<a href="reporttomanager.php?r_id=' . $row['r_id'] . '" class="btn btn-outline-danger">Send to Manager</a></td>';
+                                    echo "<td><a href='$pdfPath' class='btn btn-outline-secondary'>View</a> &nbsp;";
+                                    echo '<a href="report-tomanagerprocess.php?r_id=' . $row['r_id'] . '" class="btn btn-outline-danger">Send to Manager</a></td>';
                                     echo '</tr>';
                                 }
                                 echo '</table>';
