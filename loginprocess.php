@@ -44,7 +44,7 @@ else
 {
 	//user not available
 	//Add script to let the user know either username or password wrong
-	header('Location:login.php');
+	header('Location:index.php');
 }
 
 //Close DB Connection
