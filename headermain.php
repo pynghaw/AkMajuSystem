@@ -288,7 +288,7 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Inventory</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./email-inbox.php">View Inventory</a></li>
+                            <li><a href="Inventory.php">View Inventory</a></li>
                             <li><a href="./email-read.html">Add Inventory</a></li>
                             
                         </ul>
