@@ -1,5 +1,5 @@
-<?php 
 
+<?php  
 include('mysession.php');
 if (!session_id()) {
     session_start();
@@ -8,13 +8,12 @@ include('dbconnect.php');
 
 $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
-include ('headermain.php');
-?>
-
+include 'headermain.php'; ?>
+<body>
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+       <div class="content-body">
 
             
             <!-- row -->
@@ -128,6 +127,12 @@ include ('headermain.php');
 
 </body>
 
-<?php 
-mysqli_close($con);
-include ('footer.php');?>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <?php include 
+        mysqli_close($con);
+
+        'footer.php'; ?>
+</body>

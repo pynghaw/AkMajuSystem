@@ -1,12 +1,12 @@
-<?php 
-include ('headermain.php');
 
-?>
+<?php  
 
+include 'headermain.php'; ?>
+<body>
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+       <div class="content-body">
 
             
             <!-- row -->
@@ -70,6 +70,12 @@ include ('headermain.php');
 
 </body>
 
-<?php 
+        <!--**********************************
+            Content body end
+        ***********************************-->
 
-include ('footer.php');?>
+        <?php include 
+        mysqli_close($con);
+
+        'footer.php'; ?>
+</body>

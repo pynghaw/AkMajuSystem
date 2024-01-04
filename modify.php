@@ -1,4 +1,5 @@
-<?php 
+
+<?php  
 include('mysession.php');
 
 if (!session_id()) {
@@ -22,14 +23,12 @@ $stmt->execute();
 // Get the result
 $resultr = $stmt->get_result();
 $rowr = $resultr->fetch_array();
-
-include('headermain.php');
-?>
-
+include 'headermain.php'; ?>
+<body>
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+      <div class="content-body">
 
             
             <!-- row -->
@@ -120,6 +119,14 @@ include('headermain.php');
 
 </body>
 
-<?php 
-mysqli_close($con);
-include ('footer.php');?>
+</body>
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <?php include 
+        mysqli_close($con);
+
+        'footer.php'; ?>
+</body>
