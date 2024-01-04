@@ -1,17 +1,35 @@
+<style>
+    .checkout-footer {
+        position: fixed;
+        left: 18%;
+        bottom: 20px;
+        width: 80%;
+        color: white;
+        text-align: center;
+        padding: 0px 0;
+    }
+</style>
 
-<!--**********************************
-    Footer start
-***********************************-->
+<div class="checkout-footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <button onclick="window.location.href='const-checkoutsummary.php'" type="button" class="btn mb-1 btn-primary">Checkout <span class="btn-icon-right"><i class="fa fa-shopping-cart"></i></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="footer">
     <div class="copyright">
         <p>Copyright &copy; Designed & Developed by <a href=#>CryptoKnights</a> 2023</p>
     </div>
 </div>
-<!--**********************************
-    Footer end
-***********************************-->
-    
-
 <!--**********************************
     Scripts
 ***********************************-->
