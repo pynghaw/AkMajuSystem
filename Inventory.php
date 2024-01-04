@@ -99,17 +99,23 @@ include 'headermain.php';
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="container mt-4">
-                            <h2 class="mb-4">Inventory</h2>
-                           <div class="mb-3 d-flex justify-content-between">
+                            <h1 class="mb-4">Inventory</h1>
+                           <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
+        <a href="AddInventory.php" class="btn btn-success">Add Inventory</a>
+    </div>
+    <div class="mx-2">
         <button type="button" class="btn btn-secondary" onclick="showAllProducts()">Show All Products</button>
     </div>
     <div class="form-inline">
         <label class="sr-only" for="search">Search</label>
-        <input type="text" class="form-control mr-sm-2" id="search" placeholder="Search by Product Name">
-        <button type="button" class="btn btn-primary" onclick="searchInventory()">Search</button>
+        <div class="input-group">
+            <input type="text" class="form-control" id="search" placeholder="Search by Product Name">
+            <button type="button" class="btn btn-primary" onclick="searchInventory()">Search</button>
+        </div>
     </div>
 </div>
+
                             <div class="table-responsive">
                                 <table id="inventoryTable" class="table fixed-table">
                                     <thead>
