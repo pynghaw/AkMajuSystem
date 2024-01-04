@@ -75,7 +75,6 @@ include 'headermain.php'; ?>
         ***********************************-->
 
         <?php include 
-        mysqli_close($con);
 
         'footer.php'; ?>
 </body>

@@ -1,23 +1,29 @@
-<?php 
-include('mysession.php'); 
-if(!session_id())
-{
-	session_start();
+<?php
+include('mysession.php');
+if (!session_id()) {
+    session_start();
 }
 
-//Get ID from URL
-if(isset($_GET['id']))
-{
- $fno=$_GET['id'];
+include('dbconnect.php');
+
+
+// Get ID from URL
+if (isset($_GET['id'])) {
+    $fno = $_GET['id'];
+
+    // Display confirmation dialog using JavaScript
+    echo "<script>
+            var confirmDelete = confirm('Are you sure you want to delete this product?');
+
+            if (confirmDelete) {
+                window.location.href = 'deleteConfirmed.php?id=$fno';
+            } else {
+                window.location.href = 'Inventory.php';
+            }
+          </script>";
+} else {
+    // Redirect if ID is not provided
+    header('Location: Inventory.php');
+    exit();
 }
-
-
- include ('dbconnect.php');
-
- $sql="DELETE FROM tb_inventory WHERE i_no='$fno'";
- $result=mysqli_query($con,$sql);
- mysqli_close($con);
-
- //Redirect
- header('Location:Inventory.php');
 ?>

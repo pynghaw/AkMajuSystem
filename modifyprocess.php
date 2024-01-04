@@ -46,12 +46,13 @@ include 'headermain.php';
 	<h5>Quantity: <?php echo $fquantity; ?></h5>
 	<h5>Unit price: <?php echo $fprice; ?></h5>
 	<h5 style=" word-wrap: break-word;">Description: <?php echo $fdescription; ?></h5>
-	<h5>Status: Modified</h5>
+	<h5>Status: <span style="color: green;">Modified</span></h5>
 
 <br><br>
 	<div style="text-align: center;">                         
 	<a class="btn btn-primary" href="Inventory.php">BACK</a>
 	</div>
+	<br><br>
 </div>
 </div>
 </div>

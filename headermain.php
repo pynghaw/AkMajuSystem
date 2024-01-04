@@ -20,6 +20,41 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+<script>
+    function searchInventory() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("inventoryTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // Index 2 corresponds to the Product Name column
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
+    }
+</script>
+
+<script>
+    function showAllProducts() {
+        var table, tr;
+        table = document.getElementById("inventoryTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (var i = 0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    }
+</script>
+
 </head>
 
 <body>

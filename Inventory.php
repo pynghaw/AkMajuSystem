@@ -1,4 +1,3 @@
-
 <?php  
 include('mysession.php');
 if (!session_id()) {
@@ -6,133 +5,158 @@ if (!session_id()) {
 }
 include('dbconnect.php');
 
+
+// Display success message
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            {$_SESSION['success_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
+
+    unset($_SESSION['success_message']);
+}
+
+// Display error message
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            {$_SESSION['error_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
+
+    unset($_SESSION['error_message']);
+}
+
 $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
-include 'headermain.php'; ?>
+include 'headernotification.php';
+include 'headermain.php';
+
+?>
+
 <body>
-        <!--**********************************
-            Content body start
-        ***********************************-->
-       <div class="content-body">
-
-            
-            <!-- row -->
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="container mt-4">
-    <h2 class="mb-4">Inventory</h2>
-
+    <!--**********************************
+        Content body start
+    ***********************************-->
     <style>
-        .inventory-card {
-            border: 2px solid #333;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .inventory-table {
+        /* Set fixed width for table cells */
+        .fixed-table {
+            table-layout: fixed;
             width: 100%;
-            max-width: 400px; /* Adjust the max-width to your desired value */
-            border-collapse: collapse;
-            margin-top: 15px;
+            border-collapse: collapse; /* Add border-collapse property */
         }
 
-        .inventory-table th,
-        .inventory-table td {
-            border: none; /* Remove border lines */
-            padding: 10px;
-            text-align: left; /* Align text to the left */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        .fixed-table th, .fixed-table td {
+            word-wrap: break-word; /* Wrap long words */
+            overflow-wrap: break-word;
+            padding: 8px;
+            border: 1px solid #ddd; /* Add border property */
         }
 
-        .inventory-table th {
-            text-align: left; /* Align header text to the center */
-            font-weight: bold;
+        .fixed-table th {
+            background-color: #D5F3FE;
+        }
+
+        /* Adjust the width and borders of the columns */
+        .fixed-table th:first-child,
+        .fixed-table td:first-child {
+            width: 50px;
+        }
+
+        .fixed-table th:nth-child(2),
+        .fixed-table td:nth-child(2) {
+            width: 80px;
+        }
+
+        .fixed-table th:nth-child(3),
+        .fixed-table td:nth-child(3) {
+            width: 120px;
+        }
+
+        .fixed-table th:nth-child(4),
+        .fixed-table td:nth-child(4) {
+            width: 200px;
+        }
+
+        .fixed-table th:nth-child(5),
+        .fixed-table td:nth-child(5) {
+            width: 80px;
+        }
+
+        .fixed-table th:nth-child(6),
+        .fixed-table td:nth-child(6) {
+            width: 100px;
+        }
+
+        .fixed-table th:nth-child(7),
+        .fixed-table td:nth-child(7) {
+            width: 120px;
         }
     </style>
 
-    <div class="row">
-        <?php
-        $count = 0;
-        while ($row = mysqli_fetch_array($result)) {
-            $count++;
-            echo '<div class="col-md-6">';
-            echo '<div class="inventory-card">';
-            echo ' <p>No: ' . $count . '</p>';
-            echo '<h4 style="text-align: center; word-wrap: break-word;"><b> ' . $row['i_name'] . '</b></h4><hr>';
-            
-            echo '<table class="inventory-table">';
-            echo '<tr>';
-            echo '<th>Product ID</th>';
-            echo '<td>' . $row['i_no'] . '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<th>Quantity</th>';
-            echo '<td>' . $row['i_qty'] . '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<th>Unit Price</th>';
-            echo '<td>RM ' . $row['i_price'] . '</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<th>Description</th>';
-            echo '<td>' . $row['i_desc'] . '</td>';
-            echo '</tr>';
-            
-            echo '</table><br>';
-            
-            echo '<a href="modify.php?id=' . $row['i_no'] . '" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a>';
-            echo '   <a href="Delete.php?id=' . $row['i_no'] . '" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>';
-            echo '</div>';
-            echo '</div>';
-
-            // Check if we need to start a new row
-            if ($count % 2 == 0) {
-                echo '</div><div class="row">';
-            }
-        }
-        ?>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="container mt-4">
+                            <h2 class="mb-4">Inventory</h2>
+                           <div class="mb-3 d-flex justify-content-between">
+    <div>
+        <button type="button" class="btn btn-secondary" onclick="showAllProducts()">Show All Products</button>
+    </div>
+    <div class="form-inline">
+        <label class="sr-only" for="search">Search</label>
+        <input type="text" class="form-control mr-sm-2" id="search" placeholder="Search by Product Name">
+        <button type="button" class="btn btn-primary" onclick="searchInventory()">Search</button>
     </div>
 </div>
-
-<br><br>
+                            <div class="table-responsive">
+                                <table id="inventoryTable" class="table fixed-table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Product ID</th>
+                                            <th>Product Name</th>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $count = 0;
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            $count++;
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $count; ?></td>
+                                                <td><?php echo $row['i_no']; ?></td>
+                                                <td><?php echo $row['i_name']; ?></td>
+                                                <td><?php echo $row['i_desc']; ?></td>
+                                                <td><?php echo $row['i_qty']; ?></td>
+                                                <td>RM <?php echo $row['i_price']; ?></td>
+                                                <td>
+                                                    <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a>
+                                                    <a href="Delete.php?id=<?php echo $row['i_no']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #/ container -->
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <script src="plugins/common/common.min.js"></script>
-    <script src="js/custom.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/gleek.js"></script>
-    <script src="js/styleSwitcher.js"></script>
-
+    <?php
+    mysqli_close($con);
+    include 'footer.php';
+    ?>
 </body>
-
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-        <?php include 
-        mysqli_close($con);
-
-        'footer.php'; ?>
-</body>
+</html>
