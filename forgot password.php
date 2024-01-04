@@ -33,10 +33,7 @@
     
 
 
-
-    <body class="bg-gradient-primary" >
-
-    <div class="container" ">
+    <div class="container">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -45,38 +42,32 @@
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwUwVZhoZ9WLRV9FkyYJN2MHa-tz1f0MbqUg&usqp=CAU" alt="AK MAJU" style="width:400px; height: 400px;"></div>
-                            <div class="col-lg-6">
+                        
+                        
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
+                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
+                                            and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form method="POST" action="loginprocess.php">
-
+                                    <form class="user">
                                         <div class="form-group">
-                                            <input type="text" name="fname" class="form-control form-control-user"
-                                                id="name" 
-                                                placeholder="Username" required>
-                                        </div><br>
-                                        <div class="form-group">
-                                            <input type="password" name="fpwd" class="form-control form-control-user"
-                                                id="Password" placeholder="Password" required>
+                                            <input type="email" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
                                         </div>
-                                          <br>
-  <button type="submit" id="login"class="btn btn-outline-primary">login</button>
+                                        <a href="login.php" class="btn btn-primary btn-user btn-block">
+                                            Reset Password
+                                        </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="" href="forgot password.php">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
                                         <a class="" href="register.php">Create an Account!</a>
                                     </div>
+                                    <div class="text-center">
+                                        <a class="" href="login.php">Already have an account? Login!</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -85,7 +76,6 @@
         </div>
 
     </div>
-
 
 </body>
 

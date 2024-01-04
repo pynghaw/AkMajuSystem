@@ -27,7 +27,7 @@ mysqli_query($con,$sql);
 mysqli_close($con);
 
 //Redirect to next page
-header("Location:login.php");
+header("Location:index.php");
 
 
 ?>
