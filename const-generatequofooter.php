@@ -1,16 +1,56 @@
+<style>
+    .checkout-footer {
+        position: fixed;
+        left: 0;
+        bottom: 40px;
+        width: 100%;
+        background-color: #888;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
 
-<!--**********************************
-    Footer start
-***********************************-->
+    .checkout-footer button {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px 10px 10px 0;
+        border: none;
+        cursor: pointer;
+    }
+
+    .checkout-footer button:hover {
+        background-color: lightgrey;
+    }
+
+    button.go-back-button {
+        background-color: #4CAF50; /* Green background */
+        color: white;
+    }
+
+    button.go-back-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+</style>
+
+
+<div class="checkout-footer">
+    <button class="go-back-button" onclick="goBack()">Go Back</button>
+    <button onclick="window.location.href='const-generatequoprocess.php'">Generate Quotation</button>
+</div>
+
 <div class="footer">
     <div class="copyright">
         <p>Copyright &copy; Designed & Developed by <a href=#>CryptoKnights</a> 2023</p>
     </div>
 </div>
-<!--**********************************
-    Footer end
-***********************************-->
-    
+
+<script>
+    // JavaScript function to go back to the previous page
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 <!--**********************************
     Scripts

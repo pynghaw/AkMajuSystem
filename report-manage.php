@@ -15,8 +15,8 @@ $result = mysqli_query($con, $sql);
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Reporting</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Manage Report</a></li>
             </ol>
         </div>
     </div>
@@ -28,7 +28,7 @@ $result = mysqli_query($con, $sql);
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <h1>Manage Reports</h1>
+                        <h2 class="mb-4">Manage Report</h2>
                             <?php
                             // Check if there are reports
                             if (mysqli_num_rows($result) > 0) {

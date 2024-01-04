@@ -19,8 +19,7 @@ include 'headermain.php';
             <div class="row page-titles mx-0">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Constrcution</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Construction</a></li>
                     </ol>
                 </div>
             </div>
@@ -31,7 +30,7 @@ include 'headermain.php';
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Material List</h4>
+                                <h2>Material List</h2>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
@@ -40,7 +39,7 @@ include 'headermain.php';
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Description</th>
-                                                <th>Unit Price(RM)</th>
+                                                <th>Unit Price (RM)</th>
                                                 <th>Quantity</th>
                                                 <th>Add/Minus</th>
                                             </tr>
@@ -88,6 +87,6 @@ include 'headermain.php';
             Content body end
         ***********************************-->
         
-        <?php include 'footer.php'; ?>
+        <?php include 'const-checkoutfooter.php'; ?>
 </body>
 
