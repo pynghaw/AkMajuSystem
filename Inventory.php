@@ -102,7 +102,7 @@ include 'headermain.php';
                             <h1 class="mb-4">Inventory</h1>
                            <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
-        <a href="AddInventory.php" class="btn btn-success">Add Inventory</a>
+        <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-shopping-cart"></i>Add Inventory</a>
     </div>
     <div class="mx-2">
         <button type="button" class="btn btn-secondary" onclick="showAllProducts()">Show All Products</button>

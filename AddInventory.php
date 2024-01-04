@@ -47,8 +47,8 @@ include 'headermain.php'; ?>
       <br>
 </div>
 <div style="text-align: center;">
-  <button type="submit" class="btn btn-outline-primary">Add Product</button>
-  <button type="reset" class="btn btn-outline-dark">Reset</button>
+  <button type="submit" class="btn mb-1 btn-primary">Add Product</button>
+  <button type="reset" class="btn mb-1 btn-dark">Reset</button>
 </div>
 
 </fieldset>
