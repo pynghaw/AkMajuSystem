@@ -1,5 +1,16 @@
 
-<?php include 'headermain.php'; ?>
+<?php 
+include ('mysession.php');
+if(!session_id())
+{
+    session_start();
+}
+if (isset($_GET['id'])) {
+    $fid = $_GET['id'];
+} 
+include 'headermain.php';
+
+ ?>
 <body>
         <!--**********************************
             Content body start

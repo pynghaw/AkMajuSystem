@@ -5,7 +5,7 @@ if(!session_id())
 }
 if(isset($_SESSION['u_name']) != session_id())
 {
-	header('Location:login.php');
+	header('Location:index.php');
 }
 
 ?>
