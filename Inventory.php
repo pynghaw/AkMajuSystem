@@ -1,9 +1,14 @@
 <?php 
-include ('headermain.php');
+
+include('mysession.php');
+if (!session_id()) {
+    session_start();
+}
 include('dbconnect.php');
 
 $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
+include ('headermain.php');
 ?>
 
         <!--**********************************

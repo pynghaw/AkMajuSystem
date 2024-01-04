@@ -222,7 +222,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="profile.php"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li>
                                             <a href="javascript:void()">
@@ -234,7 +234,7 @@
                                         <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="logout.php"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -289,7 +289,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="Inventory.php">View Inventory</a></li>
-                            <li><a href="./email-read.html">Add Inventory</a></li>
+                            <li><a href="AddInventory.php">Add Inventory</a></li>
                             
                         </ul>
                     </li>
@@ -313,7 +313,7 @@
                             <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Profile</a></li>
+                            <li><a href="profile.php">Profile</a></li>
                             <li><a href="./app-calender.html">Calender</a></li>
                         </ul>
                     </li>
@@ -409,8 +409,8 @@
                             <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./page-login.html">Login</a></li>
-                            <li><a href="./page-register.html">Register</a></li>
+                            <li><a href="login.php">Login</a></li>
+                            <li><a href="register.php">Register</a></li>
                             <li><a href="./page-lock.html">Lock Screen</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
                                 <ul aria-expanded="false">
@@ -426,6 +426,7 @@
                 </ul>
             </div>
         </div>
+
         <!--**********************************
             Sidebar end
         ***********************************-->
