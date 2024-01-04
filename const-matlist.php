@@ -8,7 +8,7 @@ $sql="SELECT * FROM tb_matlist";
 $result=mysqli_query($con,$sql);
 
 //Display result
-include 'headermain.php';
+include 'headerconst.php';
 ?>
 <body>
         <!--**********************************
@@ -40,44 +40,39 @@ include 'headermain.php';
                                                 <th>Name</th>
                                                 <th>Type</th>
                                                 <th>Description</th>
-                                                <th>Unit Price</th>
+                                                <th>Unit Price(RM)</th>
                                                 <th>Quantity</th>
+                                                <th>Add/Minus</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Shad Decker</td>
-                                                <td>Regional Director</td>
-                                                <td>Edinburgh</td>
-                                                <td>51</td>
-                                                <td>2008/11/13</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td>$183,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td>$112,000</td>
-                                            </tr>
+                                            <?php
+                                                while($row=mysqli_fetch_array($result))
+                                                {
+                                                    echo "<tr>";
+                                                    echo"<td>".$row['m_id']. "</td>";
+                                                    echo"<td>".$row['m_name']. "</td>";
+                                                    echo"<td>".$row['m_type']. "</td>";
+                                                    echo"<td>".$row['m_desc']. "</td>";
+                                                    echo"<td>".$row['m_price']. "</td>";
+                                                    echo"<td>".$row['m_qty']. "</td>";
+                                                    echo "<td>";
+                                                        echo "<a href='const-modifyprocess.php?id=".$row['m_id']."&action=add' class='btn btn-warning'>+</a>&nbsp";
+                                                        echo "<a href='const-modifyprocess.php?id=".$row['m_id']."&action=minus' class='btn btn-danger'>-</a>";
+                                                    echo"</td>";
+                                                    echo "</tr>";
+                                                } 
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                                <th>Unit Price</th>
+                                                <th>Quantity</th>
+                                                <th>Add/Minus</th>
                                             </tr>
                                         </tfoot>
                                     </table>

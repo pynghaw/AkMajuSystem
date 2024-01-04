@@ -23,22 +23,6 @@
 </head>
 
 <body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="loader">
-            <svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
-    
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -50,14 +34,11 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.php">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
-                    </span>
+                    <h1>AK MAJU</h1>
                 </a>
             </div>
         </div>
+
         <!--**********************************
             Nav header end
         ***********************************-->
