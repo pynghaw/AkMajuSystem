@@ -1,42 +1,28 @@
 <style>
     .checkout-footer {
         position: fixed;
-        left: 0;
-        bottom: 40px;
-        width: 100%;
-        background-color: #888;
-        color: white;
+        left: 18%;
+        bottom: 20px;
+        width: 80%;
         text-align: center;
-        padding: 10px 0;
+        padding: 0px 0;
     }
 
-    .checkout-footer button {
-        background-color: black;
-        color: white;
-        padding: 10px 20px;
-        margin: 10px 10px 10px 0;
-        border: none;
-        cursor: pointer;
-    }
-
-    .checkout-footer button:hover {
-        background-color: lightgrey;
-    }
-
-    button.go-back-button {
-        background-color: #4CAF50; /* Green background */
-        color: white;
-    }
-
-    button.go-back-button:hover {
-        background-color: #45a049; /* Darker green on hover */
-    }
 </style>
 
-
 <div class="checkout-footer">
-    <button class="go-back-button" onclick="goBack()">Go Back</button>
-    <button onclick="window.location.href='const-generatequoprocess.php'">Generate Quotation</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <button class="btn mb-1 btn-rounded btn-success" style="margin-right: 10px;" onclick="goBack()">Go Back</button>
+                        <button onclick="window.location.href='const-generatequoprocess.php'" type="button" class="btn mb-1 btn-flat btn-primary">Generate Quotation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="footer">

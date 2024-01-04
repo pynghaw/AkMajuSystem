@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <button onclick="window.location.href='const-checkoutsummary.php'" type="button" class="btn mb-1 btn-primary">Checkout <span class="btn-icon-right"><i class="fa fa-shopping-cart"></i></span></button>
+                        <button onclick="window.location.href='customer-generateexcelprocess.php'" type="button" class="btn mb-1 btn-primary btn-lg">Generate Database</button>
                     </div>
                 </div>
             </div>
