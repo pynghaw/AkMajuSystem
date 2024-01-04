@@ -1,10 +1,9 @@
-<?php 
-include('mysession.php');
 
+<?php  
+include('mysession.php');
 if (!session_id()) {
     session_start();
 }
-
 $fid = isset($_SESSION['u_id']) ? $_SESSION['u_id'] : '';
 
 include('dbconnect.php');
@@ -16,14 +15,12 @@ $sqlr = "SELECT * FROM tb_user where u_id='$fid' ";
 // Get the result
 $resultr = mysqli_query($con,$sqlr);
 $rowr = mysqli_fetch_array($resultr);
-include ('headermain.php');
-
-?>
+include 'headermain.php'; ?>
 
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+       <div class="content-body">
 
             
             <!-- row -->
@@ -112,8 +109,14 @@ include ('headermain.php');
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
 
-</body>
 
-<?php 
 
-include ('footer.php');?>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <?php include 
+        mysqli_close($con);
+
+        'footer.php'; ?>
+
