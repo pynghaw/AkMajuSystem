@@ -1,33 +1,29 @@
-<?php 
+<?php
 
-//Connect to DB
-
+// Connect to DB
 include("dbconnect.php");
 
-//Retrieve data from registration form
+// Retrieve data from registration form
+$fname = $_POST['fname'];
+$fid = $_POST['fid'];
+$fsex = $_POST['fsex'];
+$fpwd = password_hash($_POST['fpwd'], PASSWORD_DEFAULT); // Hash the password
+$femail = $_POST['femail'];
+$ftel = $_POST['ftel'];
+$ftype = $_POST['ftype'];
 
-$fname=$_POST['fname'];
-$fid=$_POST['fid'];
-$fsex=$_POST['fsex'];
-$fpwd=$_POST['fpwd'];
-$femail=$_POST['femail'];
-$ftel=$_POST['ftel'];
-$ftel=$_POST['fpwd'];
-$ftype=$_POST['ftype'];
+// CRUD Operation
+// Create - SQL Insert Statement
+$sql = "INSERT INTO tb_user(u_name, u_id, u_sex, u_email, u_pwd, u_contNo, u_type)
+        VALUES('$fname', '$fid', '$fsex', '$femail', '$fpwd', '$ftel', '$ftype')";
 
-//CRUD Operation
-//Create-SQL Insert Statement
-$sql="INSERT INTO tb_user(u_name, u_id, u_sex, u_email, u_pwd, u_contNo, u_type)
-	  VALUES('$fname', '$fid', '$fsex','$femail','$fpwd','$ftel', '$ftype')";
+// Execute SQL
+mysqli_query($con, $sql);
 
-//Execute SQL
-mysqli_query($con,$sql);
-
-//Close DB Connection
+// Close DB Connection
 mysqli_close($con);
 
-//Redirect to next page
+// Redirect to the next page
 header("Location:index.php");
-
 
 ?>

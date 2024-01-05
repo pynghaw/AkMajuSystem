@@ -34,6 +34,41 @@ include 'headermain.php';
 
 ?>
 
+<script>
+    function searchInventory() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("inventoryTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // Index 2 corresponds to the Product Name column
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+        
+    }
+</script>
+
+<script>
+    function showAllProducts() {
+        var table, tr;
+        table = document.getElementById("inventoryTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (var i = 0; i < tr.length; i++) {
+            tr[i].style.display = "";
+        }
+    }
+</script>
+
 <body>
     <!--**********************************
         Content body start
@@ -100,7 +135,7 @@ include 'headermain.php';
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="container mt-4">
-                            <h1 class="mb-4">Inventory</h1>
+                            <h1 class="mb-4" style="text-align: center;">Inventory</h1><br><br>
                            <div class="mb-3 d-flex justify-content-between align-items-center">
                                 <div>
                                     <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-shopping-cart"></i>Add Inventory</a>
