@@ -29,7 +29,6 @@ $result = mysqli_query($con, $sql);
                     <div class="card-body">
                         <div class="container">
                             <h2>Manage Customer</h2>
-
                             <?php
                             if (mysqli_num_rows($result) > 0) {
                                 ?>
@@ -56,8 +55,8 @@ $result = mysqli_query($con, $sql);
                                                 <td><?php echo $row['c_billAdd']; ?></td>
                                                 <td><?php echo $row['c_email']; ?></td>
                                                 <td><?php echo $row['c_cont']; ?></td>
-                                                <td><?php echo '<a href="customermodify.php?id=' . $row['c_id'] . '" class="btn btn-outline-secondary">Modify</a> &nbsp;';
-                                                        echo '<a href="customerremove.php?id=' . $row['c_id'] . '" class="btn btn-outline-danger">Remove</a>';?></td>
+                                                <td><?php echo '<a href="customer-modify.php?id=' . $row['c_id'] . '" class="btn btn-outline-secondary">Modify</a> &nbsp;';
+                                                        echo '<a href="customer-remove.php?id=' . $row['c_id'] . '" class="btn btn-outline-danger">Remove</a>';?></td>
                                             </tr>
                                         <?php
                                     }
@@ -77,9 +76,20 @@ $result = mysqli_query($con, $sql);
         </div>
     </div>
     <!-- #/ container -->
-</div>
+</div><br><br><br><br>
 <!--**********************************
     Content body end
 ***********************************-->
 <?php include 'customer-generatefooter.php'; ?>       
+
+ 
+<script src="plugins/common/common.min.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/gleek.js"></script>
+<script src="js/styleSwitcher.js"></script>
+
+
+<script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
+<script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
 

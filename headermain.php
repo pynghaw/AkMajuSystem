@@ -20,8 +20,6 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-
-
 </head>
 
 <body>
@@ -173,6 +171,15 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Order</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="order-place.php">Place Order</a></li>
+                            <li><a href="order-manage.php">Manage Order</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
@@ -185,6 +192,16 @@
                         <a href="invoice-manage.php" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Invoice</span>
                         </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Delivery Order</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="do-generate-1.php">Generate</a></li>
+                            <li><a href="do-manage.php">Manage</a></li>
+                            
+                        </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -201,7 +218,7 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Customer</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Add Customer</a></li>
+                            <li><a href="customer-add.php">Add Customer</a></li>
                             <li><a href="customer-manage.php">Manage Customer</a></li>
                             
                         </ul>
