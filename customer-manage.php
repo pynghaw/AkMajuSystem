@@ -29,10 +29,6 @@ $result = mysqli_query($con, $sql);
                     <div class="card-body">
                         <div class="container">
                             <h2>Manage Customer</h2>
-                            <div class="sweetalert m-t-30">
-                                <button class="btn btn-success btn sweet-success">Sweet Success</button>
-                            </div>
-
                             <?php
                             if (mysqli_num_rows($result) > 0) {
                                 ?>
