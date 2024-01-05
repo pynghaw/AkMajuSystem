@@ -66,7 +66,7 @@
                                                 id="Password" placeholder="Password" required>
                                         </div>
                                           <br>
-  <button type="submit" id="login"class="btn btn-outline-primary">login</button>
+  <button type="submit" id="login"class="btn mb-1 btn-primary">login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
