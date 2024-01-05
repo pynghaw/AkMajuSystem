@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>AK MAJU</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
@@ -14,7 +14,7 @@
     
 </head>
 
-<body class="h-100">
+<body class="h-100" style="background-color: #FEF6FE;">
     
     <!--*******************
         Preloader start
@@ -65,7 +65,7 @@
                                         <a class="" href="register.php">Create an Account!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="" href="login.php">Already have an account? Login!</a>
+                                        <a class="" href="index.php">Already have an account? Login!</a>
                                     </div>
                                 </div>
                     </div>

@@ -62,7 +62,7 @@ include 'headermain.php'; ?>
                   <label for="gender">Gender</label>
                   <?php  
                            echo' <select id="gender" class="form-control form-control-user" name="sex">';
-   echo' <option value=" '.$rowr['u_sex'].'" disabled selected> '.$rowr['u_sex'].'</option>';
+   echo' <option value=" '.$rowr['u_sex'].'" selected> '.$rowr['u_sex'].'</option>';
     echo'<option value="Male">Male</option>';
   echo'  <option value="Female">Female</option>?></td>';
   echo'</select>';

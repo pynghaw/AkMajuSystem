@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
     <!-- theme meta -->
-    <meta name="theme-name" content="quixlab" />
+    <meta name="theme-name" content="AK MAJU" />
   
     <title>AK MAJU</title>
     <!-- Favicon icon -->
