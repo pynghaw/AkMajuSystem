@@ -28,6 +28,7 @@ if (isset($_SESSION['error_message'])) {
 
 $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
+$count = 0;
 include 'headernotification.php';
 include 'headermain.php';
 
@@ -131,7 +132,7 @@ include 'headermain.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $count = 0;
+                                        
                                         while ($row = mysqli_fetch_array($result)) {
                                             $count++;
                                         ?>
@@ -152,6 +153,10 @@ include 'headermain.php';
                                         ?>
                                     </tbody>
                                 </table>
+<?php 
+$color = 'grey';
+echo "<p style='color: $color;'><i>Total Product: $count</i></p>";
+?>
                             </div>
                         </div>
                     </div>
@@ -160,9 +165,21 @@ include 'headermain.php';
         </div>
     </div>
 
+
     <?php
     mysqli_close($con);
     include 'footer.php';
     ?>
+
+        <script src="plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+    <script src="./plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="./plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="./plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+
 </body>
 </html>
