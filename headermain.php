@@ -171,6 +171,16 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Order</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="#">Place Order</a></li>
+                            <li><a href="#">Manage Order</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
@@ -199,7 +209,7 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Customer</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Add Customer</a></li>
+                            <li><a href="customer-add.php">Add Customer</a></li>
                             <li><a href="customer-manage.php">Manage Customer</a></li>
                             
                         </ul>
