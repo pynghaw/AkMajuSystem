@@ -31,6 +31,7 @@ include 'headermain.php';
                         <div class="card">
                             <div class="card-body">
                                 <h2>Material List</h2>
+
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
