@@ -49,6 +49,7 @@ include 'headermain.php'; ?>
                   <?php
                  echo' <input type="text" name="fid" class="form-control" id="userID" value="' . $rowr['u_id'] . '" readonly';
                  ?>
+                 <div class="small">can`t edit user ID</div>
                 </div>
 
                 <div class="form-group mb-4">

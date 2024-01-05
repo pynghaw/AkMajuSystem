@@ -56,6 +56,7 @@ include 'headermain.php'; ?>
                 <?php
                 echo '<input type="text" value="' . $rowr['i_no'] . '" name="InventoryNo" class="form-control" id="exampleInputPassword1" placeholder="Product ID" readonly';
                 ?>
+                <div class="small">can`t edit product id</div>
             </div>
 
             <div class="form-group">
