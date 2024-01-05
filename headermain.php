@@ -334,7 +334,7 @@
                         <ul aria-expanded="false">
                             <li><a href="index.php">Login</a></li>
                             <li><a href="register.php">Register</a></li>
-                            <li><a href="./page-lock.html">Lock Screen</a></li>
+                            <li><a href="resetPassword.php">Reset Password</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
                                 <ul aria-expanded="false">
                                     <li><a href="./page-error-404.html">Error 404</a></li>

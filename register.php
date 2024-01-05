@@ -96,7 +96,7 @@
                                     </div><br>
                                    <div id="passwordMismatchMessage" style="color: red;"></div>
 
-<script>
+             <script>
     document.getElementById("RepeatPassword").addEventListener("keyup", checkPasswordMatch);
 
     function checkPasswordMatch() {
@@ -104,16 +104,21 @@
         var repeatPassword = document.getElementById("RepeatPassword").value;
         var registerButton = document.getElementById("registerButton");
         var errorMessage = document.getElementById("passwordMismatchMessage");
+        var correctMessage = document.getElementById("passwordmatchMessage");
 
         // Check if the passwords match
         if (password === repeatPassword) {
             // Passwords match, enable the register button and clear the error message
             registerButton.disabled = false;
             errorMessage.innerHTML = "";
+            correctMessage.innerHTML = "Password match";
         } else {
             // Passwords do not match, disable the register button and display an error message
             registerButton.disabled = true;
             errorMessage.innerHTML = "Passwords do not match!";
+            
+            // Clear correct message if repeatPassword is empty
+            correctMessage.innerHTML = repeatPassword ? "" : "";
         }
     }
 </script><br>
