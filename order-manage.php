@@ -88,7 +88,7 @@ $result = mysqli_query($con, $sql);
                                                 <td><?php echo $row['o_date']; ?></td>
                                                 <td>
                                                     <a href="order-modify.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-secondary">Modify</a> &nbsp;
-                                                    <a href="ordercancel.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-danger">Cancel Order</a>
+                                                    <a href="order-cancel.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-danger">Cancel Order</a>
                                                 </td>
                                             </tr>
                                         <?php

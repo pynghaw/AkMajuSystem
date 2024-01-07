@@ -38,7 +38,7 @@ mysqli_close($con);
   <h5>Item ID:<?php echo $fino;?></h5>
   <h5>Quantity:<?php echo $fqty;?></h5>
   <h5>Date:<?php echo $fdate;?></h5>
-  <button type="button" class="btn btn-primary" onclick="location.href='order-place.php';">Add Order</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='order-place.php';">Add More</button>
   <button type="button" class="btn btn-primary" onclick="location.href='staff.php';">Home</button>
 
 </div>

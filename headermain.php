@@ -174,9 +174,14 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="adv-generatequo1.php">Advertising</a></li>
-                            <li><a href="const-selectcust.php">Construction</a></li>
-                            
+                            <li>
+                                <a class="has-arrow" href="adv-quo.php">Advertising</a>
+                                <ul>
+                                    <li><a href="adv-generatequo1.php">Generate</a></li>
+                                    <li><a href="adv-managequo.php">Manage</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="construction-quo.php">Construction</a></li>
                         </ul>
                     </li>
                     <li>
