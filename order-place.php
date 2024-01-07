@@ -1,13 +1,44 @@
-<?php include 'headermain.php'; 
+<?php  
+include('mysession.php');
+if (!session_id()) {
+    session_start();
+}
 include('dbconnect.php');
-?>
+// Display success message
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            {$_SESSION['success_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
 
+    unset($_SESSION['success_message']);
+}
+
+// Display error message
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            {$_SESSION['error_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
+
+    unset($_SESSION['error_message']);
+}
+include 'headernotification.php';
+include 'headermain.php'; ?>
+
+<body>
+
+       <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="container mt-4">
 <div class="container">
 <form method="POST" action="order-placeprocess.php">
   <div class="container">
   <fieldset>
-    <br>
-    <legend>Place Order</legend>
+    <legend style="text-align: center; font-size: 30px;">Place Order</legend>
     <div class="form-group">
       <label for="exampleSelect1" class="form-label mt-4">Select Customer</label>
 
@@ -56,4 +87,5 @@ include('dbconnect.php');
 </div>
 </form>
 </div>
+    </body>
 <?php include 'footer.php';?>
