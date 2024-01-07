@@ -32,6 +32,12 @@ $quotationInfoRow = mysqli_fetch_assoc($quotationInfoResult);
 $quotationNumber = $quotationInfoRow['q_no'];
 $quotationDate = $quotationInfoRow['q_date'];
 
+$customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+$customerInfoResult = mysqli_query($con, $customerInfoSql);
+$customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
+$customerName = $customerInfoRow['c_name'];
+$billingAddress = $customerInfoRow['c_billAdd'];
+
 
 // Create PDF
 $pdf = new FPDF('P','mm', 'A4');
@@ -76,7 +82,8 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->MultiCell(30, 5, $billingAddress);
+$pdf->MultiCell(30, 2.5, "$customerName\n
+$billingAddress");
 $pdf->SetXY(126, 56);
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->MultiCell(0, 2.5, 

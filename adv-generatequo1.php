@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--**********************************
     Content body end
 ***********************************-->
-<?php include 'customer-footer.php'; ?>       
+<?php include 'footer.php'; ?>       
 
  
 <script src="plugins/common/common.min.js"></script>
