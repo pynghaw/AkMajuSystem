@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table Rows</title>
+</head>
+<body>
+
+<table id="myTable">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+    <td>1</td>
+    <td>2</td>
+    <!-- Rows will be added here dynamically -->
+</table>
+
+<script src="path_to_your_javascript_file.js"></script>
+
+</body>
+</html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var table = document.getElementById('myTable');
+
+    for (var i = 1; i <= 20; i++) {
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = 'Item ' + i;
+        cell2.innerHTML = '<span id="quantity' + i + '">0</span>';
+        cell3.innerHTML = '<button onclick="changeQuantity(\'quantity' + i + '\', -1)">-</button>' +
+                          '<button onclick="changeQuantity(\'quantity' + i + '\', 1)">+</button>';
+    }
+});
+
+function changeQuantity(quantityId, change) {
+    var quantityElement = document.getElementById(quantityId);
+    var currentQuantity = parseInt(quantityElement.innerText);
+    var newQuantity = currentQuantity + change;
+    if (newQuantity >= 0) {
+        quantityElement.innerText = newQuantity;
+    }
+}
+
+</script>

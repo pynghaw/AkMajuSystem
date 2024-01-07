@@ -9,19 +9,22 @@
     }
 </style>
 
+<form method="POST" action="const-checkoutsummary.php">
 <div class="checkout-footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <button onclick="window.location.href='const-checkoutsummary.php'" type="button" class="btn mb-1 btn-primary">Checkout <span class="btn-icon-right"><i class="fa fa-shopping-cart"></i></span></button>
+                        <button onclick="window.location.href='const-checkoutsummary.php'" type="submit" class="btn mb-1 btn-primary">Checkout <span class="btn-icon-right"><i class="fa fa-shopping-cart"></i></span></button>
+                        <input type="hidden" name="customer_name" value="<?php echo $customer_name; ?>">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</form>
 
 
 <div class="footer">
