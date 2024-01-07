@@ -4,7 +4,7 @@
 ***********************************-->
 <div class="footer">
     <div class="copyright">
-        <p>Copyright &copy; Designed & Developed by <a href=#>CryptoKnights</a> 2023</p>
+        <p style="text-align:center;">Copyright &copy; Designed & Developed by <a href=#>CryptoKnights</a> 2023</p>
     </div>
 </div>
 <!--**********************************

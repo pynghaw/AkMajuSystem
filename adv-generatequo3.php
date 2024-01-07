@@ -1,7 +1,7 @@
 <?php
 include 'headermain.php';
 include('dbconnect.php');
-echo "<form method='POST' action='generatequotationprocess.php'>"; 
+echo "<form method='POST' action='adv-generatequoprocess.php'>"; 
 // Retrieve data from page3.php
 $customer_id = $_POST['customer_id'];
 $order_date = $_POST['order_date'];
