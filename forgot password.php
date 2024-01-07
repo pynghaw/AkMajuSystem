@@ -1,4 +1,6 @@
-
+<?php 
+use PHPMailer\PHPMailer\PHPMailer;
+?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -54,7 +56,7 @@
     <div class="form-group">
         <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
     </div>
-    <button type="submit" class="btn btn-primary btn-user btn-block">Reset Password</button>
+    <button type="submit" name="reset" class="btn btn-primary btn-user btn-block">Reset Password</button>
 </form>
                                     <hr>
                                     <div class="text-center">
