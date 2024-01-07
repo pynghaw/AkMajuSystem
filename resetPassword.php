@@ -49,7 +49,8 @@
                                         <h1 class="h4 text-gray-900 mb-2">Reset Password</h1>
                                         
                                     </div>
-                                    <form action="resetPasswordProcess.php" method="post">
+                                    <form action="resetPasswordProcess.php" method='POST'>
+
     <div class="form-group">
         <label>New Password</label>
         <input type="password" name="fpwd" class="form-control form-control-user" id="password"  placeholder="New Password" required>
@@ -89,7 +90,7 @@
 </script>
 
 
-    <button type="submit" id="confirm" class="btn mb-1 btn-success">Confirm</button>
+    <button type="submit" id="confirm" name="change" class="btn mb-1 btn-success">Confirm</button>
 </form>
                                     
                     </div>

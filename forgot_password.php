@@ -16,7 +16,7 @@ $mail = new PHPMailer(true);
 
 try {
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -30,11 +30,12 @@ try {
     $mail->addAddress($email);     //Add a recipient
    
    $code= substr(str_shuffle('1234567890QWERTYUIOPASDFGHJKLZXCVBNM'),0,10);
-
+   $link = 'http://localhost/AkMajuSystem/resetPassword.php?code=' . $code;
+echo $link; 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Password Reset';
-    $mail->Body    = 'To reset your password please click <a href="127.0.0.1/AkMajuSystem/resetPassword.php?code='.$code.'">here</a>. <br>Reset your password in a day.';
+    $mail->Body    = 'To reset your password please click <a href="'.$link.'">here</a>. <br>Reset your password in a day.';
 
     $conn = new mySqli('localhost', 'root', '', 'db_cryptoknights');
 
@@ -51,11 +52,9 @@ try {
       echo 'Message has been sent, check your email';
 
     }
+$conn->close();
 
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    $mail->send();
-    echo 'Message has been sent';
+  
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

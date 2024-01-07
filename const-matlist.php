@@ -1,14 +1,21 @@
 <?php 
-  include('dbconnect.php');
+include 'headermain.php';
+include('dbconnect.php');
 
+$customer_name = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve selected customer
+    $customer_name = $_POST['customer_name'];
+}
 //CRUD: Retrieve booking
 $sql="SELECT * FROM tb_matlist";
 
 //Execute
 $result=mysqli_query($con,$sql);
 
-//Display result
-include 'headermain.php';
+
+
+?>
 ?>
 <body>
         <!--**********************************
