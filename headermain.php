@@ -174,7 +174,7 @@
                             <i class="icon-envelope menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Advertising</a></li>
+                            <li><a href="adv-generatequo1.php">Advertising</a></li>
                             <li><a href="const-matlist.php">Construction</a></li>
                             
                         </ul>
