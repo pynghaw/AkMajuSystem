@@ -34,27 +34,73 @@ $quotationDate = $quotationInfoRow['q_date'];
 
 
 // Create PDF
-$pdf = new FPDF();
+$pdf = new FPDF('P','mm', 'A4');
+
+// Set document information
+$pdf->SetCreator('Your Name');
+$pdf->SetAuthor('Your Name');
+$pdf->SetTitle('Check Out Summary');
+$pdf->SetSubject('Check Out Summary PDF Document');
+$pdf->SetKeywords('FPDF, PDF, example, sample');
+
+// Add a page
 $pdf->AddPage();
 
+//place img and report id
+$imagePath = 'images/akmaju.jpeg';
+$pdf->Image($imagePath, 10, 10, 25);
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->SetXY(120, 12); //coordinate of address
+$pdf->Cell(0, 2, 'AK MAJU RESOURCES SDN . BHD', 0, 1, 'L');
+$pdf->Ln();
+$pdf->SetXY(117, 16); //coordinate of address
+$pdf->SetFont('Arial', '', 8);
+$pdf->MultiCell(0, 2.5, 
+    "    No. 39 & 41, Jalan Utama 3/2, Pusat Komersial Sri Utama,\n
+    Segamat, Johor, Malaysia- 85000\n
+    07-9310717, 010-2218224\n
+    akmaju.acc@gmail.com\n
+    Company No : 1088436 K", 0, 'L');
+$newYPosition = 20 + 12 + 10;
+
 // Title
-$pdf->SetFont('Times', 'B', 10);
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->SetY($newYPosition);
 $pdf->Cell(0, 5, 'QUOTATION', 0, 1, 'C'); // Centered title with line 
 $pdf->SetDrawColor(0, 0, 0); // Set line color to black
-$pdf->SetLineWidth(0.5); // Set line width (adjust as needed)
+$pdf->SetLineWidth(0.3); // Set line width (adjust as needed)
 $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY()); // Adjust the coordinates and width as needed
+$pdf->Ln();
 
-
-// Billing Address and Quotation No and Date
-$pdf->SetFont('Times', 'B', 8);
-$pdf->Cell(80, 10, 'To,', 0);
-$pdf->SetFont('Times', '', 8);
-$pdf->Cell(0, 10, 'Quotation No: ' . $quotationNumber . '   Quotation Date: ' . $quotationDate, 0, 1, 'R');
-$pdf->SetFont('Times', '', 8);
-// Use multiCell for better formatting
+//lines under title
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
+$pdf->SetFont('Arial', '', 8);
 $pdf->MultiCell(30, 5, $billingAddress);
-$pdf->Ln(); // Add a line break for separation
+$pdf->SetXY(126, 56);
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->MultiCell(0, 2.5, 
+    "    QUOTATION NUMBER\n
+    QUATATION DATE\n
+    TERMS OF PAYMENT\n
+    SST REGISTRATION. NO.", 0, 'L');
+// Add the Cell on the right
+$pdf->SetXY(170, 56);
+$pdf->SetFont('Arial', '', 8);
+$pdf->MultiCell(0, 2.5, 
+    "    $quotationNumber\n
+    $quotationDate\n
+    LO\n
+    000", 0, 'L');
+$pdf->Ln();
+$pdf->Ln(8);
 
+
+//below billing address
+$pdf->SetFont('Arial', '', 8);
+$pdf->Cell(0, 8, 'Dear Sir/Madam, herewith is our Quotation generated for your perusal.', 0, 1, 'L');
+$pdf->SetFont('Arial', 'B', 8);
+$pdf->Cell(0, 8, 'ITEM DETAILS', 0, 1, 'L');
 
 
 // Header
@@ -106,5 +152,5 @@ $pdf->Cell(25, 10, $grandTotal, 1);
 $pdf->Ln();
 
 // Output the PDF
-$pdf->Output('quotation.pdf', 'D');
+$pdf->Output('quotation.pdf', 'I');
 ?>
