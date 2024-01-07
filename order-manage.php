@@ -57,8 +57,8 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['i_name'] . '</td>';
                                     echo '<td>' . $row['o_quantity'] . '</td>';
                                     echo '<td>' . $row['o_date'] . '</td>';
-                                    echo '<td><a href="ordermodify.php?id=' . $row['o_no'] . '" class="btn btn-outline-secondary">Modify</a> &nbsp;';
-                                    echo '<a href="ordercancel.php?id=' . $row['o_no'] . '" class="btn btn-outline-danger">Cancel Order</a></td>';
+                                    echo '<td><a href="order-modify.php?o_no=' . $row['o_no'] . '" class="btn btn-outline-secondary">Modify</a> &nbsp;';
+                                    echo '<a href="ordercancel.php?o_no=' . $row['o_no'] . '" class="btn btn-outline-danger">Cancel Order</a></td>';
                                     echo '</tr>';
                                 }
 
