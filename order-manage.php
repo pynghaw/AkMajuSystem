@@ -2,12 +2,15 @@
 include 'headermain.php';
 include 'dbconnect.php';
 
-// Query to get order information
+// Check if 'sort' is set in the URL
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'o.o_date'; // Default sort by order date
+
+// Query to get order information with sorting
 $sql = "SELECT o.*, c.c_name, i.i_name, i.i_price 
         FROM tb_order o
         INNER JOIN tb_customer c ON o.o_cid = c.c_id
         INNER JOIN tb_inventory i ON o.o_ino = i.i_no
-        ORDER BY o.o_date DESC";
+        ORDER BY $sort DESC"; // Use the specified sorting column
 
 $result = mysqli_query($con, $sql);
 ?>
@@ -35,40 +38,65 @@ $result = mysqli_query($con, $sql);
                         <div class="container">
                             <h2>Manage Orders</h2>
 
-                            <?php
-                            if (mysqli_num_rows($result) > 0) {
-                                echo '<table class="table">';
-                                echo '<thead>';
-                                echo '<tr>';
-                                echo '<th>Order ID</th>';
-                                echo '<th>Customer Name</th>';
-                                echo '<th>Item Name</th>';
-                                echo '<th>Quantity</th>';
-                                echo '<th>Order Date</th>';
-                                echo '<th>Operation</th>';
-                                echo '</tr>';
-                                echo '</thead>';
-                                echo '<tbody>';
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <a href="order-place.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Add Orders</a>
+                                </div>
+                                <div class="mx-2">
+                                    <button type="button" class="btn btn-secondary" onclick="filterProducts(true)">Show All Products</button>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="sr-only" for="search">Search</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="search" placeholder="Search by Product Name">
+                                        <button type="button" class="btn btn-primary" onclick="filterProducts()">Search</button>
+                                    </div>
+                                </div>
 
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<tr>';
-                                    echo '<td>' . $row['o_no'] . '</td>';
-                                    echo '<td>' . $row['c_name'] . '</td>';
-                                    echo '<td>' . $row['i_name'] . '</td>';
-                                    echo '<td>' . $row['o_quantity'] . '</td>';
-                                    echo '<td>' . $row['o_date'] . '</td>';
-                                    echo '<td><a href="order-modify.php?o_no=' . $row['o_no'] . '" class="btn btn-outline-secondary">Modify</a> &nbsp;';
-                                    echo '<a href="ordercancel.php?o_no=' . $row['o_no'] . '" class="btn btn-outline-danger">Cancel Order</a></td>';
-                                    echo '</tr>';
-                                }
+                                <!-- Sorting dropdown -->
+                                <div class="mx-2">
+                                    <label for="sort" class="mr-2">Sort by:</label>
+                                    <select class="form-select" id="sort" onchange="sortOrders(this.value)">
+                                        <option value="o.o_date" <?php echo ($sort == 'o.o_date') ? 'selected' : ''; ?>>Order Date</option>
+                                        <option value="c.c_name" <?php echo ($sort == 'c.c_name') ? 'selected' : ''; ?>>Customer Name</option>
+                                        <option value="i.i_name" <?php echo ($sort == 'i.i_name') ? 'selected' : ''; ?>>Item Name</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                                echo '</tbody>';
-                                echo '</table>';
-                            } else {
-                                echo '<p>No orders found.</p>';
-                            }
-                            ?>
-
+                            <div class="table-responsive">
+                                <table id="inventoryTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Item Name</th>
+                                            <th>Quantity</th>
+                                            <th>Order Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['o_no']; ?></td>
+                                                <td><?php echo $row['c_name']; ?></td>
+                                                <td><?php echo $row['i_name']; ?></td>
+                                                <td><?php echo $row['o_quantity']; ?></td>
+                                                <td><?php echo $row['o_date']; ?></td>
+                                                <td>
+                                                    <a href="order-modify.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-secondary">Modify</a> &nbsp;
+                                                    <a href="ordercancel.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-danger">Cancel Order</a>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,3 +113,31 @@ $result = mysqli_query($con, $sql);
 include 'footer.php';
 mysqli_close($con);
 ?>
+
+<!-- JavaScript for filtering, sorting, and displaying products -->
+<script>
+    function filterProducts(showAll = false) {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("inventoryTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // Index 2 corresponds to the Product Name column
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (showAll || txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function sortOrders(sortBy) {
+        var url = window.location.href.split('?')[0]; // Get the current URL without parameters
+        window.location.href = url + '?sort=' + sortBy;
+    }
+</script>
