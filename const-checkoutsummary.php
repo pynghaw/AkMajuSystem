@@ -2,6 +2,12 @@
 include 'headermain.php';
 include('dbconnect.php');
 
+$customer_name = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve selected customer
+    $customer_name = $_POST['customer_name'];
+}
+
 $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
 
@@ -29,6 +35,7 @@ $totalPrice = 0; // Initialize total price
                     <div class="card-body">
                     <div class="container">
                         <h2>Check Out Summary</h2>
+                        <?php echo "<p>Customer ID: $customer_name</p>";?>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -56,7 +63,7 @@ $totalPrice = 0; // Initialize total price
                                         <td><?php echo $row['m_qty']; ?></td>
                                         <td><?php echo $materialPrice; ?></td>
                                     </tr>
-                                <?php }} ?>
+                                <?php }} ?> 
                             </tbody>
                             <tfoot>
                                 <tr>

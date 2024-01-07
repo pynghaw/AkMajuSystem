@@ -25,7 +25,8 @@ $rowr=mysqli_fetch_array($resultr);
         <div class="col p-md-0">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active"><a href="customer-manage.php">Manage Customer</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Modify Customer</a></li>
             </ol>
         </div>
     </div>
