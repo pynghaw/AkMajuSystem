@@ -11,7 +11,7 @@
   
     <title>AK MAJU</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/jpg" sizes="16x16" href="images/akmaju.jpg">
     <!-- Pignose Calender -->
     <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -50,12 +50,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="staff.php">
-                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-                    <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
-                    <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
-                    </span>
+                <a href="staff.php" style="color: white; font-size:25px; font-family: ;">
+                   <b> AK MAJU</b>
                 </a>
             </div>
         </div>

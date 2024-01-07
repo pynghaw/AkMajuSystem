@@ -106,7 +106,7 @@ include 'headermain.php';
                             <h1 class="mb-4" style="text-align: center;">Inventory</h1><br><br>
                            <div class="mb-3 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-shopping-cart"></i>Add Inventory</a>
+                                    <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Add Inventory</a>
                                 </div>
                                 <div class="mx-2">
                                     <button type="button" class="btn btn-secondary" onclick="showAllProducts()">Show All Products</button>
@@ -149,7 +149,7 @@ include 'headermain.php';
                                                 <td>
                                                     <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a>
 
-                                                    <a href="Delete.php?id=<?php echo $row['i_no']; ?>" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</a>
+                                                    <a href="Delete.php?id=<?php echo $row['i_no']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                                     
                                                 </td>
                                             </tr>
