@@ -46,7 +46,7 @@ echo $link;
     $verifyQuery= $conn->query("SELECT * FROM tb_user WHERE u_email='$email'");
 
     if($verifyQuery->num_rows){
-      $codeQuery= $conn->query("UPDATE tb_user SET code='$code' WHERE u_email='$email'");
+      $codeQuery= $conn->query("UPDATE tb_user SET u_code='$code' WHERE u_email='$email'");
 
       $mail->send();
       echo 'Message has been sent, check your email';
