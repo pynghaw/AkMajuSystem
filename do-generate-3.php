@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="card">
                 <div class="card-body">
                     <div class="container">
-                        <form method="POST" action="do-generate-3.php">
+                        <form method="POST" action="do-generateprocess.php">
                             <fieldset>
                                 <br>
                                 <h1>Step 3: Enter Additional Information</h1>
