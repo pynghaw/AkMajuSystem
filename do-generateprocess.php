@@ -138,6 +138,8 @@ while ($row = mysqli_fetch_assoc($orderDetailsResult)) {
 // Update the grand total in the database
 $updateDOSql = "UPDATE tb_delorder SET d_gTotal = '$grandTotal' WHERE d_no = '$deliveryOrderNo'";
 mysqli_query($con, $updateDOSql);
+$updateDOSql = "UPDATE tb_delorder SET d_filepath = '$filePath' WHERE d_no = '$deliveryOrderNo'";
+mysqli_query($con, $updateDOSql);
 
 // Continue with the PDF generation
 

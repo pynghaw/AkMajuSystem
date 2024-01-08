@@ -48,7 +48,7 @@ $result = mysqli_query($con, $sql);
                                 echo '<td>' . $row['d_date'] . '</td>';
                                 echo '<td>' . $row['d_terms'] . '</td>';
                                 echo '<td>' . $row['d_recpAdd'] . '</td>';
-                                echo '<td><a href="regeneratedoprocess.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-secondary">View</a> &nbsp;';
+                                echo '<td><a href="do-review.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-secondary">View</a> &nbsp;';
                                 echo '<a href="do-delete.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-danger">Delete</a></td>';
                                 echo '</tr>';
                             }

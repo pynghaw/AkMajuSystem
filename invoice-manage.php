@@ -72,7 +72,7 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['c_name'] . '</td>';
                                     echo '<td>' . $row['iv_date'] . '</td>';
                                     echo '<td>';
-                                    echo '<a href="regenerateinvoiceprocess.php?iv_no=' . $row['iv_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
+                                    echo '<a href="invoice-review.php?iv_no=' . $row['iv_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
 
                                     // Different operations based on invoice status
                                     if ($selectedOption == 'unpaid') {

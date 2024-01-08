@@ -77,12 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     echo '<td>';
                                     if ($row['q_status'] == 0) {
                                         // Pending Quotation Operations
-                                        echo '<a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
+                                        echo '<a href="adv-reviewquo.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
                                         echo '<a href="invoice-upfront.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-success">Generate Invoice</a> &nbsp;';
                                         echo '<a href="adv-deletequo.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a>';
                                     } elseif ($row['q_status'] == 1) {
                                         // Confirmed Quotation Operations
-                                        echo '<a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
+                                        echo '<a href="adv-reviewquo.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
                                     }
                                     echo '</td>';
                                     echo '</tr>';
