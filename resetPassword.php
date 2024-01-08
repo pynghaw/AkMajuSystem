@@ -50,6 +50,11 @@
                                         
                                     </div>
                                     <form action="resetPasswordProcess.php" method='POST'>
+<?php if (isset($_GET['code'])) {
+    $code = $_GET['code'];}else{
+          die("Error: Code is not set. Make sure you have the correct reset link.");
+
+    }?>
 
                   <div class="form-group ">
                                     <label>New Password</label>
