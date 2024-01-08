@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AK MAJU</title>
     <!-- Favicon icon -->
-     <link rel="icon" type="image/jpg" sizes="16x16" href="images/akmaju.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
     
@@ -51,10 +51,35 @@
                                     </div>
                                     <form action="resetPasswordProcess.php" method='POST'>
 
-    <div class="form-group">
-        <label>New Password</label>
-        <input type="password" name="fpwd" class="form-control form-control-user" id="password"  placeholder="New Password" required>
-    </div>
+                  <div class="form-group ">
+                                    <label>New Password</label>
+                                        <input type="password" name="fpwd" class="form-control form-control-user" id="password" placeholder="Password (At least 6 character)" minlength="6" required>
+                                        <script>
+    document.getElementById("RepeatPassword").addEventListener("keyup", checkPasswordMatch);
+
+    function checkPasswordMatch() {
+        var password = document.getElementById("password").value;
+        var repeatPassword = document.getElementById("RepeatPassword").value;
+        var registerButton = document.getElementById("registerButton");
+        var errorMessage = document.getElementById("passwordMismatchMessage");
+        var correctMessage = document.getElementById("passwordmatchMessage");
+
+        // Check if the passwords match and meet the minimum length requirement
+        if (password === repeatPassword && password.length >= 6) {
+            // Passwords match and meet the minimum length requirement
+            registerButton.disabled = false;
+            errorMessage.innerHTML = "";
+            correctMessage.innerHTML = "Password match";
+        } else {
+            // Passwords do not match or do not meet the minimum length requirement
+            registerButton.disabled = true;
+            errorMessage.innerHTML = "Passwords should match and have a minimum length of 6 characters!";
+            
+            // Clear correct message if repeatPassword is empty
+            correctMessage.innerHTML = repeatPassword ? "" : "";
+        }
+    }
+</script></div>
      <div class="form-group">
         <label>Repeat New Password</label>
                                         <input type="password" name="frpwd" class="form-control form-control-user"
