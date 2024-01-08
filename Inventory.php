@@ -107,7 +107,7 @@ include 'headermain.php';
 
 .fixed-table th:nth-child(9),
 .fixed-table td:nth-child(9) {
-    width: 100px;
+    width:80px;
 }
 
     </style>
@@ -171,7 +171,7 @@ include 'headermain.php';
                                                   <td> <?php echo $row['i_markupRate']; ?>%</td>
                                                 <td>RM <?php echo $row['i_price']; ?></td>
                                                 <td>
-                                                    <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a>
+                                                    <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a><br><br>
 
                                                     <a href="Delete.php?id=<?php echo $row['i_no']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                                     
