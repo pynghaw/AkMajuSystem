@@ -125,11 +125,15 @@ $pdf->Ln();
 // Content
 $pdf->SetFont('Times', '', 5);
 
+
+// Initialize total variables
 $total = 0;
 $grandTotal = 0;
-$index = 1; // Initialize the index
+$index = 1;
 
+// Loop through the result set
 while ($row = mysqli_fetch_assoc($result)) {
+    // Use the same $q_no value for every order in the loop
     $itemTotal = $row['o_quantity'] * $row['i_price'];
     $total += $itemTotal;
 
@@ -137,6 +141,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $discountAmountPerItem = ($discount / 100) * $itemTotal;
     $discountedItemTotal = $itemTotal - $discountAmountPerItem;
     $grandTotal += $discountedItemTotal;
+
+    $orderUpdateSql = "UPDATE tb_order SET o_qno = $quotationNumber WHERE o_no = {$row['o_no']}";
+    mysqli_query($con, $orderUpdateSql);
 
     // Break the item description into two lines
     $descLines = explode("\n", wordwrap($row['i_desc'], 40, "\n"));
@@ -152,6 +159,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->Cell(25, 10, $discountedItemTotal, 1); // Display total incl. discount
     $pdf->Ln();
 }
+
 
 // Footer
 $pdf->Cell(165, 10, 'GRAND TOTAL', 1);
