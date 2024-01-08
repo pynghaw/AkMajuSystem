@@ -1,13 +1,21 @@
 <?php
 include 'headermain.php';
-include('dbconnect.php');
+include 'dbconnect.php';
 require 'fpdf186/fpdf.php';
 
-// Query to retrieve invoices along with customer name
-$sql = "SELECT q.*, c.c_name
-        FROM tb_quotation q
-        INNER JOIN tb_customer c ON q.q_cid = c.c_id";
-$result = mysqli_query($con, $sql);
+// Query to retrieve pending quotations along with customer name
+$pendingSql = "SELECT q.*, c.c_name
+               FROM tb_quotation q
+               INNER JOIN tb_customer c ON q.q_cid = c.c_id
+               WHERE q.q_status = 0";
+$pendingResult = mysqli_query($con, $pendingSql);
+
+// Query to retrieve confirmed quotations along with customer name
+$confirmedSql = "SELECT q.*, c.c_name
+                 FROM tb_quotation q
+                 INNER JOIN tb_customer c ON q.q_cid = c.c_id
+                 WHERE q.q_status = 1";
+$confirmedResult = mysqli_query($con, $confirmedSql);
 ?>
 <!--**********************************
     Content body start
@@ -31,24 +39,27 @@ $result = mysqli_query($con, $sql);
                     <div class="card-body">
                         <div class="container">
                             <h2>Manage Quotation</h2>
+
+                            <!-- Display Pending Quotations -->
+                            <legend>Pending Quotations</legend>
                             <?php
-                            // Check if there are invoices
-                            if (mysqli_num_rows($result) > 0) {
+                            if (mysqli_num_rows($pendingResult) > 0) {
                                 echo '<table class="table">';
                                 echo '<tr>';
                                 echo '<th>Quotation No</th>';
                                 echo '<th>Customer Name</th>';
                                 echo '<th>Quotation Date</th>';
-                                echo '<th>Status</th>';
-                                echo '<th>Operation</th>';
+                                echo '<th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                Operation</th>';
                                 echo '</tr>';
 
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                while ($row = mysqli_fetch_assoc($pendingResult)) {
                                     echo '<tr>';
                                     echo '<td>' . $row['q_no'] . '</td>';
                                     echo '<td>' . $row['c_name'] . '</td>';
                                     echo '<td>' . $row['q_date'] . '</td>';
-                                    echo '<td>' . $row['q_status'] . '</td>';
                                     echo '<td><a href="invoice-upfront.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Generate Invoice</a> &nbsp;';
                                     echo '<a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
                                     echo '<a href="adv-deletequo.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a></td>';
@@ -57,7 +68,34 @@ $result = mysqli_query($con, $sql);
 
                                 echo '</table>';
                             } else {
-                                echo 'No quotation found.';
+                                echo 'No pending quotations found.';
+                            }
+                            ?>
+
+                            <!-- Display Confirmed Quotations -->
+                            <legend>Confirmed Quotations</legend>
+                            <?php
+                            if (mysqli_num_rows($confirmedResult) > 0) {
+                                echo '<table class="table">';
+                                echo '<tr>';
+                                echo '<th>Quotation No</th>';
+                                echo '<th>Customer Name</th>';
+                                echo '<th>Quotation Date</th>';
+                                echo '<th>Operation</th>';
+                                echo '</tr>';
+
+                                while ($row = mysqli_fetch_assoc($confirmedResult)) {
+                                    echo '<tr>';
+                                    echo '<td>' . $row['q_no'] . '</td>';
+                                    echo '<td>' . $row['c_name'] . '</td>';
+                                    echo '<td>' . $row['q_date'] . '</td>';
+                                    echo '<td><a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
+                                    echo '</tr>';
+                                }
+
+                                echo '</table>';
+                            } else {
+                                echo 'No confirmed quotations found.';
                             }
                             ?>
                          </div>
@@ -78,5 +116,4 @@ $result = mysqli_query($con, $sql);
 <!--**********************************
     Content body end
 ***********************************-->
-<?php include 'footer.php'; ?>       
-
+<?php include 'footer.php'; ?>
