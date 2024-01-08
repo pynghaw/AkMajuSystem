@@ -7,50 +7,56 @@ $customer_id = $_POST['customer_id'];
 $order_date = $_POST['order_date'];
 $discount = $_POST['discount'];
 
-// Query to retrieve orders for the selected customer on the selected date
-$sql = "SELECT o.*, i.i_desc, i.i_price FROM tb_order o
-        INNER JOIN tb_inventory i ON o.o_ino = i.i_no
-        WHERE o.o_cid = $customer_id AND o.o_date = '$order_date'";
-$result = mysqli_query($con, $sql);
+// Check if orders with status 0 exist for the selected customer on the selected date
+$orderCheckSql = "SELECT COUNT(*) AS orderCount FROM tb_order WHERE o_cid = $customer_id AND o_date = '$order_date' AND o_status = 0";
+$orderCheckResult = mysqli_query($con, $orderCheckSql);
+$orderCheckRow = mysqli_fetch_assoc($orderCheckResult);
+$orderCount = $orderCheckRow['orderCount'];
 
-// Fetch Quotation Number from Quotation Database
-$quotationNumberSql = "SELECT q_no FROM tb_quotation ORDER BY q_no DESC LIMIT 1";
-$quotationNumberResult = mysqli_query($con, $quotationNumberSql);
-$quotationNumberRow = mysqli_fetch_assoc($quotationNumberResult);
-$quotationNumber = $quotationNumberRow['q_no'];
+if ($orderCount > 0) {
+    // Query to retrieve orders with status 0 for the selected customer on the selected date
+    $sql = "SELECT o.*, i.i_desc, i.i_price FROM tb_order o
+            INNER JOIN tb_inventory i ON o.o_ino = i.i_no
+            WHERE o.o_cid = $customer_id AND o.o_date = '$order_date' AND o.o_status = 0";
+    $result = mysqli_query($con, $sql);
 
-// Fetch Billing Address from Customer Database
-$billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
-$billingAddressResult = mysqli_query($con, $billingAddressSql);
-$billingAddressRow = mysqli_fetch_assoc($billingAddressResult);
-$billingAddress = $billingAddressRow['c_billAdd'];
+    // Fetch Quotation Number from Quotation Database
+    $quotationNumberSql = "SELECT q_no FROM tb_quotation ORDER BY q_no DESC LIMIT 1";
+    $quotationNumberResult = mysqli_query($con, $quotationNumberSql);
+    $quotationNumberRow = mysqli_fetch_assoc($quotationNumberResult);
+    $quotationNumber = $quotationNumberRow['q_no'];
 
-// Fetch Quotation Number and Date from Quotation Database
-$quotationInfoSql = "SELECT q_no, q_date FROM tb_quotation ORDER BY q_no DESC LIMIT 1";
-$quotationInfoResult = mysqli_query($con, $quotationInfoSql);
-$quotationInfoRow = mysqli_fetch_assoc($quotationInfoResult);
-$quotationNumber = $quotationInfoRow['q_no'];
-$quotationDate = $quotationInfoRow['q_date'];
+    // Fetch Billing Address from Customer Database
+    $billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+    $billingAddressResult = mysqli_query($con, $billingAddressSql);
+    $billingAddressRow = mysqli_fetch_assoc($billingAddressResult);
+    $billingAddress = $billingAddressRow['c_billAdd'];
 
-$customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
-$customerInfoResult = mysqli_query($con, $customerInfoSql);
-$customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
-$customerName = $customerInfoRow['c_name'];
-$billingAddress = $customerInfoRow['c_billAdd'];
+    // Fetch Quotation Number and Date from Quotation Database
+    $quotationInfoSql = "SELECT q_no, q_date FROM tb_quotation ORDER BY q_no DESC LIMIT 1";
+    $quotationInfoResult = mysqli_query($con, $quotationInfoSql);
+    $quotationInfoRow = mysqli_fetch_assoc($quotationInfoResult);
+    $quotationNumber = $quotationInfoRow['q_no'];
+    $quotationDate = $quotationInfoRow['q_date'];
 
+    $customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+    $customerInfoResult = mysqli_query($con, $customerInfoSql);
+    $customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
+    $customerName = $customerInfoRow['c_name'];
+    $billingAddress = $customerInfoRow['c_billAdd'];
 
-// Create PDF
-$pdf = new FPDF('P','mm', 'A4');
+    // Create PDF
+    $pdf = new FPDF('P', 'mm', 'A4');
 
-// Set document information
-$pdf->SetCreator('Your Name');
-$pdf->SetAuthor('Your Name');
-$pdf->SetTitle('Check Out Summary');
-$pdf->SetSubject('Check Out Summary PDF Document');
-$pdf->SetKeywords('FPDF, PDF, example, sample');
+    // Set document information
+    $pdf->SetCreator('Your Name');
+    $pdf->SetAuthor('Your Name');
+    $pdf->SetTitle('Check Out Summary');
+    $pdf->SetSubject('Check Out Summary PDF Document');
+    $pdf->SetKeywords('FPDF, PDF, example, sample');
 
-// Add a page
-$pdf->AddPage();
+    // Add a page
+    $pdf->AddPage();
 
 //place img and report id
 $imagePath = 'images/akmaju.jpeg';
@@ -135,16 +141,21 @@ $index = 1;
 while ($row = mysqli_fetch_assoc($result)) {
     // Use the same $q_no value for every order in the loop
     $itemTotal = $row['o_quantity'] * $row['i_price'];
-    $total += $itemTotal;
 
     // Calculate discount amount for each item
     $discountAmountPerItem = ($discount / 100) * $itemTotal;
     $discountedItemTotal = $itemTotal - $discountAmountPerItem;
-    $grandTotal += $discountedItemTotal;
 
-    $orderUpdateSql = "UPDATE tb_order SET o_qno = $quotationNumber WHERE o_no = {$row['o_no']}";
+    // Deduct confirmed order quantity from inventory
+    $confirmedQuantity = $row['o_quantity'];
+    $inventoryUpdateSql = "UPDATE tb_inventory SET i_qty = i_qty - $confirmedQuantity WHERE i_no = {$row['o_ino']}";
+    mysqli_query($con, $inventoryUpdateSql);
+
+    // Update order status and quotation number
+    $orderUpdateSql = "UPDATE tb_order SET o_status = 1, o_qno = $quotationNumber WHERE o_no = {$row['o_no']}";
     mysqli_query($con, $orderUpdateSql);
 
+    $grandTotal += $discountedItemTotal;
     // Break the item description into two lines
     $descLines = explode("\n", wordwrap($row['i_desc'], 40, "\n"));
 
@@ -168,18 +179,18 @@ $pdf->Ln();
 
 // Output the PDF
 $filePath = 'quotation/advertisement/Quotation_' . $quotationDate . '_' . $quotationNumber . '.pdf';
-$pdf->Output('F', $filePath);
-$pdf->Output();
+    $pdf->Output('F', $filePath);
+    $pdf->Output();
 
-// Update Database with File Path
-$insertPathStmt = $con->prepare("UPDATE tb_quotation SET q_filepath = ? WHERE q_no = ?");
-$insertPathStmt->bind_param("si", $filePath, $quotationNumber);
-$insertPathStmt->execute();
-$insertPathStmt->close();
+    // Update Database with File Path
+    $insertPathStmt = $con->prepare("UPDATE tb_quotation SET q_filepath = ? WHERE q_no = ?");
+    $insertPathStmt->bind_param("si", $filePath, $quotationNumber);
+    $insertPathStmt->execute();
+    $insertPathStmt->close();
 
-
-// Close the database connection
-$con->close();
-
-
+    // Close the database connection
+    $con->close();
+} else {
+    echo "No pending orders for the selected customer on the selected date.";
+}
 ?>
