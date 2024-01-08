@@ -2,11 +2,7 @@
 include 'headermain.php';
 include('dbconnect.php');
 
-$customer_id = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve selected customer
-    $customer_id = $_POST['customer_id'];
-}
+$customer_id = $_POST['customer_id'];
 
 $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);

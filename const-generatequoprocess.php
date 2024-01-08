@@ -2,12 +2,34 @@
 include('dbconnect.php');
 require_once('fpdf186/fpdf.php'); // Include the FPDF library
 
-// Start the total price at 0
-$totalPrice = 0;
+$customer_id = $_POST['customer_id'];
 
 // Fetch data from the database
 $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
+
+$sqlc = "SELECT * FROM tb_customer WHERE c_id = ?"; // Using a placeholder for prepared statement
+$stmt = mysqli_prepare($con, $sqlc);
+// Bind the customer_id parameter to the prepared statement
+mysqli_stmt_bind_param($stmt, "i", $customer_id); // "i" indicates the type is integer
+// Execute the prepared statement
+mysqli_stmt_execute($stmt);
+// Get the result set from the prepared statement
+$resultc = mysqli_stmt_get_result($stmt);
+// Fetch the customer data
+$customerData = mysqli_fetch_assoc($resultc);
+
+// Fetch Billing Address from Customer Database
+$billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+$billingAddressResult = mysqli_query($con, $billingAddressSql);
+$billingAddressRow = mysqli_fetch_assoc($billingAddressResult);
+$billingAddress = $billingAddressRow['c_billAdd'];
+
+$customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+$customerInfoResult = mysqli_query($con, $customerInfoSql);
+$customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
+$customerName = $customerInfoRow['c_name'];
+$billingAddress = $customerInfoRow['c_billAdd'];
 
 // Create a new PDF document
 $pdf = new FPDF('P','mm', 'A4');
@@ -52,17 +74,13 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->MultiCell(0, 2.5, 
-    "No. 39 & 41, Jalan Utama 3/2, Pusat Komersial Sri Utama,\n
-    Segamat, Johor, Malaysia- 85000\n
-    07-9310717, 010-2218224\n
-    akmaju.acc@gmail.com\n
-    Company No : 1088436 K", 0, 'L');
+$pdf->MultiCell(30, 2.5, "$customerName\n
+$billingAddress");
 $pdf->SetXY(126, 56);
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->MultiCell(0, 2.5, 
-    "    QUATATION NUMBER\n
-    QUATATION DATE\n
+    "    QUOTATION NUMBER\n
+    QUOTATION DATE\n
     TERMS OF PAYMENT\n
     SST REGISTRATION. NO.", 0, 'L');
 // Add the Cell on the right
@@ -97,6 +115,7 @@ $pdf->Cell(30, 10, 'Material Price', 1, 1, 'C'); // 1 for line break
 $pdf->SetFont('Arial', '', 8); // Reset font
 
 // Loop through your data and add rows to the table
+$totalPrice = 0;
 while ($row = mysqli_fetch_array($result)) {
     if ($row['m_qty'] > 0) {
         $materialPrice = $row['m_price'] * $row['m_qty'];
