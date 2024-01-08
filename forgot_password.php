@@ -30,7 +30,7 @@ try {
     $mail->addAddress($email);     //Add a recipient
    
    $code= substr(str_shuffle('1234567890QWERTYUIOPASDFGHJKLZXCVBNM'),0,10);
-   $link = 'http://localhost/AkMajuSystem/resetPassword.php?code=' . $code;
+   $link = 'http://localhost/AkMajuSystem/resetPassword.php?code='. $code;
 echo $link; 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML

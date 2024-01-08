@@ -8,6 +8,7 @@ if (isset($_GET['code'])) {
         die('Could not connect to the databse');
     }
 
+
 // Connect to DB
 $conn = new mySqli('localhost', 'root', '', 'db_cryptoknights');
 
