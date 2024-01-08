@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <form method="POST" action="do_generate_2.php">
+                            <form method="POST" action="do-generate-2.php">
                                 <div class="container">
                                     <h1>Select Customer</h1>
                                     <div class="col-lg-6">
