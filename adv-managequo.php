@@ -30,7 +30,7 @@ $result = mysqli_query($con, $sql);
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <h2>Manage Invoice</h2>
+                            <h2>Manage Quotation</h2>
                             <?php
                             // Check if there are invoices
                             if (mysqli_num_rows($result) > 0) {
@@ -49,7 +49,7 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['c_name'] . '</td>';
                                     echo '<td>' . $row['q_date'] . '</td>';
                                     echo '<td>' . $row['q_status'] . '</td>';
-                                    echo '<td><a href="upfrontpayment.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Generate Invoice</a> &nbsp;';
+                                    echo '<td><a href="invoice-upfront.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Generate Invoice</a> &nbsp;';
                                     echo '<a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
                                     echo '<a href="quotationremove.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a></td>';
                                     echo '</tr>';
