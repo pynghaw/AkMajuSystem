@@ -11,14 +11,17 @@ if(!session_id())
 $fname=$_POST['InventoryName'];
 $fid=$_POST['InventoryNo'];
 $fquantity=$_POST['Quantity'];
-$fprice=$_POST['UnitPrice'];
 $fdescription=$_POST['description'];
+$cost=$_POST['cost'];
+$mrate=$_POST['rate'];
+  // Calculate Selling Price
+    $SellingPrice = $cost + ($cost * ($mrate / 100));
 
 
 //CRUD UPDATE current new booking
 
 $sql="UPDATE tb_inventory
-	  SET i_name='$fname',i_no='$fid',i_qty='$fquantity', i_price='$fprice', i_desc='$fdescription'
+	  SET i_name='$fname',i_no='$fid',i_qty='$fquantity', i_cost='$cost', i_markupRate='$mrate', i_price='$SellingPrice', i_desc='$fdescription'
 	  WHERE i_no='$fid'";
 
 
@@ -44,7 +47,9 @@ include 'headermain.php';
 	<h5>Product Name: <?php echo $fname; ?></h5>
 	<h5>Product ID: <?php echo $fid; ?></h5>
 	<h5>Quantity: <?php echo $fquantity; ?></h5>
-	<h5>Unit price: <?php echo $fprice; ?></h5>
+	<h5>Cost:RM <?php echo $cost; ?></h5>
+	<h5>Mark Up Rate: <?php echo $mrate; ?>%</h5>
+	<h5>Unit price:RM <?php echo $SellingPrice; ?></h5>
 	<h5 style=" word-wrap: break-word;">Description: <?php echo $fdescription; ?></h5>
 	<h5>Status: <span style="color: green;">Modified</span></h5>
 

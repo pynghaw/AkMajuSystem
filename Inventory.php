@@ -62,39 +62,50 @@ include 'headermain.php';
 
         /* Adjust the width and borders of the columns */
         .fixed-table th:first-child,
-        .fixed-table td:first-child {
-            width: 50px;
-        }
+.fixed-table td:first-child {
+    width: 50px;
+}
 
-        .fixed-table th:nth-child(2),
-        .fixed-table td:nth-child(2) {
-            width: 80px;
-        }
+.fixed-table th:nth-child(2),
+.fixed-table td:nth-child(2) {
+    width: 80px;
+}
 
-        .fixed-table th:nth-child(3),
-        .fixed-table td:nth-child(3) {
-            width: 120px;
-        }
+.fixed-table th:nth-child(3),
+.fixed-table td:nth-child(3) {
+    width: 150px;
+}
 
-        .fixed-table th:nth-child(4),
-        .fixed-table td:nth-child(4) {
-            width: 200px;
-        }
+.fixed-table th:nth-child(4),
+.fixed-table td:nth-child(4) {
+    width: 250px;
+}
 
-        .fixed-table th:nth-child(5),
-        .fixed-table td:nth-child(5) {
-            width: 80px;
-        }
+.fixed-table th:nth-child(5),
+.fixed-table td:nth-child(5) {
+    width: 80px;
+}
 
-        .fixed-table th:nth-child(6),
-        .fixed-table td:nth-child(6) {
-            width: 100px;
-        }
+.fixed-table th:nth-child(6),
+.fixed-table td:nth-child(6) {
+    width: 100px;
+}
 
-        .fixed-table th:nth-child(7),
-        .fixed-table td:nth-child(7) {
-            width: 120px;
-        }
+.fixed-table th:nth-child(7),
+.fixed-table td:nth-child(7) {
+    width: 60px;
+}
+
+.fixed-table th:nth-child(8),
+.fixed-table td:nth-child(8) {
+    width: 100px;
+}
+
+.fixed-table th:nth-child(9),
+.fixed-table td:nth-child(9) {
+    width: 100px;
+}
+
     </style>
 
     <div class="content-body">
@@ -129,6 +140,8 @@ include 'headermain.php';
                                             <th>Product Name</th>
                                             <th>Description</th>
                                             <th>Quantity</th>
+                                            <th>Cost</th>
+                                            <th>Mark Up Rate</th>
                                             <th>Unit Price</th>
                                             <th>Action</th>
                                         </tr>
@@ -145,6 +158,8 @@ include 'headermain.php';
                                                 <td><?php echo $row['i_name']; ?></td>
                                                 <td><?php echo $row['i_desc']; ?></td>
                                                 <td><?php echo $row['i_qty']; ?></td>
+                                                 <td>RM <?php echo $row['i_cost']; ?></td>
+                                                  <td> <?php echo $row['i_markupRate']; ?>%</td>
                                                 <td>RM <?php echo $row['i_price']; ?></td>
                                                 <td>
                                                     <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a>

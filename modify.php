@@ -68,10 +68,26 @@ include 'headermain.php'; ?>
             </div>
 
             <div class="form-group">
-                <label for="exampleInputP" class="form-label mt-4">Unit Price</label>
+                <label for="exampleInputP" class="form-label mt-4">Cost (RM)</label>
 
                 <?php
-                echo '<input type="number" value="' . $rowr['i_price'] . '" name="UnitPrice" class="form-control" id="exampleInputPassword1" placeholder="UnitPrice" step="any"';
+                echo '<input type="number" value="' . $rowr['i_cost'] . '" name="cost" class="form-control" id="exampleInputPassword1" placeholder="UnitPrice" step="any"';
+                ?>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputP" class="form-label mt-4">Mark Up Rate(%)</label>
+
+                <?php
+                echo '<input type="number" value="' . $rowr['i_markupRate'] . '" name="rate" class="form-control" id="exampleInputPassword1" placeholder="UnitPrice" step="any"';
+                ?>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputP" class="form-label mt-4">Unit Price (RM)</label>
+
+                <?php
+                echo '<input type="number" value="' . $rowr['i_price'] . '" name="UnitPrice" class="form-control" id="exampleInputPassword1" placeholder="UnitPrice" step="any" disabled';
                 ?>
             </div>
 

@@ -61,8 +61,14 @@ include 'headermain.php'; ?>
 </div>
 
  <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">Unit Price (RM)</label>
-      <input type="number" name="UnitPrice" class="form-control" id="exampleInputPassword1" placeholder="Unit Price" step="any" required>
+      <label for="exampleInputPassword1" class="form-label mt-4">Cost (RM)</label>
+      <input type="number" name="cost" class="form-control" id="exampleInputPassword1" placeholder="Cost" step="any" required>
+</div>
+
+
+ <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">Mark Up Rate (%)</label>
+      <input type="number" name="rate" class="form-control" id="exampleInputPassword1" placeholder="Mark Up Rate (%)" step="any" required>
 </div>
 
  <div class="form-group">
