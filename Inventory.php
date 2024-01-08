@@ -32,6 +32,7 @@ $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
 $count = 0;
 
+
 include 'headernotification.php';
 include 'headermain.php';
 
@@ -116,6 +117,7 @@ include 'headermain.php';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
+
                         <div class="container mt-4">
                             <h1 class="mb-4" style="text-align: center;">Inventory</h1><br><br>
                            <div class="mb-3 d-flex justify-content-between align-items-center">
@@ -151,9 +153,13 @@ include 'headermain.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $lowStockProducts = [];
+                                    $lowStockProducts = []; 
                                         while ($row = mysqli_fetch_array($result)) {
                                             $count++;
+                                            // Check if quantity is less than 5 and store in array
+                                            if ($row['i_qty'] < 10) {
+                                                $lowStockProducts[] = $row;
+                                            }
                                         ?>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
@@ -171,28 +177,25 @@ include 'headermain.php';
                                                     
                                                 </td>
                                             </tr>
-                                              <?php
-                                            if ($row['i_qty'] < 5) {
-                                                $lowStockProducts[] = $row;
-                                            }
-                                            ?>
+                                              
                                         <?php
                                         }
                                         ?>
-                                    
+                                 <?php if (!empty($lowStockProducts)) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Low in stock:</strong>
+        <ul>
+            <?php foreach ($lowStockProducts as $product) : ?>
+                <li>Product: <?php echo $product['i_name']; ?> (Quantity left: <?php echo $product['i_qty']; ?>)</li>
+            <?php endforeach; ?>
+        </ul>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+<?php endif; ?>
+
                                     </tbody>
                                 </table>
 
-                                <?php if (!empty($lowStockProducts)) : ?>
-                                    <script>
-                                        var lowStockMessage = 'Low in stock:';
-                                        <?php foreach ($lowStockProducts as $product) : ?>
-                                            lowStockMessage += '\n<?php echo $product['i_name'],$product['i_qty']; ?>';
-                                        <?php endforeach; ?>
-
-                                        alert(lowStockMessage);
-                                    </script>
-                                <?php endif; ?>
 <?php 
 $color = 'grey';
 echo "<p style='color: $color;'><i>Total Product: $count</i></p>";
