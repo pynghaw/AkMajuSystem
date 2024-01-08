@@ -180,4 +180,13 @@ $insertPathStmt->close();
 
 // Close the database connection
 $con->close();
+
+$quotationTotalAmount = $grandTotal; // Assuming $grandTotal is the total amount from the quotation
+
+// Update the invoice table with the total amount
+$updateInvoiceSql = "UPDATE tb_invoice SET iv_tAmount = ? WHERE iv_qno = ?";
+$updateInvoiceStmt = $con->prepare($updateInvoiceSql);
+$updateInvoiceStmt->bind_param("di", $quotationTotalAmount, $quotationNumber);
+$updateInvoiceStmt->execute();
+$updateInvoiceStmt->close();
 ?>

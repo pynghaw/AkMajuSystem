@@ -34,7 +34,8 @@ $iv_balance = $quotationDetails['q_tAmount'] - $upfront;
 $updateQuotationStatusSql = "UPDATE tb_quotation SET q_status = 1 WHERE q_no = $q_no";
 mysqli_query($con, $updateQuotationStatusSql);
 
-$insertInvoiceSql = "INSERT INTO tb_invoice (iv_qno, iv_upFront, iv_bal, iv_date) VALUES ($q_no, $upfront, $iv_balance, '$currentDate')";
+$insertInvoiceSql = "INSERT INTO tb_invoice (iv_qno, iv_upFront, iv_bal, iv_date, iv_tAmount) 
+                     VALUES ($q_no, $upfront, $iv_balance, '$currentDate', {$quotationDetails['q_tAmount']})";
 mysqli_query($con, $insertInvoiceSql);
 
 // Fetch iv_no and iv_date from the inserted invoice
