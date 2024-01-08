@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount)
                                VALUES ('$customer_id', NOW(), '$grandTotal', '$discount', '$discountAmount')";
         $insertQuotationResult = mysqli_query($con, $insertQuotationSql);
-
+        
         ?>
         <body>
             <div class="content-body">

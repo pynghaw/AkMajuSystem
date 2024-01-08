@@ -178,6 +178,8 @@ $filePath = 'invoice/Invoice_' . $invoiceDetails['iv_date'] . '_' . $invoiceDeta
 $pdf->Output('F', $filePath);
 $pdf->Output();
 
+$pdf->Close();
+
 // Update Database with File Path
 $insertPathStmt = $con->prepare("UPDATE tb_invoice SET iv_filepath = ? WHERE iv_no = ?");
 $insertPathStmt->bind_param("si", $filePath, $invoiceDetails['iv_no']);
