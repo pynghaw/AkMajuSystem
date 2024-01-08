@@ -1,4 +1,12 @@
+<?php
+session_start();
 
+// Connect to DB
+include("dbconnect.php");
+
+// ... rest of your code
+include("headernotification.php")
+?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -35,13 +43,20 @@
 
 
     <body class="bg-gradient-primary" style="background-color: #FEF6FE;">
-
+<?php if (isset($_SESSION['error_message'])) : ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo $_SESSION['error_message']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
     <div class="container" >
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
+ 
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
