@@ -37,6 +37,8 @@ if ($row && password_verify($fpwd, $row['u_pwd'])) {
 } else {
     // Password is incorrect or user not found
     // Add script to let the user know either username or password is wrong
+    $_SESSION['error_message'] = 'Incorrect username or password.';
+    
     header('Location:index.php');
 }
 
