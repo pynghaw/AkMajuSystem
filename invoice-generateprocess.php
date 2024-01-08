@@ -1,49 +1,64 @@
 <?php
 include('dbconnect.php');
 require 'fpdf186/fpdf.php';
+
 $q_no = $_POST['q_no'];
 $upfront = $_POST['upfront'];
 
-    // Fetch customer details and other necessary data from tb_quotation
-    $quotationDetailsSql = "SELECT q.*, c.c_billAdd, c.c_name
-                            FROM tb_quotation q
-                            INNER JOIN tb_customer c ON q.q_cid = c.c_id
-                            WHERE q.q_no = $q_no";
-    $quotationDetailsResult = mysqli_query($con, $quotationDetailsSql);
+// Fetch customer details and other necessary data from tb_quotation
+$quotationDetailsSql = "SELECT q.*, c.c_billAdd, c.c_name
+                        FROM tb_quotation q
+                        INNER JOIN tb_customer c ON q.q_cid = c.c_id
+                        WHERE q.q_no = $q_no";
+$quotationDetailsResult = mysqli_query($con, $quotationDetailsSql);
 
-    if (!$quotationDetailsResult) {
-        // Handle the case when the query fails
-        echo 'Error fetching quotation details.';
-        exit;
-    }
+if (!$quotationDetailsResult) {
+    // Handle the case when the query fails
+    echo 'Error fetching quotation details.';
+    exit;
+}
 
-    $quotationDetails = mysqli_fetch_assoc($quotationDetailsResult);
+$quotationDetails = mysqli_fetch_assoc($quotationDetailsResult);
 
-    // Extract necessary details from the quotation
-    $customer_id = $quotationDetails['q_cid'];
-    $billingaddress = $quotationDetails['c_billAdd'];
-    $customerName = $quotationDetails['c_name'];
+// Extract necessary details from the quotation
+$customer_id = $quotationDetails['q_cid'];
+$billingaddress = $quotationDetails['c_billAdd'];
+$customerName = $quotationDetails['c_name'];
 
-    // Save the current date as the date of generating the invoice
-    $currentDate = date('Y-m-d');
+// Save the current date as the date of generating the invoice
+$currentDate = date('Y-m-d');
 
-
-    // Fetch iv_no and iv_date from the inserted invoice
-    $invoiceDetailsSql = "SELECT iv_no, iv_date FROM tb_invoice WHERE iv_qno = $q_no";
-    $invoiceDetailsResult = mysqli_query($con, $invoiceDetailsSql);
-    $invoiceDetails = mysqli_fetch_assoc($invoiceDetailsResult);
-
-    // Fetch order details with the same o_qno
-    $orderDetailsSql = "SELECT o.*, i.i_desc, i.i_price
-                        FROM tb_order o
-                        INNER JOIN tb_inventory i ON o.o_ino = i.i_no
-                        WHERE o.o_qno = $q_no";
-    $orderDetailsResult = mysqli_query($con, $orderDetailsSql);
 
 $iv_balance = $quotationDetails['q_tAmount'] - $upfront;
 
-$insertInvoiceSql = "INSERT INTO tb_invoice (iv_qno,iv_upFront, iv_bal, iv_date) VALUES ($q_no, $upfront, $iv_balance, '$currentDate')";
-    mysqli_query($con, $insertInvoiceSql);
+$updateQuotationStatusSql = "UPDATE tb_quotation SET q_status = 1 WHERE q_no = $q_no";
+mysqli_query($con, $updateQuotationStatusSql);
+
+$insertInvoiceSql = "INSERT INTO tb_invoice (iv_qno, iv_upFront, iv_bal, iv_date) VALUES ($q_no, $upfront, $iv_balance, '$currentDate')";
+mysqli_query($con, $insertInvoiceSql);
+
+// Fetch iv_no and iv_date from the inserted invoice
+$invoiceDetailsSql = "SELECT iv_no, iv_date FROM tb_invoice WHERE iv_qno = $q_no";
+$invoiceDetailsResult = mysqli_query($con, $invoiceDetailsSql);
+$invoiceDetails = mysqli_fetch_assoc($invoiceDetailsResult);
+
+
+$orderDetailsSql = "SELECT o.*, i.i_desc, i.i_price
+                    FROM tb_order o
+                    INNER JOIN tb_inventory i ON o.o_ino = i.i_no
+                    WHERE o.o_qno = $q_no";
+$orderDetailsResult = mysqli_query($con, $orderDetailsSql);
+$filePath = 'invoice/Invoice_' . $invoiceDetails['iv_date'] . '_' . $invoiceDetails['iv_no'] . '.pdf';
+// Update Database with File Path
+$insertPathStmt = $con->prepare("UPDATE tb_invoice SET iv_filepath = ? WHERE iv_no = ?");
+$insertPathStmt->bind_param("si", $filePath, $invoiceDetails['iv_no']);
+$insertPathStmt->execute();
+$insertPathStmt->close();
+
+// Fetch updated invoice details
+$updatedInvoiceDetailsSql = "SELECT iv_no, iv_date FROM tb_invoice WHERE iv_qno = $q_no";
+$updatedInvoiceDetailsResult = mysqli_query($con, $updatedInvoiceDetailsSql);
+$updatedInvoiceDetails = mysqli_fetch_assoc($updatedInvoiceDetailsResult);
 
 // Create PDF
 $pdf = new FPDF('P','mm', 'A4');
@@ -174,17 +189,11 @@ $pdf->Cell(25, 10, $iv_balance, 1);
 $pdf->Ln();
 
 // Output the PDF
-$filePath = 'invoice/Invoice_' . $invoiceDetails['iv_date'] . '_' . $invoiceDetails['iv_no'] . '.pdf';
+
 $pdf->Output('F', $filePath);
 $pdf->Output();
 
 $pdf->Close();
-
-// Update Database with File Path
-$insertPathStmt = $con->prepare("UPDATE tb_invoice SET iv_filepath = ? WHERE iv_no = ?");
-$insertPathStmt->bind_param("si", $filePath, $invoiceDetails['iv_no']);
-$insertPathStmt->execute();
-$insertPathStmt->close();
 
 
 // Close the database connection
