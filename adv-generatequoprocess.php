@@ -159,5 +159,17 @@ $pdf->Cell(25, 10, $grandTotal, 1);
 $pdf->Ln();
 
 // Output the PDF
-$pdf->Output('quotation.pdf', 'I');
+$filePath = 'quotation/advertisement/Quotation_' . $quotationDate . '_' . $quotationNumber . '.pdf';
+$pdf->Output('F', $filePath);
+$pdf->Output();
+
+// Update Database with File Path
+$insertPathStmt = $con->prepare("UPDATE tb_quotation SET q_filepath = ? WHERE q_no = ?");
+$insertPathStmt->bind_param("si", $filePath, $quotationNumber);
+$insertPathStmt->execute();
+$insertPathStmt->close();
+
+
+// Close the database connection
+$con->close();
 ?>

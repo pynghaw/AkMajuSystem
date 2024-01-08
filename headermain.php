@@ -181,7 +181,13 @@
                                     <li><a href="adv-managequo.php">Manage</a></li>
                                 </ul>
                             </li>
-                            <li><a href="const-selectcust.php">Construction</a></li>
+                            <li>
+                                <a class="has-arrow" href="adv-quo.php">Construction</a>
+                                <ul>
+                                    <li><a href="const-selectcust.php">Generate</a></li>
+                                    <li><a href="const-managequo.php">Manage</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
