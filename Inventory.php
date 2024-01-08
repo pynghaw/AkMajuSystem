@@ -157,7 +157,7 @@ include 'headermain.php';
                                         while ($row = mysqli_fetch_array($result)) {
                                             $count++;
                                             // Check if quantity is less than 5 and store in array
-                                            if ($row['i_qty'] < 10) {
+                                            if ($row['i_qty'] < 5) {
                                                 $lowStockProducts[] = $row;
                                             }
                                         ?>
