@@ -4,6 +4,11 @@ require_once('fpdf186/fpdf.php'); // Include the FPDF library
 
 // Start the total price at 0
 $totalPrice = 0;
+$customer_id = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve selected customer
+    $customer_id = $_POST['customer_id'];
+}
 
 // Fetch data from the database
 $sql = "SELECT * FROM tb_matlist";
@@ -52,16 +57,12 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->MultiCell(0, 2.5, 
-    "No. 39 & 41, Jalan Utama 3/2, Pusat Komersial Sri Utama,\n
-    Segamat, Johor, Malaysia- 85000\n
-    07-9310717, 010-2218224\n
-    akmaju.acc@gmail.com\n
-    Company No : 1088436 K", 0, 'L');
+$pdf->MultiCell(30, 2.5, "$customer_id\n
+sdv");
 $pdf->SetXY(126, 56);
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->MultiCell(0, 2.5, 
-    "    QUATATION NUMBER\n
+    "    QUOTATION NUMBER\n
     QUATATION DATE\n
     TERMS OF PAYMENT\n
     SST REGISTRATION. NO.", 0, 'L');
@@ -69,8 +70,8 @@ $pdf->MultiCell(0, 2.5,
 $pdf->SetXY(170, 56);
 $pdf->SetFont('Arial', '', 8);
 $pdf->MultiCell(0, 2.5, 
-    "    1054\n
-    22-oct-2023\n
+    "    saca\n
+    acaca\n
     LO\n
     000", 0, 'L');
 $pdf->Ln();

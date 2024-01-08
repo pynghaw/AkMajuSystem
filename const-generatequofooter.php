@@ -10,6 +10,7 @@
 
 </style>
 
+<form method="POST" action="const-generatequoprocess.php">
 <div class="checkout-footer">
     <div class="container-fluid">
         <div class="row">
@@ -17,13 +18,16 @@
                 <div class="card">
                     <div class="card-body">
                         <button class="btn mb-1 btn-rounded btn-success" style="margin-right: 10px;" onclick="goBack()">Go Back</button>
-                        <button onclick="window.location.href='const-generatequoprocess.php'" type="button" class="btn mb-1 btn-flat btn-primary">Generate Quotation</button>
+                        <button onclick="window.location.href='const-generatequoprocess.php'" type="submit" class="btn mb-1 btn-flat btn-primary">Generate Quotation</button>
+                        <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>">
+                        <!-- keep -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</form>
 
 <div class="footer">
     <div class="copyright">
