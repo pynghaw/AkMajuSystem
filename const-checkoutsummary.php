@@ -32,8 +32,8 @@ $totalPrice = 0; // Initialize total price
                     <div class="card-body">
                     <div class="container">
                         <h2>Check Out Summary</h2>
-                        <?php echo "<p>Customer: $customer_id</p>";?>
-
+                        <?php echo "<p>Customer ID: $customer_id</p>";?>
+                        <?php echo "<p>Discount: $discount %</p>";?>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -82,15 +82,26 @@ $totalPrice = 0; // Initialize total price
     Content body end
 ***********************************-->
 <?php 
-$discountAmount = ($discount / 100) * $totalPrice;
+    $discountAmount = ($discount / 100) * $totalPrice;
+    // Calculate grand total
+    $grandTotal = $totalPrice - $discountAmount;
+    // Insert data into the quotation database
+    $insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount, q_status, q_type, q_filepath) VALUES (?, NOW(), ?, ?, ?, '0', '1', '')";
+    $stmt = mysqli_prepare($con, $insertQuotationSql);
 
-// Calculate grand total
-$grandTotal = $totalPrice - $discountAmount;
+    if ($stmt === false) {
+        die("Prepared statement failed: " . mysqli_error($con));
+    }
 
-// Insert data into the quotation database
-$insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount, q_type)
-                       VALUES ('$customer_id', NOW(), '$grandTotal', '$discount', '$discountAmount', '1')";
-$insertQuotationResult = mysqli_query($con, $insertQuotationSql);
+    mysqli_stmt_bind_param($stmt, "iddd", $customer_id, $grandTotal, $discount, $discountAmount);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "Record inserted successfully.";
+    } else {
+        echo "Error: " . mysqli_stmt_error($stmt);
+    }
+
+    mysqli_stmt_close($stmt);
 
 include 'const-generatequofooter.php'; ?>       
 
