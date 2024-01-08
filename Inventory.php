@@ -26,9 +26,12 @@ if (isset($_SESSION['error_message'])) {
     unset($_SESSION['error_message']);
 }
 
+
+
 $sql = "SELECT * FROM tb_inventory";
 $result = mysqli_query($con, $sql);
 $count = 0;
+
 include 'headernotification.php';
 include 'headermain.php';
 
@@ -148,7 +151,7 @@ include 'headermain.php';
                                     </thead>
                                     <tbody>
                                         <?php
-                                        
+                                        $lowStockProducts = [];
                                         while ($row = mysqli_fetch_array($result)) {
                                             $count++;
                                         ?>
@@ -168,11 +171,28 @@ include 'headermain.php';
                                                     
                                                 </td>
                                             </tr>
+                                              <?php
+                                            if ($row['i_qty'] < 5) {
+                                                $lowStockProducts[] = $row;
+                                            }
+                                            ?>
                                         <?php
                                         }
                                         ?>
+                                    
                                     </tbody>
                                 </table>
+
+                                <?php if (!empty($lowStockProducts)) : ?>
+                                    <script>
+                                        var lowStockMessage = 'Low in stock:';
+                                        <?php foreach ($lowStockProducts as $product) : ?>
+                                            lowStockMessage += '\n<?php echo $product['i_name'],$product['i_qty']; ?>';
+                                        <?php endforeach; ?>
+
+                                        alert(lowStockMessage);
+                                    </script>
+                                <?php endif; ?>
 <?php 
 $color = 'grey';
 echo "<p style='color: $color;'><i>Total Product: $count</i></p>";

@@ -91,8 +91,5 @@ include 'headermain.php'; ?>
             Content body end
         ***********************************-->
 
-        <?php include 
-        
 
-        'footer.php'; ?>
-
+<?php include 'footer.php';?>
