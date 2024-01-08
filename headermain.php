@@ -20,6 +20,8 @@
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -138,7 +140,7 @@
                     </li>
                      <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Customer</span>
+                            <i class="fa fa-user"></i> <span class="nav-text">Customer</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="customer-add.php">Add Customer</a></li>
@@ -149,7 +151,7 @@
                   
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Order</span>
+                            <i class="fa fa-shopping-cart menu-icon"></i> <span class="nav-text">Order</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="order-place.php">Place Order</a></li>
@@ -158,7 +160,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Quotation</span>
+                            <i class="fa fa-file menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
                             <li>
@@ -184,7 +186,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Delivery Order</span>
+                            <i class="fa fa-truck menu-icon"></i> <span class="nav-text">Delivery Order</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="do-generate-1.php">Generate</a></li>
@@ -194,7 +196,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
+                            <i class="fa fa-chart-bar menu-icon"></i> <span class="nav-text">Reporting</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="reporting.php">Generate Report</a></li>
