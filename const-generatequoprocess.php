@@ -19,11 +19,14 @@ $resultc = mysqli_stmt_get_result($stmt);
 // Fetch the customer data
 $customerData = mysqli_fetch_assoc($resultc);
 
+
+
 // Fetch Billing Address from Customer Database
 $billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
 $billingAddressResult = mysqli_query($con, $billingAddressSql);
 $billingAddressRow = mysqli_fetch_assoc($billingAddressResult);
 $billingAddress = $billingAddressRow['c_billAdd'];
+$billingAddress = strtoupper($billingAddress);
 
 $customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
 $customerInfoResult = mysqli_query($con, $customerInfoSql);
@@ -31,6 +34,7 @@ $customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
 $customerName = $customerInfoRow['c_name'];
 $billingAddress = $customerInfoRow['c_billAdd'];
 
+// PDF AREA
 // Create a new PDF document
 $pdf = new FPDF('P','mm', 'A4');
 

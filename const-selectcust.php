@@ -76,6 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <option>more than 75km</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="discountInput" class="form-label mt-4">Discount (%)</label>
+                                        <input type="text" class="form-control" id="discountInput" name="discount" placeholder="Enter Discount">
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Next</button>
                                 </div>
                             </form>

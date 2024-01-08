@@ -3,6 +3,7 @@ include 'headermain.php';
 include('dbconnect.php');
 
 $customer_id = $_POST['customer_id'];
+$discount = $_POST['discount'];
 
 //CRUD: Retrieve booking
 $sql="SELECT * FROM tb_matlist";

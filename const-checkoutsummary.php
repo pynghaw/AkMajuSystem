@@ -3,6 +3,7 @@ include 'headermain.php';
 include('dbconnect.php');
 
 $customer_id = $_POST['customer_id'];
+$discount = $_POST['discount'];
 
 $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
@@ -80,5 +81,16 @@ $totalPrice = 0; // Initialize total price
 <!--**********************************
     Content body end
 ***********************************-->
-<?php include 'const-generatequofooter.php'; ?>       
+<?php 
+$discountAmount = ($discount / 100) * $totalPrice;
+
+// Calculate grand total
+$grandTotal = $totalPrice - $discountAmount;
+
+// Insert data into the quotation database
+$insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount, q_type)
+                       VALUES ('$customer_id', NOW(), '$grandTotal', '$discount', '$discountAmount', '1')";
+$insertQuotationResult = mysqli_query($con, $insertQuotationSql);
+
+include 'const-generatequofooter.php'; ?>       
 
