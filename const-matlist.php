@@ -14,9 +14,6 @@ $sql="SELECT * FROM tb_matlist";
 //Execute
 $result=mysqli_query($con,$sql);
 
-
-
-?>
 ?>
 <body>
         <!--**********************************

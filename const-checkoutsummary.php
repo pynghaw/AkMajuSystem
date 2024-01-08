@@ -35,7 +35,7 @@ $totalPrice = 0; // Initialize total price
                     <div class="card-body">
                     <div class="container">
                         <h2>Check Out Summary</h2>
-                        <?php echo "<p>Customer: $customer_name</p>";?>
+                        <?php echo "<p>Customer: $customer_id</p>";?>
 
                         <table class="table">
                             <thead>

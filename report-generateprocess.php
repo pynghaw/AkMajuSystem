@@ -22,7 +22,6 @@ $insertStmt->bind_param("isss", $r_id, $r_name, $r_date, $r_desc);
 $insertStmt->execute();
 $insertStmt->close();
 
-
 // Prepare and execute query
 $sql = $con->prepare("SELECT iv_no, iv_qno, iv_date, iv_upFront, iv_bal FROM tb_invoice WHERE iv_date BETWEEN ? AND ?");
 $sql->bind_param("ss", $startDate, $endDate);

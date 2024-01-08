@@ -118,8 +118,17 @@ $pdf->Cell(170, 10, 'Total Price: ', 1, 0, 'R'); // Right aligned
 $pdf->SetFont('Arial', '', 9); // Regular font for the total price
 $pdf->Cell(20, 10, number_format($totalPrice, 2), 1, 1); // Formatted total price
 
-// Output the PDF to the browser
+//Save PDF to a directory
+$filePath = 'quotation/construction/Quotation_.pdf';
+$pdf->Output('F', $filePath);
 $pdf->Output();
+
+// Update Database with File Path
+$insertPathStmt = $con->prepare("UPDATE tb_quotation SET q_filepath = ? WHERE q_no = ?");
+$insertPathStmt->bind_param("si", $filePath, $quotationNumber);
+$insertPathStmt->execute();
+$insertPathStmt->close();
+
 
 // Close the database connection
 mysqli_close($con);

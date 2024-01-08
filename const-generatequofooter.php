@@ -10,20 +10,24 @@
 
 </style>
 
+<form method="POST" action="const-generatequoprocess.php">
 <div class="checkout-footer">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn mb-1 btn-rounded btn-success" style="margin-right: 10px;" onclick="goBack()">Go Back</button>
-                        <button onclick="window.location.href='const-generatequoprocess.php'" type="button" class="btn mb-1 btn-flat btn-primary">Generate Quotation</button>
+                        <button class="btn mb-1 btn-rounded btn-success" style="margin-right: 10px;" onclick="goBack(event)">Go Back</button>
+                        <button onclick="window.location.href='const-generatequoprocess.php'" type="submit" class="btn mb-1 btn-flat btn-primary">Generate Quotation</button>
+                        <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>">
+                        <!-- keep -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</form>
 
 <div class="footer">
     <div class="copyright">
@@ -33,7 +37,8 @@
 
 <script>
     // JavaScript function to go back to the previous page
-    function goBack() {
+    function goBack(event) {
+        event.preventDefault();
         window.history.back();
     }
 </script>
