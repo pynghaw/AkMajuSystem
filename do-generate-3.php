@@ -24,6 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+<div class="content-body">
+    <div class="row page-titles mx-0">
+        <div class="col p-md-0">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+            </ol>
+        </div>
+    </div>
 
 <div class="container-fluid">
     <div class="row">
@@ -32,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card-body">
                     <div class="container">
                         <form method="POST" action="do-generateprocess.php">
-                            <fieldset>
+                            
                                 <br>
                                 <h1>Step 3: Enter Additional Information</h1>
 
@@ -67,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <button type="submit" class="btn btn-primary">Generate DO</button>
                                 <button type="reset" class="btn btn-primary">Reset</button>
                                 <br><br><br>
-                            </fieldset>
+                            
                         </form>
                     </div>
                 </div>
@@ -75,5 +84,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br>
 <?php include 'footer.php'; ?>

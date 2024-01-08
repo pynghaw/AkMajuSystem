@@ -48,15 +48,10 @@ $result = mysqli_query($con, $sql);
                             <textarea class="form-control" name="cbadd" id="exampleTextarea" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1" class="form-label mt-4">Example disabled select</label>
-                                <select class="form-select" id="exampleDisabledSelect1" disabled="">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                </select>
-                            </div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
+      <input type="email" name="cemail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
                             <div class="form-group">
                             <label for="exampleInputPassword1" class="form-label mt-4">Phone Number</label>
                             <input type="text" name="cphone" class="form-control" placeholder="Enter Phone Number" required>
