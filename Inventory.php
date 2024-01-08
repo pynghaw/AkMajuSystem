@@ -183,10 +183,10 @@ include 'headermain.php';
                                         ?>
                                  <?php if (!empty($lowStockProducts)) : ?>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Low in stock:</strong>
+        <strong style="font-size: 20px;">Low in stock:</strong>
         <ul>
             <?php foreach ($lowStockProducts as $product) : ?>
-                <li>Product: <?php echo $product['i_name']; ?> (Quantity left: <?php echo $product['i_qty']; ?>)</li>
+                <li><b>Product: </b><?php echo $product['i_name']; ?> (Quantity left: <?php echo $product['i_qty']; ?>)</li>
             <?php endforeach; ?>
         </ul>
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
