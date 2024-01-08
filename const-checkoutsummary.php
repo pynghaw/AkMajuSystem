@@ -2,10 +2,10 @@
 include 'headermain.php';
 include('dbconnect.php');
 
-$customer_name = "";
+$customer_id = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve selected customer
-    $customer_name = $_POST['customer_name'];
+    $customer_id = $_POST['customer_id'];
 }
 
 $sql = "SELECT * FROM tb_matlist";
@@ -35,7 +35,8 @@ $totalPrice = 0; // Initialize total price
                     <div class="card-body">
                     <div class="container">
                         <h2>Check Out Summary</h2>
-                        <?php echo "<p>Customer ID: $customer_name</p>";?>
+                        <?php echo "<p>Customer: $customer_name</p>";?>
+
                         <table class="table">
                             <thead>
                                 <tr>

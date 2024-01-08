@@ -3,12 +3,12 @@ include 'headermain.php';
 include('dbconnect.php');
 
 // Initialize variables to hold customer information
-$customer_name = "";
+$customer_id = "";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve selected customer
-    $customer_name = $_POST['customer_name'];
+    $customer_id = $_POST['customer_id'];
 }
 ?>
 
@@ -33,20 +33,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <form method="POST" action="const-matlist.php">
                                 <div class="container">
                                     <h1>Select Customer</h1>
-                                    <div class="form-group">
-                                        <label for="customerSelect" class="form-label mt-4">Customer: </label>
-                                        <select class="form-select" id="customerSelect" name="customer_name">
-                                            <option value="">Select Customer</option>
-                                            <?php
-                                            $sql = "SELECT * FROM tb_customer";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
-                                                echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
-                                            }
-                                            ?>
-                                        </select>
+                                    <div class="col-lg-6">
+                                    <select class="form-control" id="customerSelect" name="customer_id">
+                                        <option value="">Select Customer</option>
+                                        <?php
+                                        $sql = "SELECT * FROM tb_customer";
+                                        $result = mysqli_query($con, $sql);
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
+                                            echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
+                                        }
+                                        ?>
+                                    </select>
                                     </div>
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Next</button>
                                 </div>
                             </form>

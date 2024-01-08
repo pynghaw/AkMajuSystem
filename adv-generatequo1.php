@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         }
                                         ?>
                                     </select>
-                                </div>
-                                <br>
+                                    </div>
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Next</button>
                                 </div>
                             </form>
