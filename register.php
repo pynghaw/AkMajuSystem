@@ -87,8 +87,35 @@
                                 </div><br>
                                 <div class="form-group row">
                                     
-                                        <input type="password" name="fpwd" class="form-control form-control-user"
-                                            id="password" placeholder="Password" required>
+                                        <input type="password" name="fpwd" class="form-control form-control-user" id="password" placeholder="Password (At least 6 character)" minlength="6" required>
+                                        <script>
+    document.getElementById("RepeatPassword").addEventListener("keyup", checkPasswordMatch);
+
+    function checkPasswordMatch() {
+        var password = document.getElementById("password").value;
+        var repeatPassword = document.getElementById("RepeatPassword").value;
+        var registerButton = document.getElementById("registerButton");
+        var errorMessage = document.getElementById("passwordMismatchMessage");
+        var correctMessage = document.getElementById("passwordmatchMessage");
+
+        // Check if the passwords match and meet the minimum length requirement
+        if (password === repeatPassword && password.length >= 6) {
+            // Passwords match and meet the minimum length requirement
+            registerButton.disabled = false;
+            errorMessage.innerHTML = "";
+            correctMessage.innerHTML = "Password match";
+        } else {
+            // Passwords do not match or do not meet the minimum length requirement
+            registerButton.disabled = true;
+            errorMessage.innerHTML = "Passwords should match and have a minimum length of 6 characters!";
+            
+            // Clear correct message if repeatPassword is empty
+            correctMessage.innerHTML = repeatPassword ? "" : "";
+        }
+    }
+</script>
+
+
                                     </div><br>
                                     <div class="form-group row">
                                         <input type="password" name="frpwd" class="form-control form-control-user"
