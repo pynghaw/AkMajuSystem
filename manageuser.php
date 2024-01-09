@@ -76,15 +76,23 @@ include('headermainadmin.php');
                         <div class="container">
                             <h2 style="text-align:center;">Manage User Account</h2><br>
 
-                            <!-- Status dropdown select menu -->
-                            <div class="mb-3">
-                                <label for="status">Select Status:</label>
-                                <select id="status" class="form-control" name="status" onchange="filterAccounts(this.value)">
-                                    <option value="all" <?php echo ($statusFilter === 'all') ? 'selected' : ''; ?>>Show All</option>
-                                    <option value="activate" <?php echo ($statusFilter === 'activate') ? 'selected' : ''; ?>>Activate Category</option>
-                                    <option value="deactivate" <?php echo ($statusFilter === 'deactivate') ? 'selected' : ''; ?>>Deactivate Category</option>
-                                </select>
-                            </div>
+                       
+<div class="mb-3 d-flex justify-content-between">
+   <div>
+                                    <a href="register.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Register User</a>
+                                </div>
+    <div class="ml-auto">
+        <label for="status" class="mr-2">Select Status:</label>
+        <select id="status" class="form-control form-control-sm" name="status" onchange="filterAccounts(this.value)">
+            <option value="all" <?php echo ($statusFilter === 'all') ? 'selected' : ''; ?>>Show All</option>
+            <option value="activate" <?php echo ($statusFilter === 'activate') ? 'selected' : ''; ?>>Activate Category</option>
+            <option value="deactivate" <?php echo ($statusFilter === 'deactivate') ? 'selected' : ''; ?>>Deactivate Category</option>
+        </select>
+    </div>
+</div>
+
+
+
 
                             <table class="table table-hover table-bordered custom-table">
                                 <thead class="thead-dark">
