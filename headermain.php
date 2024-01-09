@@ -196,7 +196,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fa fa-chart-bar menu-icon"></i> <span class="nav-text">Reporting</span>
+                            <i class="fa fa-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="reporting.php">Generate Report</a></li>
