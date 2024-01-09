@@ -26,7 +26,7 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('tiewchuanrong@gmail.com', 'Mailer');
+    $mail->setFrom('tiewchuanrong@gmail.com', 'Admin');
     $mail->addAddress($email);     //Add a recipient
    
    $code= substr(str_shuffle('1234567890QWERTYUIOPASDFGHJKLZXCVBNM'),0,10);
@@ -49,7 +49,7 @@ echo $link;
       $codeQuery= $conn->query("UPDATE tb_user SET u_code='$code' WHERE u_email='$email'");
 
       $mail->send();
-      echo 'Message has been sent, check your email';
+      echo '  Message has been sent, check your email';
 
     }
 $conn->close();

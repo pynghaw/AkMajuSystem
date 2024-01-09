@@ -122,8 +122,13 @@
                     
                     <li class="nav-label">Apps</li>
                       <li>
-                        <a href="profile.php" aria-expanded="false">
+                        <a href="profile1.php" aria-expanded="false">
                             <i class="icon-user "></i><span class="nav-text">Profile</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="manageuser.php" aria-expanded="false">
+                            <i class="icon-user "></i><span class="nav-text">User Management</span>
                         </a>
                     </li>
                     <li>

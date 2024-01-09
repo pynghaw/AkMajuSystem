@@ -61,7 +61,7 @@ include 'headermain.php';
         }
 
         .fixed-table th {
-            background-color: #D5F3FE;
+            background-color: #8B85FB;
         }
 
         /* Adjust the width and borders of the columns */
@@ -137,8 +137,9 @@ include 'headermain.php';
                             </div>
 
                             <div class="table-responsive">
+
                                 <table id="inventoryTable" class="table fixed-table">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
                                             <th>Product ID</th>

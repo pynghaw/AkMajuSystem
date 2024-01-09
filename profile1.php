@@ -11,7 +11,7 @@ include('dbconnect.php');
 $sqlr = "SELECT * FROM tb_user where u_id='$fid'";
 $resultr = mysqli_query($con, $sqlr);
 $rowr = mysqli_fetch_array($resultr);
-include 'headermain.php'; ?>
+include 'headermainadmin.php'; ?>
 
         <!--**********************************
             Content body start
@@ -63,7 +63,7 @@ include 'headermain.php'; ?>
                         </tbody>
                     </table>
                    
-                    <a class="btn btn-primary" href="updateprofile.php">Update Profile</a>
+                    <a class="btn btn-primary" href="updateprofile1.php">Update Profile</a>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ $sqlr = "SELECT * FROM tb_user where u_id='$fid' ";
 // Get the result
 $resultr = mysqli_query($con,$sqlr);
 $rowr = mysqli_fetch_array($resultr);
-include 'headermain.php'; ?>
+include 'headermainadmin.php'; ?>
 
         <!--**********************************
             Content body start
@@ -34,7 +34,7 @@ include 'headermain.php'; ?>
       <div class="profile-content-right profile-right-spacing py-5">
         <div class="tab-content px-3 px-xl-5" id="myTabContent">
           <h2>Profile</h2>
-              <form method="POST" action="updateprofileprocess.php">
+              <form method="POST" action="updateprofileprocess1.php">
               
 
                 <div class="form-group mb-4">

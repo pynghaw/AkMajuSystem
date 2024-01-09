@@ -1,26 +1,29 @@
-
-<?php  
-include('mysession.php');
-if (!session_id()) {
+<?php 
+include ('mysession.php');
+if(!session_id())
+{
     session_start();
 }
-$fid = isset($_SESSION['u_id']) ? $_SESSION['u_id'] : '';
+if(isset($_GET['id']))
+{
+ $fid=$_GET['id'];
+}
 
 include('dbconnect.php');
 
 
-$sqlr = "SELECT * FROM tb_user where u_id='$fid' ";
+$sqlr = "SELECT * FROM tb_user
+LEFT JOIN tb_accstatus ON tb_user.u_status = tb_accstatus.s_status
+ where u_id= '$fid'";
 
 
 // Get the result
 $resultr = mysqli_query($con,$sqlr);
 $rowr = mysqli_fetch_array($resultr);
-include 'headermain.php'; ?>
+include ('headermainadmin.php');
+?>
 
-        <!--**********************************
-            Content body start
-        ***********************************-->
-       <div class="content-body">
+  <div class="content-body">
 
             
             <!-- row -->
@@ -30,11 +33,10 @@ include 'headermain.php'; ?>
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="container mt-4">
-   <div class="col-lg-8 col-xl-9">
-      <div class="profile-content-right profile-right-spacing py-5">
-        <div class="tab-content px-3 px-xl-5" id="myTabContent">
-          <h2>Profile</h2>
-              <form method="POST" action="updateprofileprocess.php">
+
+   <div class="container">
+          <h2 style="text-align:center;">Manage User</h2><br>
+              <form method="POST" action="manageprocess.php">
               
 
                 <div class="form-group mb-4">
@@ -42,14 +44,14 @@ include 'headermain.php'; ?>
                   <?php
                  echo' <input type="text" name="fname" class="form-control" id="userName" value="' . $rowr['u_name'] . '"';
                  ?>
-                </div>
+                </div><br>
 
                 <div class="form-group mb-4">
                   <label for="userName">User ID</label>
                   <?php
                  echo' <input type="text" name="fid" class="form-control" id="userID" value="' . $rowr['u_id'] . '" readonly';
                  ?>
-                 <div class="small">can`t edit user ID</div>
+                 <div class="small">can`t edit User Id</div>
                 </div>
 
                 <div class="form-group mb-4">
@@ -57,17 +59,15 @@ include 'headermain.php'; ?>
                   <?php
                   echo' <input type="email" name="femail" class="form-control" id="email" value="' . $rowr['u_email'] . '"';
                   ?>
-                </div>
+                </div><br>
 
                 <div class="form-group mb-4">
-<label for="gender">Gender</label>
+                  <label for="gender">Gender</label>
 <select id="gender" class="form-control form-control-user" name="sex">
     <option value="<?php echo $rowr['u_sex']; ?>" selected><?php echo $rowr['u_sex']; ?></option>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
 </select>
-
-  
                 </div>
 
                 <div class="form-group mb-4">
@@ -77,40 +77,29 @@ include 'headermain.php'; ?>
                   ?>
                 </div><br>
 
+                <div class="form-group mb-4">
+                  <label for="gender">Status</label>
+                  <?php  
+                           echo' <select id="status" class="form-control form-control-user" name="status">';
+   echo' <option value=" '.$rowr['u_status'].'" selected> '.$rowr['u_status'].'-'.$rowr['s_desc'].'</option>';
+    echo'<option value="1">1-Activated</option>';
+  echo'  <option value="2">2-Deactivated</option>?></td>';
+  echo '</select>';
+  ?>
+                </div><br>
 
-                <div >
+
+                <div style="text-align: center;">
                   <button type="submit" class="btn btn-primary mb-2 btn-pill">Update Profile</button>
                 </div>
               </form>
             </div>
       </div>
     </div>
-
-                 </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #/ container -->
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-        
-    </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-  
+  </div>
+</div>
+</div>
+</div>
 
 
-
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-        <?php include 
-        
-
-        'footer.php'; ?>
-
+ <?php include 'footer.php';?>

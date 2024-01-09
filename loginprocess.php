@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // Connect to DB
@@ -20,29 +19,40 @@ $result = mysqli_query($con, $sql);
 // Retrieve row/data
 $row = mysqli_fetch_array($result);
 
-// Verify password using password_verify
-if ($row && password_verify($fpwd, $row['u_pwd'])) {
-    // Password is correct
+// Check if the user exists
+if ($row) {
+    // Check if the account is activated
+    if ($row['u_status'] == 1) {
+        // Verify password using password_verify
+        if (password_verify($fpwd, $row['u_pwd'])) {
+            // Password is correct
 
-    // Redirect to corresponding page
-    $_SESSION['u_name'] = session_id();
-    $_SESSION['suname'] = $fname;
-    $_SESSION['u_id'] = $row['u_id'];
+            // Redirect to corresponding page
+            $_SESSION['u_name'] = session_id();
+            $_SESSION['suname'] = $fname;
+            $_SESSION['u_id'] = $row['u_id'];
 
-    if ($row['u_type'] == '1') {
-        header('Location:staff.php');
+            if ($row['u_type'] == '1') {
+                header('Location:staff.php');
+            } else {
+                header('Location:admin.php');
+            }
+        } else {
+            // Password is incorrect
+            $_SESSION['error_message'] = 'Incorrect password.';
+            header('Location:index.php');
+        }
     } else {
-        header('Location:admin.php');
+        // Account is not activated
+        $_SESSION['error_message'] = 'Your account is not activated. Please find admin to activate your account.';
+        header('Location:index.php');
     }
 } else {
-    // Password is incorrect or user not found
-    // Add script to let the user know either username or password is wrong
+    // User not found
     $_SESSION['error_message'] = 'Incorrect username or password.';
-    
     header('Location:index.php');
 }
 
 // Close DB Connection
 mysqli_close($con);
-
 ?>

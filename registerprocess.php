@@ -12,10 +12,11 @@ $femail = $_POST['femail'];
 $ftel = $_POST['ftel'];
 $ftype = $_POST['ftype'];
 
+
 // CRUD Operation
 // Create - SQL Insert Statement
-$sql = "INSERT INTO tb_user(u_name, u_id, u_sex, u_email, u_pwd, u_contNo, u_type)
-        VALUES('$fname', '$fid', '$fsex', '$femail', '$fpwd', '$ftel', '$ftype')";
+$sql = "INSERT INTO tb_user(u_name, u_id, u_sex, u_email, u_pwd, u_contNo, u_type, u_status)
+        VALUES('$fname', '$fid', '$fsex', '$femail', '$fpwd', '$ftel', '$ftype', '1')";
 
 // Execute SQL
 mysqli_query($con, $sql);
