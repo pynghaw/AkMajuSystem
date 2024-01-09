@@ -13,7 +13,7 @@ if(isset($_GET['iv_no']))
         mysqli_close($con);
 
         // Redirect
-        header('location:do-delete-success.php');
+        header('location:invoice-delete-success.php');
         exit(); // Ensure that no further code is executed after the redirect
     } else {
         echo "Error deleting record: " . mysqli_error($con);
