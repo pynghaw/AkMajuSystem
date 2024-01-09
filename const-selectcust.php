@@ -2,14 +2,6 @@
 include 'headermain.php'; 
 include('dbconnect.php');
 
-// Initialize variables to hold customer information
-$customer_id = "";
-
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve selected customer
-    $customer_id = $_POST['customer_id'];
-}
 ?>
 
 <div class="content-body">
@@ -36,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="form-group">
                                     <label>Select customer:</label>
                                         <select class="form-control" id="customerSelect" name="customer_id">
-                                            <option value="">Select Customer</option>
+                                            <option value="" disabled selected>Select customer</option>
                                             <?php
                                             $sql = "SELECT * FROM tb_customer";
                                             $result = mysqli_query($con, $sql);
@@ -49,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </div>
                                     <div class="form-group">
                                         <label>Select state:</label>
-                                        <select class="form-control" id="sel1">
+                                        <select class="form-control" id="sel1" required>
+                                            <option value="" disabled selected>Select a state</option>
                                             <option>Perlis</option>
                                             <option>Kedah</option>
                                             <option>Pulau Pinang</option>
@@ -68,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </div>
                                     <div class="form-group">
                                         <label>Distance from engineering office state:</label>
-                                        <select class="form-control" id="sel1">
+                                        <select class="form-control" id="sel1" required>
+                                            <option value="" disabled selected>Select distance</option>
                                             <option>less than 15km</option>
                                             <option>15 - 30km</option>
                                             <option>30 - 50km</option>
