@@ -55,7 +55,10 @@
           die("Error: Code is not set. Make sure you have the correct reset link.");
 
     }?>
+ <div class="form-group ">   
+<input type="hidden" id="hiddenField" name="code" value="<?php echo $code; ?>">
 
+</div>
                   <div class="form-group ">
                                     <label>New Password</label>
                                         <input type="password" name="fpwd" class="form-control form-control-user" id="password" placeholder="Password (At least 6 character)" minlength="6" required>

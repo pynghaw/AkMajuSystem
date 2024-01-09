@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <link href="css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     
 </head>
 
@@ -45,9 +48,9 @@
                         
                         
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        Password is successfully changed. Please <a href="index.php">Login</a>
-                                       </div>
+<div class="text-center">
+  <b>  Password is successfully changed. Please click <a href="index.php" style="color: #007bff; text-decoration: underline;">Login</a>.</b>
+</div>
                                    </div>
                                     
                     </div>
