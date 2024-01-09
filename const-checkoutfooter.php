@@ -18,6 +18,7 @@
                     <div class="card-body">
                         <button onclick="window.location.href='const-checkoutsummary.php'" type="submit" class="btn mb-1 btn-primary">Checkout <span class="btn-icon-right"><i class="fa fa-shopping-cart"></i></span></button>
                         <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>">
+                        <input type="hidden" name="discount" value="<?php echo $discount; ?>">
                     </div>
                 </div>
             </div>
