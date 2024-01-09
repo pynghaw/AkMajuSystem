@@ -26,7 +26,7 @@ if (isset($_SESSION['error_message'])) {
 include 'headernotification.php';
 include 'headermain.php'; ?>
 
-<body>
+
 
 <div class="content-body">
 
@@ -98,5 +98,6 @@ include 'headermain.php'; ?>
 </div>
 </form>
 </div>
-    </body>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php include 'footer.php';?>
