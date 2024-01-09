@@ -66,7 +66,13 @@ $totalPrice = 0; // Initialize total price
                             <tfoot>
                                 <tr>
                                     <td colspan="6" style="text-align:right;"><strong>Total Price:</strong></td>
-                                    <td><strong><?php echo $totalPrice; ?></strong></td>
+                                    <td><strong><?php echo $totalPrice ; ?></strong></td>
+                                </tr>
+                                <tr>
+                                    <?php $discountedPrice = $totalPrice * (1 - ($discount / 100)); ?>
+                                    
+                                    <td colspan="6" style="text-align:right;"><strong>Total Price (include discount):</strong></td>
+                                    <td><strong><?php echo $discountedPrice ; ?></strong></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -81,27 +87,5 @@ $totalPrice = 0; // Initialize total price
 <!--**********************************
     Content body end
 ***********************************-->
-<?php 
-    $discountAmount = ($discount / 100) * $totalPrice;
-    // Calculate grand total
-    $grandTotal = $totalPrice - $discountAmount;
-    // Insert data into the quotation database
-    $insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount, q_status, q_type, q_filepath) VALUES (?, NOW(), ?, ?, ?, '0', '1', '')";
-    $stmt = mysqli_prepare($con, $insertQuotationSql);
-
-    if ($stmt === false) {
-        die("Prepared statement failed: " . mysqli_error($con));
-    }
-
-    mysqli_stmt_bind_param($stmt, "iddd", $customer_id, $grandTotal, $discount, $discountAmount);
-
-    if (mysqli_stmt_execute($stmt)) {
-        echo "Record inserted successfully.";
-    } else {
-        echo "Error: " . mysqli_stmt_error($stmt);
-    }
-
-    mysqli_stmt_close($stmt);
-
-include 'const-generatequofooter.php'; ?>       
+<?php include 'const-generatequofooter.php'; ?>       
 
