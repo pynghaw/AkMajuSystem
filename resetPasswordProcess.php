@@ -1,48 +1,40 @@
 <?php
 
 
-if (isset($_GET['code'])) {
-    $code = $_GET['code'];
-
-    if($conn->connect_error){
-        die('Could not connect to the databse');
-    }
-
+if (isset($_POST['code'])) {
+    $code = $_POST['code'];
 
 // Connect to DB
 $conn = new mySqli('localhost', 'root', '', 'db_cryptoknights');
 
-
-$fpwd = password_hash($_POST['fpwd'], PASSWORD_DEFAULT); // Hash the password
-
-$verifyQuery = $conn->query("SELECT * FROM tb_user WHERE u_code='$code' AND u_updateTime >= NOW() - Interval 1 DAY");
-
+if($conn->connect_error){
+        die('Could not connect to the databse');
+    }
 
 
-if(isset($_POST['email'])){
-        $email= $_POST['email'];
+$verifyQuery = $conn->query("SELECT * FROM tb_user WHERE u_code='$code'  ");
+
+
+
         $new_password = $_POST['fpwd'];
         $new_password = password_hash($_POST['fpwd'], PASSWORD_DEFAULT); // Hash the password
 
 
-        $changeQuery = $conn->query("UPDATE tb_user SET u_pwd='$new_password' WHERE u_code='$code' AND updated_time >= NOW() - Interval 1 DAY");
+        $changeQuery = $conn->query("UPDATE tb_user SET u_pwd='$new_password' WHERE u_code='$code' ");
 
 
 
 
 if($changeQuery){
         header("Location: passwordchange.php");
-}
-
-$conn-close();
+        $conn-close();
 }else{
-       header("Location: resetPassword.php"); 
+       header("Location:http://localhost/AkMajuSystem/resetPassword.php?code='. $code"); 
 }
 
       
 
-// Redirect to the next page
-header("Location:index.php");
+
 
 } else {
     // Handle the case when $code is not set
