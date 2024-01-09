@@ -19,7 +19,7 @@ $sql="UPDATE tb_user
       SET u_name='$fname',u_email='$femail',u_sex='$fsex', u_contNo='$fphone'
       WHERE u_id='$fid'";
 
-
+$_SESSION['profile_message'] = 'User profile successfully updated!';
 mysqli_query($con,$sql);
 mysqli_close($con);
 

@@ -18,7 +18,15 @@ include 'headermainadmin.php'; ?>
         ***********************************-->
        <div class="content-body">
 
-            
+       <?php if (isset($_SESSION['profile_message'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['profile_message']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php unset($_SESSION['profile_message']); ?>
+    <?php endif; ?>     
             <!-- row -->
 
             <div class="container-fluid">
