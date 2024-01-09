@@ -41,7 +41,7 @@ include('dbconnect.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Select state:</label>
-                                        <select class="form-control" id="sel1" required>
+                                        <select class="form-control" id="sel1" name="state" required>
                                             <option value="" disabled selected>Select a state</option>
                                             <option>Perlis</option>
                                             <option>Kedah</option>
@@ -61,7 +61,7 @@ include('dbconnect.php');
                                     </div>
                                     <div class="form-group">
                                         <label>Distance from engineering office state:</label>
-                                        <select class="form-control" id="sel1" required>
+                                        <select class="form-control" id="sel1" name="distance" required>
                                             <option value="" disabled selected>Select distance</option>
                                             <option>less than 15km</option>
                                             <option>15 - 30km</option>
