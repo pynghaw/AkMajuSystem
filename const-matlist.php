@@ -33,7 +33,7 @@ $result=mysqli_query($con,$sql);
                         <div class="card">
                             <div class="card-body">
                                 <h2>Material List</h2>
-                                <p>Additonal percantage: 7%</p>
+                                <p>Price with 7% addtional</p>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered zero-configuration">
                                         <thead>
