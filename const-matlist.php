@@ -69,7 +69,11 @@ $result=mysqli_query($con,$sql);
                                                     echo"<td>".$row['m_name']. "</td>";
                                                     echo"<td>".$row['m_type']. "</td>";
                                                     echo"<td>".$row['m_desc']. "</td>";
-                                                    echo"<td>".$row['m_price']. "</td>";
+
+                                                    // Calculate the new price
+                                                    $originalPrice = $row['m_price'];
+                                                    $modifiedPrice = $originalPrice + ($originalPrice * $addPercentage / 100);
+                                                    echo"<td>".$modifiedPrice. "</td>"; // Display the modified price
                                                     echo"<td>".$row['m_qty']. "</td>";
                                                     echo "<td>";
                                                         echo "<a href='const-modifyprocess.php?id=".$row['m_id']."&action=add' class='btn btn-warning'>+</a>&nbsp";
