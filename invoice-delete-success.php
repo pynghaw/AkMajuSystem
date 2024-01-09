@@ -14,7 +14,7 @@
 
             <script>
                 // JavaScript code to show a prompt
-                alert("Quotation Deleted Successfully");
+                alert("Invoice Deleted Successfully");
                 // Redirect to another page
                 window.location.href = "invoice-manage.php"; // Change "index.php" to the desired page
             </script>
