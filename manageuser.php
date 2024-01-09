@@ -26,6 +26,17 @@ include('headermainadmin.php');
 ?>
 
 <div class="content-body">
+  <?php if (isset($_SESSION['register_message'])):?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?php echo $_SESSION['register_message']; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php
+    // Unset the session variable to avoid displaying the message again on refresh
+    unset($_SESSION['register_message']);?>
+<?php endif;?>
     <?php if (isset($_SESSION['update_message'])): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo $_SESSION['update_message']; ?>
@@ -35,6 +46,7 @@ include('headermainadmin.php');
         </div>
         <?php unset($_SESSION['update_message']); ?>
     <?php endif; ?>
+
 
     <!-- row -->
     <style>

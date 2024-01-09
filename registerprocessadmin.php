@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Connect to DB
 include("dbconnect.php");
 
@@ -20,6 +20,7 @@ $sql = "INSERT INTO tb_user(u_name, u_id, u_sex, u_email, u_pwd, u_contNo, u_typ
 
 // Execute SQL
 mysqli_query($con, $sql);
+$_SESSION['register_message'] = 'User registered successfully!';
 
 // Close DB Connection
 mysqli_close($con);
