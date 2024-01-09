@@ -49,8 +49,7 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['c_name'] . '</td>';
                                     echo '<td>' . $row['q_date'] . '</td>';
                                     echo '<td>' . $row['q_status'] . '</td>';
-                                    echo '<td><a href="upfrontpayment.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Generate Invoice</a> &nbsp;';
-                                    echo '<a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
+                                    echo '<td><a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
                                     echo '<a href="quotationremove.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a></td>';
                                     echo '</tr>';
                                 }
