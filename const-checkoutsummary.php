@@ -9,6 +9,7 @@ $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
 
 $totalPrice = 0; // Initialize total price
+
 ?>
 <!--**********************************
     Content body start
@@ -84,8 +85,6 @@ $totalPrice = 0; // Initialize total price
     </div>
     <!-- #/ container -->
 </div>
-<!--**********************************
-    Content body end
-***********************************-->
+
 <?php include 'const-generatequofooter.php'; ?>       
 

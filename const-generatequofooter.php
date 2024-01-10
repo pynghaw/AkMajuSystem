@@ -10,6 +10,19 @@
 
 </style>
 
+<?php
+$discountAmount = ($discount / 100) * $totalPrice;
+
+// Calculate grand total
+$grandTotal = $totalPrice - $discountAmount;
+
+// Insert data into the quotation database
+$insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_tAmount, q_discPercent, q_discAmount)
+                       VALUES ('$customer_id', NOW(), '$grandTotal', '$discount', '$discountAmount')";
+$insertQuotationResult = mysqli_query($con, $insertQuotationSql);
+?>
+
+
 <form method="POST" action="const-generatequoprocess.php">
 <div class="checkout-footer">
     <div class="container-fluid">
