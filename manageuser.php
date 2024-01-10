@@ -11,14 +11,15 @@ include('dbconnect.php');
 $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
 
 // SQL query based on the status filter
-$sqlr = "SELECT * FROM tb_user
-          LEFT JOIN tb_accstatus ON tb_user.u_status = tb_accstatus.s_status
-          WHERE u_type='1'";
+$sqlr = "SELECT tb_user.*, tb_status.s_desc, tb_user.u_type
+         FROM tb_user
+         LEFT JOIN tb_status ON tb_user.u_status = tb_status.s_status
+         WHERE tb_user.u_type = '1'";
 
 if ($statusFilter === 'activate') {
-    $sqlr .= " WHERE tb_accstatus.s_desc = 'Activated'";
+    $sqlr .= " AND tb_status.s_desc = 'Activated'";
 } elseif ($statusFilter === 'deactivate') {
-    $sqlr .= " WHERE tb_accstatus.s_desc = 'Deactivated'";
+    $sqlr .= " AND tb_status.s_desc = 'Deactivated'";
 }
 
 $resultr = mysqli_query($con, $sqlr);
