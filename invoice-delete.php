@@ -6,7 +6,7 @@ if(isset($_GET['iv_no']))
     $ivno = $_GET['iv_no'];
 
     //CURD: Delete
-    $sql = "DELETE FROM tb_invoice WHERE iv_no='$ivno'";
+    $sql = "UPDATE tb_invoice SET iv_status = '2' WHERE iv_no='$ivno'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {

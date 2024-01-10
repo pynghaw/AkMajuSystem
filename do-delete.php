@@ -6,7 +6,7 @@ if(isset($_GET['d_no']))
     $dno = $_GET['d_no'];
 
     //CURD: Delete
-    $sql = "DELETE FROM tb_delorder WHERE d_no='$dno'";
+    $sql = "UPDATE tb_delorder SET d_status = '2' WHERE d_no='$dno'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {

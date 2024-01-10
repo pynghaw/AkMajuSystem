@@ -7,7 +7,8 @@ $sql = "SELECT d.*, c.c_name
         FROM tb_delorder d
         INNER JOIN tb_invoice i ON d.d_ino = i.iv_no
         INNER JOIN tb_quotation q ON i.iv_qno = q.q_no
-        INNER JOIN tb_customer c ON q.q_cid = c.c_id";
+        INNER JOIN tb_customer c ON q.q_cid = c.c_id
+        WHERE d.d_status = 0";
 $result = mysqli_query($con, $sql);
 
 ?>

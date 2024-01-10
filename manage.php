@@ -13,7 +13,7 @@ include('dbconnect.php');
 
 
 $sqlr = "SELECT * FROM tb_user
-LEFT JOIN tb_accstatus ON tb_user.u_status = tb_accstatus.s_status
+LEFT JOIN tb_status ON tb_user.u_status = tb_status.s_status
  where u_id= '$fid'";
 
 

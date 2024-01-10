@@ -11,14 +11,15 @@ include('dbconnect.php');
 $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
 
 // SQL query based on the status filter
-$sqlr = "SELECT * FROM tb_user
-          LEFT JOIN tb_accstatus ON tb_user.u_status = tb_accstatus.s_status
-          WHERE u_type='1'";
+$sqlr = "SELECT tb_user.*, tb_status.s_desc, tb_user.u_type
+         FROM tb_user
+         LEFT JOIN tb_status ON tb_user.u_status = tb_status.s_status
+         WHERE tb_user.u_type = '1'";
 
 if ($statusFilter === 'activate') {
-    $sqlr .= " WHERE tb_accstatus.s_desc = 'Activated'";
+    $sqlr .= " AND tb_status.s_desc = 'Activated'";
 } elseif ($statusFilter === 'deactivate') {
-    $sqlr .= " WHERE tb_accstatus.s_desc = 'Deactivated'";
+    $sqlr .= " AND tb_status.s_desc = 'Deactivated'";
 }
 
 $resultr = mysqli_query($con, $sqlr);
@@ -95,9 +96,9 @@ include('headermainadmin.php');
                                     <a href="registeradmin.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Register User</a>
                                 </div>
     <div class="ml-auto">
-        <label for="status" class="mr-2">Select Status:</label>
+        
         <select id="status" class="form-control form-control-sm" name="status" onchange="filterAccounts(this.value)">
-            <option value="all" <?php echo ($statusFilter === 'all') ? 'selected' : ''; ?>>Show All</option>
+            <option value="all" <?php echo ($statusFilter === 'all') ? 'selected' : ''; ?>>Show All Status</option>
             <option value="activate" <?php echo ($statusFilter === 'activate') ? 'selected' : ''; ?>>Activate Category</option>
             <option value="deactivate" <?php echo ($statusFilter === 'deactivate') ? 'selected' : ''; ?>>Deactivate Category</option>
         </select>

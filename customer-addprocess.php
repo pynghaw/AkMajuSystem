@@ -13,8 +13,8 @@ $cphone=$_POST['cphone'];
 //CRUD Operations
 
 //Create-SQL Insert Statement
-$sql=" INSERT INTO tb_customer(c_name,c_add,c_billAdd,c_email,c_cont)
-		VALUES('$cname','$cadd','$cbadd','$cemail','$cphone')";
+$sql=" INSERT INTO tb_customer(c_name,c_add,c_billAdd,c_email,c_cont,c_status)
+		VALUES('$cname','$cadd','$cbadd','$cemail','$cphone','1')";
 
 //Execute SQL
 mysqli_query($con,$sql);
@@ -23,6 +23,6 @@ mysqli_query($con,$sql);
 mysqli_close($con);
 
 //Redirect to Next Page
-header('Location:customer-add.php');
+header('Location:customer-add-success.php');
 
 ?>
