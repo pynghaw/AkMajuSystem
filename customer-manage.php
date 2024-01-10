@@ -2,8 +2,8 @@
 include 'headermain.php';
 include 'dbconnect.php';
 
-// Query to get order information
-$sql="  SELECT * FROM tb_customer";
+// Query to get active customer information
+$sql = "SELECT * FROM tb_customer WHERE c_status = 1";
 
 $result = mysqli_query($con, $sql);
 ?>
@@ -92,4 +92,3 @@ $result = mysqli_query($con, $sql);
 
 <script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
 <script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
-
