@@ -1,11 +1,26 @@
-<?php include('headermainadmin.php');?>
+<?php 
+include('mysession.php');
+if (!session_id()) {
+    session_start();
+}
+include('headermainadmin.php');?>
 
     
 
 
        <div class="content-body">
+  <?php if (isset($_SESSION['register1_message'])):?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?php echo $_SESSION['register1_message']; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 
-            
+    <?php
+    // Unset the session variable to avoid displaying the message again on refresh
+    unset($_SESSION['register1_message']);?>
+    <?php endif;?>
             <!-- row -->
 
             <div class="container-fluid">
@@ -13,6 +28,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="container mt-4">
+                                
                                  <div style="text-align: right;">
                             <a href="manageuser.php" class="btn btn-danger mb-2 btn-pill">Cancel</a>
                         </div>
@@ -109,7 +125,7 @@
         var errorMessage = document.getElementById("passwordMismatchMessage");
         var correctMessage = document.getElementById("passwordmatchMessage");
 
-        // Check if the passwords match
+        // Check if the passworxds match
         if (password === repeatPassword) {
             // Passwords match, enable the register button and clear the error message
             registerButton.disabled = false;

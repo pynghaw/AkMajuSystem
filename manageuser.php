@@ -93,7 +93,7 @@ include('headermainadmin.php');
                        
 <div class="mb-3 d-flex justify-content-between">
    <div>
-                                    <a href="registeradmin.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Register User</a>
+                                    <a href="registeradmin.php" class="btn btn-success"><i class="fa fa-user-plus"></i>Register User</a>
                                 </div>
     <div class="ml-auto">
         
