@@ -8,9 +8,6 @@ include 'headermain.php';
 //retrieve data from form and session
 $fino=$_POST['fino'];
 $fcid=$_POST['fcid'];
-$fdate=$_POST['fdate'];
-$fqty=$_POST['fqty'];
-
 
 //INSERT NEW BOOKING
 $sql=" INSERT INTO tb_order(o_ino,o_cid,o_date,o_quantity)
@@ -41,6 +38,11 @@ mysqli_close($con);
   <button type="button" class="btn btn-primary" onclick="location.href='order-place.php';">Add More</button>
   <button type="button" class="btn btn-primary" onclick="location.href='staff.php';">Home</button>
 
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>

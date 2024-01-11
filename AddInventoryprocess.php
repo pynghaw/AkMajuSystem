@@ -67,7 +67,7 @@ include 'headermain.php';
 
 <br><br>
     <div style="text-align: center;">                         
-    <a class="btn btn-primary" href="AddInventory.php">BACK</a>
+    <a class="btn btn-primary" href="AddInventory.php">Add More</a>
     <a class="btn btn-success" href="Inventory.php">Go to Inventory</a><br><br><br>
     </div>
 </div>
