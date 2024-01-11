@@ -102,11 +102,6 @@ if (isset($_GET['id'], $_GET['name'], $_GET['desc'], $_GET['unitPrice'], $_GET['
         }
     }
 
-    echo "<form method='POST' action='adv-generatequoprocess.php'>"; 
-    echo "<input type='hidden' name='customer_id' value='$customer_id'>";
-    echo "<input type='hidden' name='discount' value='$discount'>";
-    echo "</form>";
-
 } else {
     // Handle missing parameters error
     echo "Missing parameters.";
