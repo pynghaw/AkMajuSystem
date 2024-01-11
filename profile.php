@@ -18,18 +18,31 @@ include 'headermain.php'; ?>
         ***********************************-->
        <div class="content-body">
 
-            
+            <?php if (isset($_SESSION['profile_message'])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['profile_message']; ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php unset($_SESSION['profile_message']); ?>
+    <?php endif; ?>   
             <!-- row -->
 
             <div class="container-fluid">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="card">
-                            <div class="container mt-4">
-   <div class="col-lg-8 col-xl-9">
-    <div class="profile-content-right profile-right-spacing py-5">
+                        <div class="card mt-4">
+                            <div class="card-body">
+   
+         <div class="profile-content-right profile-right-spacing py-5">
         <div class="tab-content px-3 px-xl-5" id="myTabContent">
-            <h2 class="mb-4">Profile</h2>
+            <h2 class="mb-4" style="text-align:center;">Profile</h2>
+<div class="text-center mb-4">
+                            <img src="https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 200px; height: 200px;">
+                            <h2 class="mt-2"><?php echo $rowr['u_name']; ?></h2>
+                            <p class="text-muted">Staff</p>
+                        </div>
 
 
             <div class="card">

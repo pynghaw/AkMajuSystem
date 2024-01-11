@@ -21,7 +21,7 @@ $sql="UPDATE tb_user
 
 
 mysqli_query($con,$sql);
-$_SESSION['profile_message'] = 'User profile successfully updated!';
+$_SESSION['profile1_message'] = 'User profile successfully updated!';
 mysqli_close($con);
 
 //Display result

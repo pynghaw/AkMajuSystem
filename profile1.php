@@ -18,14 +18,14 @@ include 'headermainadmin.php'; ?>
         ***********************************-->
        <div class="content-body">
 
-       <?php if (isset($_SESSION['profile_message'])): ?>
+       <?php if (isset($_SESSION['profile1_message'])): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?php echo $_SESSION['profile_message']; ?>
+            <?php echo $_SESSION['profile1_message']; ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <?php unset($_SESSION['profile_message']); ?>
+        <?php unset($_SESSION['profile1_message']); ?>
     <?php endif; ?>     
             <!-- row -->
 
@@ -37,7 +37,7 @@ include 'headermainadmin.php'; ?>
    
     <div class="profile-content-right profile-right-spacing py-5">
         <div class="tab-content px-3 px-xl-5" id="myTabContent">
-            <h2 class="mb-4" style="text-align:center;">Profile</h2><br>
+            <h2 class="mb-4" style="text-align:center;">Profile</h2>
 <div class="text-center mb-4">
                             <img src="https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 200px; height: 200px;">
                             <h2 class="mt-2"><?php echo $rowr['u_name']; ?></h2>
