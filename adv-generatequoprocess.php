@@ -4,11 +4,13 @@ require 'fpdf186/fpdf.php';
 
 // Retrieve data from page3.php
 $customer_id = $_POST['customer_id'];
-$order_date = $_POST['order_date'];
 $discount = $_POST['discount'];
 
+$insertQuotationSql = "INSERT INTO tb_quotation (q_cid, q_date, q_discPercent) VALUES ('$customer_id', NOW(), '$discount')";
+$insertQuotationResult = mysqli_query($con, $insertQuotationSql);
+
 // Check if orders with status 0 exist for the selected customer on the selected date
-$orderCheckSql = "SELECT COUNT(*) AS orderCount FROM tb_order WHERE o_cid = $customer_id AND o_date = '$order_date' AND o_status = 0";
+$orderCheckSql = "SELECT COUNT(*) AS orderCount FROM tb_order WHERE o_cid = $customer_id AND o_status = 0";
 $orderCheckResult = mysqli_query($con, $orderCheckSql);
 $orderCheckRow = mysqli_fetch_assoc($orderCheckResult);
 $orderCount = $orderCheckRow['orderCount'];
@@ -17,7 +19,7 @@ if ($orderCount > 0) {
     // Query to retrieve orders with status 0 for the selected customer on the selected date
     $sql = "SELECT o.*, i.i_desc, i.i_price FROM tb_order o
             INNER JOIN tb_inventory i ON o.o_ino = i.i_no
-            WHERE o.o_cid = $customer_id AND o.o_date = '$order_date' AND o.o_status = 0";
+            WHERE o.o_cid = $customer_id AND o.o_status = 0";
     $result = mysqli_query($con, $sql);
 
     // Fetch Quotation Number from Quotation Database
@@ -170,6 +172,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $pdf->Cell(25, 10, $discountedItemTotal, 1); // Display total incl. discount
     $pdf->Ln();
 }
+$updateQuotationSql = "UPDATE tb_quotation SET q_tAmount = '$grandTotal', q_discAmount = '$discountedItemTotal', q_type = 1 WHERE q_no = $quotationNumber";
+$updateQuotationResult = mysqli_query($con, $updateQuotationSql);
 
 
 // Footer
