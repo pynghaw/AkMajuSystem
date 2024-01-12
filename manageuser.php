@@ -17,9 +17,9 @@ $sqlr = "SELECT tb_user.*, tb_status.s_desc, tb_user.u_type
          WHERE tb_user.u_type = '1'";
 
 if ($statusFilter === 'activate') {
-    $sqlr .= " AND tb_status.s_desc = 'Activated'";
+    $sqlr .= " AND tb_status.s_desc = 'Active'";
 } elseif ($statusFilter === 'deactivate') {
-    $sqlr .= " AND tb_status.s_desc = 'Deactivated'";
+    $sqlr .= " AND tb_status.s_desc = 'Inactive'";
 }
 
 $resultr = mysqli_query($con, $sqlr);
@@ -123,7 +123,7 @@ include('headermainadmin.php');
                                 <tbody>
                                     <?php
                                     while ($rowr = mysqli_fetch_array($resultr)) {
-                                        $statusClass = ($rowr['s_desc'] == 'Activated') ? 'text-success' : 'text-danger';
+                                        $statusClass = ($rowr['s_desc'] == 'Active') ? 'text-success' : 'text-danger';
                                         echo "<tr>";
                                         echo "<td>".$rowr['u_id']."</td>";
                                         echo "<td>".$rowr['u_name']."</td>";
