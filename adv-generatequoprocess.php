@@ -148,13 +148,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $discountAmountPerItem = ($discount / 100) * $itemTotal;
     $discountedItemTotal = $itemTotal - $discountAmountPerItem;
 
-    // Deduct confirmed order quantity from inventory
-    $confirmedQuantity = $row['o_quantity'];
-    $inventoryUpdateSql = "UPDATE tb_inventory SET i_qty = i_qty - $confirmedQuantity WHERE i_no = {$row['o_ino']}";
-    mysqli_query($con, $inventoryUpdateSql);
 
     // Update order status and quotation number
-    $orderUpdateSql = "UPDATE tb_order SET o_status = 1, o_qno = $quotationNumber WHERE o_no = {$row['o_no']}";
+    $orderUpdateSql = "UPDATE tb_order SET o_status = 0, o_qno = $quotationNumber WHERE o_no = {$row['o_no']}";
     mysqli_query($con, $orderUpdateSql);
 
     $grandTotal += $discountedItemTotal;

@@ -76,7 +76,7 @@ $result = mysqli_query($con, $sql);
 
                                     // Different operations based on invoice status
                                     if ($selectedOption == 'unpaid') {
-                                        echo '<button onclick="updateStatus(' . $row['iv_no'] . ')" class="btn btn-outline-success">Mark as Paid</button> &nbsp;';
+                                        echo '<button onclick="updateStatus(' . $row['iv_no'] .')" class="btn btn-outline-success">Mark as Paid</button> &nbsp;';
                                         echo '<a href="invoice-delete.php?iv_no=' . $row['iv_no'] . '" class="btn btn-outline-danger">Delete</a>';
                                     }
 
