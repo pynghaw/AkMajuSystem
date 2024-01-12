@@ -11,7 +11,7 @@
   
     <title>AK MAJU</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/jpg" sizes="16x16" href="images/akmaju.jpg">
+    <link rel="icon" type="image/jpg" sizes="16x16" href="images/akmaju.png">
     <!-- Pignose Calender -->
     <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -23,6 +23,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
+    
 </head>
 
 <body>
@@ -52,8 +53,8 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="staff.php" style="color: white; font-size:25px; font-family: ;">
-                   <b> AK MAJU</b>
+                <a href="staff.php" style="color: white; font-size:25px; font-family: ;" aria-expanded="false">
+                    <img src="images/akmaju.png" alt="AK MAJU" style="max-width: 35px; height: auto; float:center">
                 </a>
             </div>
         </div>
@@ -109,23 +110,15 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
+        
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="staff.php">Home 1</a></li>
-                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                        </ul>
                     
-                    <li class="nav-label">Apps</li>
-                      <li>
-                        <a href="profile.php" aria-expanded="false">
-                            <i class="icon-user "></i><span class="nav-text">Profile</span>
+                    <li class="nav-label">Operations</li>
+                    <li>
+                        <a href="staff.php" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
@@ -206,8 +199,10 @@
                 </ul>
             </div>
         </div>
+        
+</body>
+</html>
 
         <!--**********************************
             Sidebar end
         ***********************************-->
-    ?>
