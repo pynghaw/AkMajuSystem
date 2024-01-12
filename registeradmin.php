@@ -55,7 +55,7 @@ include('headermainadmin.php');?>
                                 <div class="form-group ">
                                 
                                         <input type="text" name="fid" class="form-control form-control-user" id="id"
-                                            placeholder="UserID" required>
+                                            placeholder="UserID (MAxlength 5)" required maxlength="5">
                                 </div><br>
 
                                     <div class="form-group ">

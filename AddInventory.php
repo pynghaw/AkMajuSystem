@@ -92,7 +92,14 @@ include 'headermain.php'; ?>
     <!--**********************************
         Scripts
     ***********************************-->
-   
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
 </body>
 
@@ -100,7 +107,5 @@ include 'headermain.php'; ?>
             Content body end
         ***********************************-->
 
-        <?php include 
+        <?php include 'footer.php'; ?>
 
-        'footer.php'; ?>
-</body>
