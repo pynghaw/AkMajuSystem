@@ -150,32 +150,31 @@
                     </li>
                   
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fa fa-shopping-cart menu-icon"></i> <span class="nav-text">Order</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="order-place.php">Place Order</a></li>
-                            <li><a href="order-manage.php">Manage Order</a></li>
-                        </ul>
-                    </li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+        <i class="fa fa-shopping-cart menu-icon"></i> <span class="nav-text">Order</span>
+    </a>
+    <ul aria-expanded="false">
+        <li>
+            <a class="has-arrow" href="javascript:void()">Place Order</a>
+            <ul aria-expanded="false">
+                <li><a href="order-place.php">Advertisement</a></li>
+                <li><a href="const-selectcust.php">Construction</a></li>
+            </ul>
+        </li>
+        <li><a href="order-manage.php">Manage Order</a></li>
+    </ul>
+</li>
+
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fa fa-file menu-icon"></i> <span class="nav-text">Quotation</span>
                         </a>
                         <ul aria-expanded="false">
                             <li>
-                                <a class="has-arrow" href="adv-quo.php">Advertising</a>
-                                <ul>
-                                    <li><a href="adv-generatequo1.php">Generate</a></li>
-                                    <li><a href="adv-managequo.php">Manage</a></li>
-                                </ul>
+                            <a href="adv-managequo.php">Advertising</a>
                             </li>
                             <li>
-                                <a class="has-arrow" href="adv-quo.php">Construction</a>
-                                <ul>
-                                    <li><a href="const-selectcust.php">Generate</a></li>
-                                    <li><a href="const-managequo.php">Manage</a></li>
-                                </ul>
+                            <a href="const-managequo.php">Construction</a>
                             </li>
                         </ul>
                     </li>
@@ -191,7 +190,6 @@
                         <ul aria-expanded="false">
                             <li><a href="do-generate-1.php">Generate</a></li>
                             <li><a href="do-manage.php">Manage</a></li>
-                            
                         </ul>
                     </li>
                     <li>
