@@ -47,7 +47,7 @@ include 'headermain.php'; ?>
     
      <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">Product ID</label>
-      <input type="text" name="InventoryNo" class="form-control" id="exampleInputPassword1" placeholder="Product ID" required>
+      <input type="text" name="InventoryNo" class="form-control" id="exampleInputPassword1" placeholder="Product ID (max 5 character)" required maxlength="5">
 </div>
 
     <div class="form-group">
