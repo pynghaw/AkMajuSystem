@@ -86,7 +86,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="profile.php"><i class="icon-user "></i> <span>Profile</span></a>
+                                            <a href="profile1.php"><i class="icon-user "></i> <span>Profile</span></a>
                                         </li>
                                         
                                         
