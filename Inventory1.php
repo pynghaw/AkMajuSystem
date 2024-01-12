@@ -6,25 +6,6 @@ if (!session_id()) {
 include('dbconnect.php');
 
 
-// Display success message
-if (isset($_SESSION['success_message'])) {
-    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-            {$_SESSION['success_message']}
-            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-          </div>";
-
-    unset($_SESSION['success_message']);
-}
-
-// Display error message
-if (isset($_SESSION['error_message'])) {
-    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-            {$_SESSION['error_message']}
-            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-          </div>";
-
-    unset($_SESSION['error_message']);
-}
 
 
 
@@ -113,6 +94,25 @@ include 'headermainadmin.php';
     </style>
 
     <div class="content-body">
+        <? php // Display success message
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+            {$_SESSION['success_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
+
+    unset($_SESSION['success_message']);
+}
+
+// Display error message
+if (isset($_SESSION['error_message'])) {
+    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+            {$_SESSION['error_message']}
+            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+          </div>";
+
+    unset($_SESSION['error_message']);
+}?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">

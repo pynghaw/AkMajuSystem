@@ -5,7 +5,16 @@ if (!session_id()) {
     session_start();
 }
 include('dbconnect.php');
-// Display success message
+
+include 'headernotification.php';
+include 'headermainadmin.php'; ?>
+<body>
+        <!--**********************************
+            Content body start
+        ***********************************-->
+       <div class="content-body">
+<? php
+            // Display success message
 if (isset($_SESSION['success_message'])) {
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
             {$_SESSION['success_message']}
@@ -24,15 +33,7 @@ if (isset($_SESSION['error_message'])) {
 
     unset($_SESSION['error_message']);
 }
-include 'headernotification.php';
-include 'headermainadmin.php'; ?>
-<body>
-        <!--**********************************
-            Content body start
-        ***********************************-->
-       <div class="content-body">
-
-            
+?>
             <!-- row -->
 
             <div class="container-fluid">
