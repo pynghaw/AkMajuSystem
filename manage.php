@@ -82,8 +82,8 @@ include ('headermainadmin.php');
                   <?php  
                            echo' <select id="status" class="form-control form-control-user" name="status">';
    echo' <option value=" '.$rowr['u_status'].'" selected> '.$rowr['u_status'].'-'.$rowr['s_desc'].'</option>';
-    echo'<option value="1">1-Activated</option>';
-  echo'  <option value="2">2-Deactivated</option>?></td>';
+    echo'<option value="1">1-Activte</option>';
+  echo'  <option value="2">2-Inactive</option>?></td>';
   echo '</select>';
   ?>
                 </div><br>
