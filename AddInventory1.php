@@ -46,10 +46,24 @@ if (isset($_SESSION['error_message'])) {
   <fieldset>
     <legend style="text-align: center; font-size: 30px;">Add Inventory</legend>
     
-     <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">Product ID</label>
-      <input type="text" name="InventoryNo" class="form-control" id="exampleInputPassword1" placeholder="Product ID (max 5 character)" required maxlength="5">
+    <div class="form-group">
+    <label for="exampleInputPassword1" class="form-label mt-4">Product ID</label>
+    <input type="number" name="InventoryNo" class="form-control" id="exampleInputPassword1" placeholder="Product ID (max 5 digits)" required oninput="checkInputLength(this, 5)">
 </div>
+
+<script>
+function checkInputLength(input, maxLength) {
+    // Convert the input value to a string and remove leading zeros
+    let inputValue = input.value.toString().replace(/^0+/, '');
+
+    // Check if the length exceeds the specified maxLength
+    if (inputValue.length > maxLength) {
+        // Trim the input value to the maxLength
+        input.value = inputValue.slice(0, maxLength);
+    }
+}
+</script>
+
 
     <div class="form-group">
       <label for="exampleInputPassword1" class="form-label mt-4">Product Name</label>
