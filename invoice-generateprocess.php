@@ -159,6 +159,9 @@ while ($row = mysqli_fetch_assoc($orderDetailsResult)) {
     $discountAmountPerItem = ($discount / 100) * $itemTotal;
     $discountedItemTotal = $itemTotal - $discountAmountPerItem;
     $grandTotal += $discountedItemTotal;
+ 
+    $orderUpdateSql = "UPDATE tb_order SET o_ivno = {$updatedInvoiceDetails['iv_no']} WHERE o_no = {$row['o_no']}";
+    mysqli_query($con, $orderUpdateSql);
 
     // Break the item description into two lines
     $descLines = explode("\n", wordwrap($row['i_desc'], 40, "\n"));
