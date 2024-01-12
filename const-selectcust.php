@@ -30,7 +30,7 @@ include('dbconnect.php');
                                         <select class="form-control" id="customerSelect" name="customer_id">
                                             <option value="" disabled selected>Select customer</option>
                                             <?php
-                                            $sql = "SELECT * FROM tb_customer";
+                                            $sql = "SELECT * FROM tb_customer WHERE c_status = 1";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_array($result)) {
                                                 $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
@@ -88,7 +88,7 @@ include('dbconnect.php');
 <!--**********************************
     Content body end
 ***********************************-->
-<?php include 'customer-footer.php'; ?>       
+<?php include 'footer.php'; ?>       
 
  
 <script src="plugins/common/common.min.js"></script>

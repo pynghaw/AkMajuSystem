@@ -81,6 +81,7 @@ $result=mysqli_query($con,$sql);
                                                     echo"</td>";
                                                     echo "</tr>";
                                                 } 
+
                                             ?>
                                         </tbody>
                                         <tfoot>

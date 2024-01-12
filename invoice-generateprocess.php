@@ -190,7 +190,6 @@ $pdf->Cell(25, 10, $iv_balance, 1);
 $pdf->Ln();
 
 // Output the PDF
-
 $pdf->Output('F', $filePath);
 $pdf->Output();
 

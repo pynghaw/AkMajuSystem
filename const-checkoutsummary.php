@@ -9,8 +9,8 @@ $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
 
 $totalPrice = 0; // Initialize total price
-
 ?>
+
 <!--**********************************
     Content body start
 ***********************************-->

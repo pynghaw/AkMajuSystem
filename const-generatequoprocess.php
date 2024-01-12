@@ -19,8 +19,6 @@ $resultc = mysqli_stmt_get_result($stmt);
 // Fetch the customer data
 $customerData = mysqli_fetch_assoc($resultc);
 
-
-
 // Fetch Billing Address from Customer Database
 $billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
 $billingAddressResult = mysqli_query($con, $billingAddressSql);

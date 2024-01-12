@@ -7,7 +7,7 @@ $customer_id = $_POST['customer_id'];
 $discount = $_POST['discount'];
 $totalPrice = $_POST['totalPrice'];
 
-//claculate
+//calculate
 $discountAmount = ($discount / 100) * $totalPrice;
 $grandTotal = $totalPrice - $discountAmount;
 

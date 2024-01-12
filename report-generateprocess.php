@@ -17,10 +17,10 @@ $r_name = "Sales Report"; // Example name
 $r_date = date("Y-m-d"); // Current date
 $r_desc = "Sales report from $startDate to $endDate"; // Example description
 
-$insertStmt = $con->prepare("INSERT INTO tb_salesreport (r_id, r_name, r_date, r_desc) VALUES (?, ?, ?, ?)");
-$insertStmt->bind_param("isss", $r_id, $r_name, $r_date, $r_desc);
-$insertStmt->execute();
-$insertStmt->close();
+// $insertStmt = $con->prepare("INSERT INTO tb_salesreport (r_id, r_name, r_date, r_desc) VALUES (?, ?, ?, ?)");
+// $insertStmt->bind_param("isss", $r_id, $r_name, $r_date, $r_desc);
+// $insertStmt->execute();
+// $insertStmt->close();
 
 // Prepare and execute query
 $sql = $con->prepare("SELECT iv_no, iv_qno, iv_date, iv_upFront, iv_bal FROM tb_invoice WHERE iv_date BETWEEN ? AND ?");
@@ -84,15 +84,15 @@ $pdf->Ln();
 
 
 //Save PDF to a directory
-$filePath = 'report/SalesReport_' . $startDate . '_to_' . $endDate . '.pdf';
-$pdf->Output('F', $filePath);
+// $filePath = 'report/SalesReport_' . $startDate . '_to_' . $endDate . '.pdf';
+// $pdf->Output('F', $filePath);
 $pdf->Output();
 
 // Update Database with File Path
-$insertPathStmt = $con->prepare("UPDATE tb_salesreport SET r_filepath = ? WHERE r_id = ?");
-$insertPathStmt->bind_param("si", $filePath, $r_id);
-$insertPathStmt->execute();
-$insertPathStmt->close();
+// $insertPathStmt = $con->prepare("UPDATE tb_salesreport SET r_filepath = ? WHERE r_id = ?");
+// $insertPathStmt->bind_param("si", $filePath, $r_id);
+// $insertPathStmt->execute();
+// $insertPathStmt->close();
 
 
 // Close the database connection
