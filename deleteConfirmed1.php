@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
 
     if ($result) {
         // Successful deletion
-        $_SESSION['success_message'] = "Item successfully deleted.";
+        $_SESSION['success2_message'] = "Item successfully deleted.";
     } else {
         // Error in deletion
         $_SESSION['error_message'] = "Error deleting item: " . mysqli_error($con);

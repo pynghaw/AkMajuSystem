@@ -21,7 +21,7 @@ $resultCheck = mysqli_query($con, $sqlCheck);
 
 if (mysqli_num_rows($resultCheck) > 0) {
     // Product ID already exists, display an error message and redirect back to the form
-    $_SESSION['error_message'] = "Product ID already exists. Please choose a unique Product ID.";
+    $_SESSION['error2_message'] = "Product ID already exists. Please choose a unique Product ID.";
     header("Location: AddInventory1.php");
     exit();
 } else {
@@ -36,7 +36,7 @@ if (mysqli_num_rows($resultCheck) > 0) {
     mysqli_close($con);
 
     // Display success message (optional)
-    $_SESSION['success_message'] = "Product added successfully.";
+    $_SESSION['success2_message'] = "Product added successfully.";
 }
 
 include 'headermainadmin.php';

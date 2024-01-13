@@ -13,25 +13,25 @@ include 'headermainadmin.php'; ?>
             Content body start
         ***********************************-->
        <div class="content-body">
-<? php
+<?php
             // Display success message
-if (isset($_SESSION['success_message'])) {
+if (isset($_SESSION['success2_message'])) {
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-            {$_SESSION['success_message']}
+            {$_SESSION['success2_message']}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
           </div>";
 
-    unset($_SESSION['success_message']);
+    unset($_SESSION['success2_message']);
 }
 
 // Display error message
-if (isset($_SESSION['error_message'])) {
+if (isset($_SESSION['error2_message'])) {
     echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-            {$_SESSION['error_message']}
+            {$_SESSION['error2_message']}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
           </div>";
 
-    unset($_SESSION['error_message']);
+    unset($_SESSION['error2_message']);
 }
 ?>
             <!-- row -->

@@ -54,7 +54,7 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="staff.php" style="color: white; font-size:25px; font-family: ;" aria-expanded="false">
-                    <img src="images/akmaju.png" alt="AK MAJU" style="max-width: 35px; height: auto; float:center">
+                    <img src="images/akmaju.png" alt="AK MAJU" style="max-width: 35px; height: auto; float:center;">    
                 </a>
             </div>
         </div>
