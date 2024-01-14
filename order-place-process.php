@@ -13,7 +13,7 @@ $sql = "SELECT i.*, COALESCE(o.o_quantity, 0) AS o_quantity
 // Execute
 $result = mysqli_query($con, $sql);
 
-$sqlr = "SELECT i.* FROM tb_inventory i WHERE i.i_qty > 0";
+$sqlr = "SELECT i.* FROM tb_inventory i WHERE i.i_qty > 0 AND i.i_status='1'";
 
 // Execute
 $resultr = mysqli_query($con, $sqlr);

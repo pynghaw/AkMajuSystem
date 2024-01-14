@@ -7,7 +7,7 @@ include('dbconnect.php');
 
 
 
-$sql = "SELECT * FROM tb_inventory WHERE i_status='1'";
+$sql = "SELECT * FROM tb_inventory WHERE i_status='2'";
 $result = mysqli_query($con, $sql);
 $count = 0;
 
@@ -94,42 +94,41 @@ include 'headermain.php';
     <div class="content-body">
   <?php      
 // Display success message
-if (isset($_SESSION['success_message'])) {
+if (isset($_SESSION['success1_message'])) {
     echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-            {$_SESSION['success_message']}
+            {$_SESSION['success1_message']}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
           </div>";
 
-    unset($_SESSION['success_message']);
+    unset($_SESSION['success1_message']);
 }
 
 // Display error message
-if (isset($_SESSION['error_message'])) {
+if (isset($_SESSION['error1_message'])) {
     echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-            {$_SESSION['error_message']}
+            {$_SESSION['error1_message']}
             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
           </div>";
 
-    unset($_SESSION['error_message']);
+    unset($_SESSION['error1_message']);
 }
 ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card"><br>
-                         <div class="container mt-4">
-                         <div class="mb-3 d-flex justify-content-between align-items-center">
-    <div>
-        <a href="deleteInventory.php" class="btn btn-primary ml-auto">Inventory Bin</a>
-    </div>
-</div>
-</div>
+                    <div class="card">
+
                         <div class="container mt-4">
-                            <h1 class="mb-4" style="text-align: center;">Inventory</h1><br><br>
-                           <div class="mb-3 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Add Inventory</a>
+                           
+                         <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div>
+                                    <a href="Inventory.php" class="btn btn-primary">Back</a>
                                 </div>
+</div>
+                            <h1 class="mb-4" style="text-align: center;">Inventory Bin</h1><br><br>
+
+                           <div class="mb-3 d-flex justify-content-between align-items-center">
+                                
                                 <div class="mx-2">
                                     <button type="button" class="btn btn-secondary" onclick="showAllProducts()">Show All Products</button>
                                 </div>
@@ -178,9 +177,8 @@ if (isset($_SESSION['error_message'])) {
                                                   <td> <?php echo $row['i_markupRate']; ?>%</td>
                                                 <td>RM <?php echo $row['i_price']; ?></td>
                                                 <td>
-                                                    <a href="modify.php?id=<?php echo $row['i_no']; ?>" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a><br><br>
 
-                                                    <a href="Delete.php?id=<?php echo $row['i_no']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                                    <a href="Recover.php?id=<?php echo $row['i_no']; ?>" class="btn btn-success btn-sm">Recover</a>
                                                     
                                                 </td>
                                             </tr>
@@ -188,17 +186,7 @@ if (isset($_SESSION['error_message'])) {
                                         <?php
                                         }
                                         ?>
-                                 <?php if (!empty($lowStockProducts)) : ?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong style="font-size: 20px;">Low in stock:</strong>
-        <ul>
-            <?php foreach ($lowStockProducts as $product) : ?>
-                <li><b>Product: </b><?php echo $product['i_name']; ?> (Quantity left: <?php echo $product['i_qty']; ?>)</li>
-            <?php endforeach; ?>
-        </ul>
-        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-    </div>
-<?php endif; ?>
+                                
 
                                     </tbody>
                                 </table>
