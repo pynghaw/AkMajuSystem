@@ -36,6 +36,16 @@ $formattedTotalProfit = number_format($totalProfit, 2);
 $inventoryDataSql = "SELECT i_name, i_qtysold FROM tb_inventory";
 $inventoryDataResult = mysqli_query($con, $inventoryDataSql);
 
+$topSoldItemSql = "SELECT i_name, i_qtysold FROM tb_inventory ORDER BY i_qtysold DESC LIMIT 1";
+$topSoldItemResult = mysqli_query($con, $topSoldItemSql);
+
+if ($topSoldItemResult && mysqli_num_rows($topSoldItemResult) > 0) {
+    $topSoldItem = mysqli_fetch_assoc($topSoldItemResult);
+} else {
+    // Handle the query error or empty result if needed
+    $topSoldItem = array(); // or any default value
+}
+
 // Create an associative array to hold the data
 $inventoryData = array();
 while ($row = mysqli_fetch_assoc($inventoryDataResult)) {
@@ -43,26 +53,15 @@ while ($row = mysqli_fetch_assoc($inventoryDataResult)) {
 }
 $encodedInventoryData = json_encode($inventoryData);
 
-$dailySalesSql = "SELECT DATE(iv_date) AS sale_date, SUM(iv_tAmount) AS total_sales
-                  FROM tb_invoice
-                  WHERE iv_status = 1
-                  GROUP BY DATE(iv_date)
-                  ORDER BY DATE(iv_date) ASC";
+$profitByDateSql = "SELECT DATE(iv_date) AS date, SUM(iv_tAmount) AS totalSales FROM tb_invoice WHERE iv_status = 1 GROUP BY DATE(iv_date)";
+$profitByDateResult = mysqli_query($con, $profitByDateSql);
 
-$dailySalesResult = mysqli_query($con, $dailySalesSql);
-
-// Create arrays to store date labels and total sales data
-$dateLabels = [];
-$totalSalesData = [];
-
-while ($row = mysqli_fetch_assoc($dailySalesResult)) {
-    $dateLabels[] = $row['sale_date'];
-    $totalSalesData[] = $row['total_sales'];
+// Create an associative array to hold the profit data by date
+$profitByDateData = array();
+while ($row = mysqli_fetch_assoc($profitByDateResult)) {
+    $profitByDateData[] = $row;
 }
-
-// Convert arrays to JSON for use in JavaScript
-$encodedDateLabels = json_encode($dateLabels);
-$encodedTotalSalesData = json_encode($totalSalesData);
+$encodedProfitByDateData = json_encode($profitByDateData);
 ?>
 
 
@@ -100,10 +99,10 @@ $encodedTotalSalesData = json_encode($totalSalesData);
                 <div class="col-lg-3 col-sm-6">
                     <div class="card gradient-3">
                         <div class="card-body">
-                            <h3 class="card-title text-white">Total Customers</h3>
+                            <h3 class="card-title text-white">Top Item Sold</h3>
                             <div class="d-inline-block">
-                                <h2 class="text-white"><?php echo $totalCustomers; ?></h2>
-                                <p class="text-white mb-0">Number of Customers</p>
+                                <h2 class="text-white"><?php echo $topSoldItem['i_name']; ?></h2>
+                                <p class="text-white mb-0">Number sold:<?php echo $topSoldItem['i_qtysold']; ?></p>
                             </div>
                             <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                         </div>
@@ -127,8 +126,8 @@ $encodedTotalSalesData = json_encode($totalSalesData);
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Daily Sales Chart</h4>
-                            <div id="dailySalesChart" class="ct-chart ct-golden-section" width="100%" height="auto"></div>
+                                <h4 class="card-title">Total Sales by Date</h4>
+                                <canvas id="lineChart"  width="500" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -136,8 +135,8 @@ $encodedTotalSalesData = json_encode($totalSalesData);
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-body ">
-                        <h4 class="card-title">Items Sold</h4>
-                                <canvas id="singleBarChart" width="500" height="250"></canvas>
+                            <h4 class="card-title">Items Sold</h4>
+                            <canvas id="singleBarChart" width="500" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -256,7 +255,7 @@ $encodedTotalSalesData = json_encode($totalSalesData);
     <?php
       // Pass the encoded JSON data to JavaScript
 echo "<script> var inventoryData = $encodedInventoryData; </script>";
-
+echo "<script> var profitByDateData = $encodedProfitByDateData; </script>";
 // Use the data in JavaScript
 echo "<script>
     var itemLabels = inventoryData.map(item => item.i_name);
@@ -283,41 +282,39 @@ echo "<script>
                 }
             }
         }
-    });
+    });   </script>";
 
-        var dateLabels = $encodedDateLabels;
-        var totalSalesData = $encodedTotalSalesData;
+    echo "<script>
+    var dateLabels = profitByDateData.map(item => item.date);
+    var totalProfitData = profitByDateData.map(item => item.totalSales);
 
-        var ctx = document.getElementById('dailySalesChart').getContext('2d');
-        var dailySalesChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: dateLabels,
-                datasets: [{
-                    label: 'Total Sales',
-                    data: totalSalesData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'day',
-                            displayFormats: {
-                                day: 'MMM D'
-                            }
-                        }
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
+    var ctxLine = document.getElementById('lineChart').getContext('2d');
+
+    var lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: dateLabels,
+            datasets: [{
+                label: 'Total Profit',
+                data: totalProfitData,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'category',
+                    labels: dateLabels
+                },
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
-    </script>";
+        }
+    });
+</script>";
+
      include 'footer.php'; ?>
 </body>
