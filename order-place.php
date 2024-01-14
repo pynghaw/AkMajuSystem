@@ -33,7 +33,7 @@ include 'headermain.php'; ?>
       <label for="exampleSelect1" class="form-label mt-4">Select Customer</label>
 
       <?php
-      $sql="SELECT * FROM tb_customer";
+      $sql="SELECT * FROM tb_customer WHERE c_status= 1";
       $result=mysqli_query($con,$sql);
       echo '<select class="form-control" id="exampleSelect1" name="customer_id">';
       while($row=mysqli_fetch_array($result))

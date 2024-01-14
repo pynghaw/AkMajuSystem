@@ -106,7 +106,7 @@ $encodedInventoryData = json_encode($inventoryData);
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-body ">
-                        <h4 class="card-title">Single Bar Chart</h4>
+                        <h4 class="card-title">Items Sold</h4>
                                 <canvas id="singleBarChart" width="500" height="250"></canvas>
                         </div>
                     </div>
