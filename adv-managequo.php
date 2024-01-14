@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <option value="0" <?php echo ($selectedOption == 0) ? 'selected' : ''; ?>>Pending</option>
                                     <option value="1" <?php echo ($selectedOption == 1) ? 'selected' : ''; ?>>Confirmed</option>
                                 </select>
-                                <button type="submit" class="btn mb-1 btn-outline-success btn-sm">Filter</button>
+                                <button type="submit" class="btn btn-success btn-sm padd">Filter</button>
                             </form>
 
                             <!-- Display Quotations based on selected status -->

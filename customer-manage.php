@@ -58,7 +58,7 @@ $result = mysqli_query($con, $sql);
                                                     <td>
                                                         <?php
                                                         echo '<a href="customer-modify.php?id=' . $row['c_id'] . '" class="btn btn-warning btn-sm padd"><i class="bi bi-pencil-square"></i> Modify</a> &nbsp;';
-                                                        echo '<a href="customer-remove.php?id=' . $row['c_id'] . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Remove</a>';
+                                                        echo '<a href="customer-remove.php?id=' . $row['c_id'] . '" class="btn btn-danger btn-sm padd"><i class="fa fa-trash"></i> Remove</a>';
                                                         ?>
                                                     </td>
                                                 </tr>
