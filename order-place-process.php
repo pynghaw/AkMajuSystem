@@ -12,6 +12,11 @@ $sql = "SELECT i.*, COALESCE(o.o_quantity, 0) AS o_quantity
 
 // Execute
 $result = mysqli_query($con, $sql);
+
+$sqlr = "SELECT i.* FROM tb_inventory i WHERE i.i_qty > 0";
+
+// Execute
+$resultr = mysqli_query($con, $sqlr);
 ?>
 
 <body>
@@ -43,7 +48,7 @@ $result = mysqli_query($con, $sql);
                                     <select id="selectItem">
                                         <?php
                                         // Display available items for selection
-                                        while ($row = mysqli_fetch_array($result)) {
+                                        while ($row = mysqli_fetch_array($resultr)) {
                                             // Calculate discounted unit price
                                             $discountedPrice = $row['i_price'] * (1 - $discount / 100);
                                             echo "<option value='{$row['i_no']}' data-desc='{$row['i_desc']}' data-unit-price='{$discountedPrice}'>{$row['i_name']} (RM {$discountedPrice})</option>";
