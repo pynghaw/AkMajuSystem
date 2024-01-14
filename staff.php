@@ -32,7 +32,19 @@ $totalCustomersSql = "SELECT COUNT(*) FROM tb_customer";
 $totalCustomers = fetchSingleValue($con, $totalCustomersSql);
 
 $formattedTotalProfit = number_format($totalProfit, 2);
+
+$inventoryDataSql = "SELECT i_name, i_qtysold FROM tb_inventory";
+$inventoryDataResult = mysqli_query($con, $inventoryDataSql);
+
+// Create an associative array to hold the data
+$inventoryData = array();
+while ($row = mysqli_fetch_assoc($inventoryDataResult)) {
+    $inventoryData[] = $row;
+}
+$encodedInventoryData = json_encode($inventoryData);
 ?>
+
+
 <body>
     <!--**********************************
             Content body start
@@ -91,25 +103,11 @@ $formattedTotalProfit = number_format($totalProfit, 2);
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="card">
-                        <div class="card-body px-0">
-                            <h4 class="card-title px-4 mb-3">Todo</h4>
-                            <div class="todo-list">
-                                <div class="tdl-holder">
-                                    <div class="tdl-content">
-                                        <ul id="todo_list">
-                                            <li><label><input type="checkbox"><i></i><span>Get up</span><a href='#' class="ti-trash"></a></label></li>
-                                            <li><label><input type="checkbox" checked><i></i><span>Stand up</span><a href='#' class="ti-trash"></a></label></li>
-                                            <li><label><input type="checkbox"><i></i><span>Don't give up the fight.</span><a href='#' class="ti-trash"></a></label></li>
-                                            <li><label><input type="checkbox" checked><i></i><span>Do something else</span><a href='#' class="ti-trash"></a></label></li>
-                                        </ul>
-                                    </div>
-                                    <div class="px-4">
-                                        <input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body ">
+                        <h4 class="card-title">Single Bar Chart</h4>
+                                <canvas id="singleBarChart" width="500" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -222,5 +220,40 @@ $formattedTotalProfit = number_format($totalProfit, 2);
             Content body end
         ***********************************-->
 
-    <?php include 'footer.php'; ?>
+      
+
+
+    <?php
+      // Pass the encoded JSON data to JavaScript
+echo "<script> var inventoryData = $encodedInventoryData; </script>";
+
+// Use the data in JavaScript
+echo "<script>
+    var itemLabels = inventoryData.map(item => item.i_name);
+    var quantitySoldData = inventoryData.map(item => item.i_qtysold);
+
+    var ctx = document.getElementById('singleBarChart').getContext('2d');
+
+    var singleBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: itemLabels,
+            datasets: [{
+                label: 'Quantity Sold',
+                data: quantitySoldData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>";
+     include 'footer.php'; ?>
 </body>
