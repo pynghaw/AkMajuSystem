@@ -14,7 +14,7 @@ $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
 $sqlr = "SELECT tb_user.*, tb_status.s_desc, tb_user.u_type
          FROM tb_user
          LEFT JOIN tb_status ON tb_user.u_status = tb_status.s_status
-         WHERE tb_user.u_type = '1' ";
+         WHERE 1 ";
 
 if ($statusFilter === 'activate') {
     $sqlr .= " AND tb_status.s_desc = 'Active'";
