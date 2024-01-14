@@ -28,7 +28,7 @@ $totalProfitSql = "SELECT SUM(iv_tAmount) FROM tb_invoice WHERE iv_status = 1";
 $totalProfit = fetchSingleValue($con, $totalProfitSql);
 
 // Total customers
-$totalCustomersSql = "SELECT COUNT(*) FROM tb_customer";
+$totalCustomersSql = "SELECT COUNT(*) FROM tb_customer WHERE c_status= 1";
 $totalCustomers = fetchSingleValue($con, $totalCustomersSql);
 
 $formattedTotalProfit = number_format($totalProfit, 2);
