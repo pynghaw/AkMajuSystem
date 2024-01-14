@@ -85,14 +85,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     if ($row['q_status'] == 0) {
                                                         // Pending Quotation Operations
                                                     ?>
-                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-secondary">Review</a> &nbsp;
-                                                        <a href="invoice-upfront.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-success">Generate Invoice</a> &nbsp;
-                                                        <a href="adv-deletequo.php?q_no=<?php echo $row['q_no']; ?>" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a>
+                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-secondary">Review</a> &nbsp;
+                                                        <a href="invoice-upfront.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-success">Generate Invoice</a> &nbsp;
+                                                        <a href="adv-deletequo.php?q_no=<?php echo $row['q_no']; ?>" onclick="return confirmDelete();" class="btn btn-danger">Delete</a>
                                                     <?php
                                                     } elseif ($row['q_status'] == 1) {
                                                         // Confirmed Quotation Operations
                                                     ?>
-                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-secondary">Review</a> &nbsp;
+                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-secondary">Review</a> &nbsp;
                                                     <?php
                                                     }
                                                     ?>
