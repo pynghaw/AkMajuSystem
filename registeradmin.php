@@ -73,7 +73,7 @@ include('headermainadmin.php');?>
                                         placeholder="Email Address" required>
                                 </div><br>
                                 <div class="form-group ">
-                                    <input type="tel" name="ftel" class="form-control form-control-user" id="PhoneNumber"
+                                    <input type="number" name="ftel" class="form-control form-control-user" id="PhoneNumber"
                                         placeholder="Phone Number" required>
                                 </div><br>
                                 <div class="form-group ">
