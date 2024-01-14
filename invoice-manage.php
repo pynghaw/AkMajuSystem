@@ -1,6 +1,6 @@
 <?php
 include 'headermain.php';
-include('dbconnect.php');
+include 'dbconnect.php';
 require 'fpdf186/fpdf.php';
 
 // Check if the form is submitted
@@ -45,46 +45,59 @@ $result = mysqli_query($con, $sql);
                             <h2>Manage Invoice</h2>
 
                             <!-- Form for Invoice Status Filter -->
-                            <form method="POST" action="">
-                                <label for="invoice_status">Select Invoice Status:</label>
-                                <select name="invoice_status" id="invoice_status">
-                                    <option value="unpaid" <?php echo ($selectedOption == 'unpaid') ? 'selected' : ''; ?>>Unpaid</option>
-                                    <option value="paid" <?php echo ($selectedOption == 'paid') ? 'selected' : ''; ?>>Paid</option>
-                                </select>
-                                <button type="submit" class="btn mb-1 btn-outline-success btn-sm">Filter</button>
-                            </form>
+                            <div class="mb-3">
+                                <form method="POST" action="">
+                                    <label for="invoice_status">Select Invoice Status:</label>
+                                    <select name="invoice_status" id="invoice_status">
+                                        <option value="unpaid" <?php echo ($selectedOption == 'unpaid') ? 'selected' : ''; ?>>Unpaid</option>
+                                        <option value="paid" <?php echo ($selectedOption == 'paid') ? 'selected' : ''; ?>>Paid</option>
+                                    </select>
+                                    <button type="submit" class="btn mb-1 btn-outline-success btn-sm">Filter</button>
+                                </form>
+                            </div>
 
                             <!-- Display Invoices -->
                             <legend><?php echo ucfirst($selectedOption); ?> Invoices</legend>
                             <?php
                             if (mysqli_num_rows($result) > 0) {
-                                echo '<table class="table">';
-                                echo '<tr>';
-                                echo '<th>Invoice No</th>';
-                                echo '<th>Customer Name</th>';
-                                echo '<th>Invoice Date</th>';
-                                echo '<th>Operation</th>';
-                                echo '</tr>';
+                            ?>
+                                <table class="table fixed-table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Invoice No</th>
+                                            <th>Customer Name</th>
+                                            <th>Invoice Date</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['iv_no']; ?></td>
+                                                <td><?php echo $row['c_name']; ?></td>
+                                                <td><?php echo $row['iv_date']; ?></td>
+                                                <td>
+                                                    <a href="invoice-review.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-outline-secondary">Review</a> &nbsp;
 
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<tr>';
-                                    echo '<td>' . $row['iv_no'] . '</td>';
-                                    echo '<td>' . $row['c_name'] . '</td>';
-                                    echo '<td>' . $row['iv_date'] . '</td>';
-                                    echo '<td>';
-                                    echo '<a href="invoice-review.php?iv_no=' . $row['iv_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
-
-                                    // Different operations based on invoice status
-                                    if ($selectedOption == 'unpaid') {
-                                        echo '<button onclick="updateStatus(' . $row['iv_no'] .')" class="btn btn-outline-success">Mark as Paid</button> &nbsp;';
-                                        echo '<a href="invoice-delete.php?iv_no=' . $row['iv_no'] . '" class="btn btn-outline-danger">Delete</a>';
-                                    }
-
-                                    echo '</td>';
-                                    echo '</tr>';
-                                }
-
-                                echo '</table>';
+                                                    <!-- Different operations based on invoice status -->
+                                                    <?php
+                                                    if ($selectedOption == 'unpaid') {
+                                                    ?>
+                                                        <button onclick="updateStatus(<?php echo $row['iv_no']; ?>)" class="btn btn-outline-success">Mark as Paid</button> &nbsp;
+                                                        <a href="invoice-delete.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-outline-danger">Delete</a>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            <?php
                             } else {
                                 echo 'No ' . $selectedOption . ' invoices found.';
                             }

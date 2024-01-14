@@ -32,16 +32,18 @@ $result = mysqli_query($con, $sql);
                         <?php
                         // Check if there are delivery orders
                         if (mysqli_num_rows($result) > 0) {
-                            echo '<table class="table">';
+                            echo '<table class="table fixed-table table-bordered">';
+                            echo '<thead class="thead-dark">';
                             echo '<tr>';
                             echo '<th>Delivery Order No</th>';
                             echo '<th>Customer Name</th>';
                             echo '<th>Delivery Date</th>';
                             echo '<th>Terms of Payment</th>';
                             echo '<th>Delivery Address</th>';
-                            echo '<th>Operation</th>';
+                            echo '<th  style="text-align: center;">Operation</th>';
                             echo '</tr>';
-
+                            echo '</thead>';
+                            echo '<tbody>';
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo '<tr>';
                                 echo '<td>' . $row['d_no'] . '</td>';
@@ -49,11 +51,11 @@ $result = mysqli_query($con, $sql);
                                 echo '<td>' . $row['d_date'] . '</td>';
                                 echo '<td>' . $row['d_terms'] . '</td>';
                                 echo '<td>' . $row['d_recpAdd'] . '</td>';
-                                echo '<td><a href="do-review.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-secondary">View</a> &nbsp;';
+                                echo '<td  style="text-align: center;"><a href="do-review.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-secondary">View</a> &nbsp;';
                                 echo '<a href="do-delete.php?d_no=' . $row['d_no'] . '" class="btn btn-outline-danger">Delete</a></td>';
                                 echo '</tr>';
                             }
-
+                            echo '</tbody>';
                             echo '</table>';
                         } else {
                             echo 'No delivery orders found.';

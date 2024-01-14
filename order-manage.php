@@ -29,7 +29,6 @@ $result = mysqli_query($con, $sql);
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Manage Orders</a></li>
-                
             </ol>
         </div>
     </div>
@@ -45,13 +44,14 @@ $result = mysqli_query($con, $sql);
 
                             <div class="d-flex justify-content-between mb-3">
 
-                            <div>
+                                <div>
                                     <label for="status" class="mr-2">Show:</label>
                                     <select class="form-select" id="status" onchange="filterOrders(this.value)">
                                         <option value="0" <?php echo ($status == 0) ? 'selected' : ''; ?>>Pending Orders</option>
                                         <option value="1" <?php echo ($status == 1) ? 'selected' : ''; ?>>Confirmed Orders</option>
                                     </select>
                                 </div>
+
                                 <!-- Sorting dropdown -->
                                 <div class="mr-3">
                                     <label for="sort" class="mr-2">Sort by:</label>
@@ -61,58 +61,55 @@ $result = mysqli_query($con, $sql);
                                         <option value="i.i_name" <?php echo ($sort == 'i.i_name') ? 'selected' : ''; ?>>Item Name</option>
                                     </select>
                                 </div>
-
-                                <!-- Filtering dropdown for pending/confirmed orders -->
-                                
                             </div>
 
                             <div class="table-responsive">
-    <table id="inventoryTable" class="table">
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Customer Name</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Order Date</th>
-                <?php
-                if ($status == 0) {
-                    // Display "Operation" column header only for pending orders
-                ?>
-                    <th>Operation</th>
-                <?php
-                }
-                ?>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-            ?>
-                <tr>
-                    <td><?php echo $row['o_no']; ?></td>
-                    <td><?php echo $row['c_name']; ?></td>
-                    <td><?php echo $row['i_name']; ?></td>
-                    <td><?php echo $row['o_quantity']; ?></td>
-                    <td><?php echo $row['o_date']; ?></td>
-                    <?php
-                    if ($status == 0) {
-                        // Display "Operation" column cells only for pending orders
-                    ?>
-                        <td>
-                            <a href="order-modify.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-outline-secondary">Modify</a> &nbsp;
-                            <a href="order-cancel.php?o_no=<?php echo $row['o_no']; ?>" onclick="return confirmDelete();" class="btn btn-outline-danger">Cancel Order</a>
-                        </td>
-                    <?php
-                    }
-                    ?>
-                </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
-</div>
+                                <table id="inventoryTable"class="table fixed-table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer Name</th>
+                                            <th>Item Name</th>
+                                            <th>Quantity</th>
+                                            <th>Order Date</th>
+                                            <?php
+                                            if ($status == 0) {
+                                                // Display "Operation" column header only for pending orders
+                                            ?>
+                                                <th style="text-align: center;">Operation</th>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['o_no']; ?></td>
+                                                <td><?php echo $row['c_name']; ?></td>
+                                                <td><?php echo $row['i_name']; ?></td>
+                                                <td><?php echo $row['o_quantity']; ?></td>
+                                                <td><?php echo $row['o_date']; ?></td>
+                                                <?php
+                                                if ($status == 0) {
+                                                    // Display "Operation" column cells only for pending orders
+                                                ?>
+                                                    <td style="text-align: center;">
+                                                        <a href="order-modify.php?o_no=<?php echo $row['o_no']; ?>" class="btn btn-warning btn-sm padd">Modify</a> &nbsp;
+                                                        <a href="order-cancel.php?o_no=<?php echo $row['o_no']; ?>" onclick="return confirmDelete();" class="btn btn-danger btn-sm">Cancel Order</a>
+                                                    </td>
+                                                <?php
+                                                }
+                                                ?>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,7 +127,7 @@ include 'footer.php';
 mysqli_close($con);
 ?>
 
-<!-- JavaScript for filtering, sorting, and displaying products -->
+<!-- JavaScript for filtering, sorting, and displaying orders -->
 <script>
     function filterOrders(status) {
         var url = window.location.href.split('?')[0]; // Get the current URL without parameters

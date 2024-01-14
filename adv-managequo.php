@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statusResult = mysqli_query($con, $statusSql);
 }
 ?>
+
 <!--**********************************
     Content body start
 ***********************************-->
@@ -55,40 +56,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <option value="0" <?php echo ($selectedOption == 0) ? 'selected' : ''; ?>>Pending</option>
                                     <option value="1" <?php echo ($selectedOption == 1) ? 'selected' : ''; ?>>Confirmed</option>
                                 </select>
-                                <button type="submit" class="btn mb-1 btn-outline-success  btn-sm">Filter</button>
+                                <button type="submit" class="btn mb-1 btn-outline-success btn-sm">Filter</button>
                             </form>
 
                             <!-- Display Quotations based on selected status -->
                             <?php
                             if (mysqli_num_rows($statusResult) > 0) {
-                                echo '<table class="table">';
-                                echo '<tr>';
-                                echo '<th>Quotation No</th>';
-                                echo '<th>Customer Name</th>';
-                                echo '<th>Quotation Date</th>';
-                                echo '<th>Operation</th>';
-                                echo '</tr>';
-
-                                while ($row = mysqli_fetch_assoc($statusResult)) {
-                                    echo '<tr>';
-                                    echo '<td>' . $row['q_no'] . '</td>';
-                                    echo '<td>' . $row['c_name'] . '</td>';
-                                    echo '<td>' . $row['q_date'] . '</td>';
-                                    echo '<td>';
-                                    if ($row['q_status'] == 0) {
-                                        // Pending Quotation Operations
-                                        echo '<a href="adv-reviewquo.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
-                                        echo '<a href="invoice-upfront.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-success">Generate Invoice</a> &nbsp;';
-                                        echo '<a href="adv-deletequo.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a>';
-                                    } elseif ($row['q_status'] == 1) {
-                                        // Confirmed Quotation Operations
-                                        echo '<a href="adv-reviewquo.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
-                                    }
-                                    echo '</td>';
-                                    echo '</tr>';
-                                }
-
-                                echo '</table>';
+                            ?>
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Quotation No</th>
+                                            <th>Customer Name</th>
+                                            <th>Quotation Date</th>
+                                            <th style="text-align: center;">Operation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($statusResult)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['q_no']; ?></td>
+                                                <td><?php echo $row['c_name']; ?></td>
+                                                <td><?php echo $row['q_date']; ?></td>
+                                                <td style="text-align: center;">
+                                                    <?php
+                                                    if ($row['q_status'] == 0) {
+                                                        // Pending Quotation Operations
+                                                    ?>
+                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-secondary">Review</a> &nbsp;
+                                                        <a href="invoice-upfront.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-success">Generate Invoice</a> &nbsp;
+                                                        <a href="adv-deletequo.php?q_no=<?php echo $row['q_no']; ?>" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a>
+                                                    <?php
+                                                    } elseif ($row['q_status'] == 1) {
+                                                        // Confirmed Quotation Operations
+                                                    ?>
+                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-outline-secondary">Review</a> &nbsp;
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            <?php
                             } else {
                                 echo 'No quotations found.';
                             }
@@ -101,6 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <!-- #/ container -->
 </div>
+
 <!-- Add this script at the end of your HTML body -->
 <script>
     function confirmDelete() {
