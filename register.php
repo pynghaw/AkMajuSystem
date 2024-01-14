@@ -65,7 +65,7 @@
                                 <div class="form-group ">
                                 
                                         <input type="text" name="fid" class="form-control form-control-user" id="id"
-                                            placeholder="UserID (MAxlength 5)" required maxlength="5">
+                                            placeholder="UserID (Maxlength 10)" required maxlength="10">
                                 </div><br>
 
                                     <div class="form-group ">
