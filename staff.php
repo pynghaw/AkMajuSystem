@@ -144,9 +144,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/admin.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Amirah Aida Binti Samad</h5>
+                                <p class="m-0">Admin/Account Officer</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
@@ -156,9 +156,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/customerservice.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Aina Nabihah Binti Roslan</h5>
+                                <p class="m-0">Customer Service</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
@@ -170,9 +170,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/seniordesigner.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Nor Zalila Binti Mohd Jizad</h5>
+                                <p class="m-0">Senior Designer</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
@@ -182,9 +182,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/marketing.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Siti Aishah Binti Paiman</h5>
+                                <p class="m-0">Marketing</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
@@ -194,9 +194,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/seniordesigner2.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Fauzan Bin Mohammad Khir</h5>
+                                <p class="m-0">Senior Designer 2</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
@@ -206,9 +206,9 @@ $formattedTotalProfit = number_format($totalProfit, 2);
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <img src="./images/member/ceo.png" class="rounded-circle" alt="" style="width:50%; height:auto">
-                                <h5 class="mt-3 mb-1">Noor Azam Bin Khalid</h5>
-                                <p class="m-0">CEO</p>
+                                <img src="./images/member/juniordesigner.png" class="rounded-circle" alt="" style="width:50%; height:auto">
+                                <h5 class="mt-3 mb-1">Akid Anaqi Bin Noranizam</h5>
+                                <p class="m-0">Junior Designer</p>
                                 <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
                             </div>
                         </div>
