@@ -56,7 +56,7 @@ $resultr = mysqli_query($con, $sqlr);
                                         ?>
                                     </select>
                                     <input type="number" id="orderQuantity" placeholder="Quantity" min="0">
-                                    <button type="button" onclick="addOrder()">Add Order</button>
+                                    <button type="button" class="btn btn-success btn-sm padd"onclick="addOrder()">Add Order</button>
                                 </form>
                             </div>
 
@@ -81,7 +81,7 @@ $resultr = mysqli_query($con, $sqlr);
                             <div>
                                 <input type="hidden" id="customer_id" value="<?php echo $customer_id; ?>">
                                 <input type="hidden" id="discount" value="<?php echo $discount; ?>">
-                                <button type="button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                                <button type="button" class="btn btn-primary btn-sm padd" onclick="proceedToCheckout()">Proceed to Checkout</button>
                             </div>
                         </div>
                     </div>
