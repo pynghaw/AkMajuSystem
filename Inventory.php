@@ -120,7 +120,7 @@ if (isset($_SESSION['error_message'])) {
                          <div class="container mt-4">
                          <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
-        <a href="deleteInventory.php" class="btn btn-primary ml-auto">Inventory Bin</a>
+        <a href="deleteInventory.php" class="btn btn-primary ml-auto">Inventory Recycle Bin</a>
     </div>
 </div>
 </div>

@@ -13,7 +13,7 @@ $count = 0;
 
 
 include 'headernotification.php';
-include 'headermain.php';
+include 'headermainadmin.php';
 
 ?>
 
@@ -122,7 +122,7 @@ if (isset($_SESSION['error1_message'])) {
                            
                          <div class="mb-3 d-flex justify-content-between align-items-center">
                             <div>
-                                    <a href="Inventory.php" class="btn btn-primary">Back</a>
+                                    <a href="Inventory1.php" class="btn btn-primary">Back</a>
                                 </div>
 </div>
                             <h1 class="mb-4" style="text-align: center;">Inventory Recycle Bin</h1><br><br>
@@ -178,7 +178,7 @@ if (isset($_SESSION['error1_message'])) {
                                                 <td>RM <?php echo $row['i_price']; ?></td>
                                                 <td>
 
-                                                    <a href="Recover.php?id=<?php echo $row['i_no']; ?>" class="btn btn-success btn-sm">Recover</a>
+                                                    <a href="Recover1.php?id=<?php echo $row['i_no']; ?>" class="btn btn-success btn-sm">Recover</a>
                                                     
                                                 </td>
                                             </tr>
