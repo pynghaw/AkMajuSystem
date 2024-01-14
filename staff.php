@@ -42,6 +42,27 @@ while ($row = mysqli_fetch_assoc($inventoryDataResult)) {
     $inventoryData[] = $row;
 }
 $encodedInventoryData = json_encode($inventoryData);
+
+$dailySalesSql = "SELECT DATE(iv_date) AS sale_date, SUM(iv_tAmount) AS total_sales
+                  FROM tb_invoice
+                  WHERE iv_status = 1
+                  GROUP BY DATE(iv_date)
+                  ORDER BY DATE(iv_date) ASC";
+
+$dailySalesResult = mysqli_query($con, $dailySalesSql);
+
+// Create arrays to store date labels and total sales data
+$dateLabels = [];
+$totalSalesData = [];
+
+while ($row = mysqli_fetch_assoc($dailySalesResult)) {
+    $dateLabels[] = $row['sale_date'];
+    $totalSalesData[] = $row['total_sales'];
+}
+
+// Convert arrays to JSON for use in JavaScript
+$encodedDateLabels = json_encode($dateLabels);
+$encodedTotalSalesData = json_encode($totalSalesData);
 ?>
 
 
@@ -103,6 +124,15 @@ $encodedInventoryData = json_encode($inventoryData);
             </div>
 
             <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Daily Sales Chart</h4>
+                            <div id="dailySalesChart" class="ct-chart ct-golden-section" width="100%" height="auto"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-body ">
@@ -254,6 +284,40 @@ echo "<script>
             }
         }
     });
-</script>";
+
+        var dateLabels = $encodedDateLabels;
+        var totalSalesData = $encodedTotalSalesData;
+
+        var ctx = document.getElementById('dailySalesChart').getContext('2d');
+        var dailySalesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dateLabels,
+                datasets: [{
+                    label: 'Total Sales',
+                    data: totalSalesData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            displayFormats: {
+                                day: 'MMM D'
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>";
      include 'footer.php'; ?>
 </body>
