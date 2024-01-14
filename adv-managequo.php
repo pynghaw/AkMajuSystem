@@ -85,9 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     if ($row['q_status'] == 0) {
                                                         // Pending Quotation Operations
                                                     ?>
-                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-secondary">Review</a> &nbsp;
-                                                        <a href="invoice-upfront.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-success">Generate Invoice</a> &nbsp;
-                                                        <a href="adv-deletequo.php?q_no=<?php echo $row['q_no']; ?>" onclick="return confirmDelete();" class="btn btn-danger">Delete</a>
+                                                        <a href="adv-reviewquo.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-secondary btn-sm padd">Review</a> &nbsp;
+                                                        <a href="invoice-upfront.php?q_no=<?php echo $row['q_no']; ?>" class="btn btn-success btn-sm padd">Generate Invoice</a> &nbsp;
+                                                        <a href="adv-deletequo.php?q_no=<?php echo $row['q_no']; ?>" onclick="return confirmDelete();" class="btn btn-danger btn-sm padd">Delete</a>
                                                     <?php
                                                     } elseif ($row['q_status'] == 1) {
                                                         // Confirmed Quotation Operations

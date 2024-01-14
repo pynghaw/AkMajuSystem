@@ -52,7 +52,7 @@ $result = mysqli_query($con, $sql);
                                         <option value="unpaid" <?php echo ($selectedOption == 'unpaid') ? 'selected' : ''; ?>>Unpaid</option>
                                         <option value="paid" <?php echo ($selectedOption == 'paid') ? 'selected' : ''; ?>>Paid</option>
                                     </select>
-                                    <button type="submit" class="btn mb-1 btn-outline-success btn-sm">Filter</button>
+                                    <button type="submit" class="btn btn-success btn-sm padd">Filter</button>
                                 </form>
                             </div>
 
@@ -79,14 +79,14 @@ $result = mysqli_query($con, $sql);
                                                 <td><?php echo $row['c_name']; ?></td>
                                                 <td><?php echo $row['iv_date']; ?></td>
                                                 <td  style="text-align: center;">
-                                                    <a href="invoice-review.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-secondary">Review</a> &nbsp;
+                                                    <a href="invoice-review.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-secondary btn-sm padd">Review</a> &nbsp;
 
                                                     <!-- Different operations based on invoice status -->
                                                     <?php
                                                     if ($selectedOption == 'unpaid') {
                                                     ?>
-                                                        <button onclick="updateStatus(<?php echo $row['iv_no']; ?>)" class="btn btn-success">Mark as Paid</button> &nbsp;
-                                                        <a href="invoice-delete.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-danger">Delete</a>
+                                                        <button onclick="updateStatus(<?php echo $row['iv_no']; ?>)" class="btn btn-success btn-sm padd">Mark as Paid</button> &nbsp;
+                                                        <a href="invoice-delete.php?iv_no=<?php echo $row['iv_no']; ?>" class="btn btn-danger btn-sm padd">Delete</a>
                                                     <?php
                                                     }
                                                     ?>

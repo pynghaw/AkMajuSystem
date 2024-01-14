@@ -49,8 +49,8 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['c_name'] . '</td>';
                                     echo '<td>' . $row['q_date'] . '</td>';
                                     echo '<td>' . $row['q_status'] . '</td>';
-                                    echo '<td><a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-outline-secondary">Review</a> &nbsp;';
-                                    echo '<a href="quotationremove.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-outline-danger">Delete</a></td>';
+                                    echo '<td><a href="regeneratequotationprocess.php?q_no=' . $row['q_no'] . '" class="btn btn-secondary btn-sm padd">Review</a> &nbsp;';
+                                    echo '<a href="quotationremove.php?q_no=' . $row['q_no'] . '" onclick="return confirmDelete();" class="btn btn-danger btn-sm padd">Delete</a></td>';
                                     echo '</tr>';
                                 }
 
