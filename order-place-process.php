@@ -131,7 +131,7 @@ $resultr = mysqli_query($con, $sqlr);
                     '<td>' + order.desc + '</td>' +
                     '<td>' + order.unitPrice + '</td>' +
                     '<td>' + order.quantity + '</td>' +
-                    '<td><button type="button" onclick="removeOrder(' + i + ')">Remove</button></td>' +
+                    '<td><button class="btn btn-danger btn-sm padd" type="button" onclick="removeOrder(' + i + ')">Remove</button></td>' +
                     '</tr>';
             }
         }
