@@ -91,7 +91,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->MultiCell(30, 2.5, "$customerName\n
+$pdf->MultiCell(30, 4, "$customerName\n
 $billingAddress");
 $pdf->SetXY(126, 56);
 $pdf->SetFont('Arial', 'B', 8);
