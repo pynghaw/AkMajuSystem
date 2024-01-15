@@ -34,19 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="col-lg-6">
                                         <select class="form-control" id="customerSelect" name="customer_id">
                                             <option value="">Select Customer</option>
-                                            <?php
-                                            // Updated SQL query with INNER JOIN
-                                            $sql = "SELECT c.c_id, c.c_name 
-                                                    FROM tb_customer c 
-                                                    INNER JOIN tb_invoice iv ON c.c_id = iv.iv_cid 
-                                                    WHERE iv.iv_status = 1";
-                                            $result = mysqli_query($con, $sql);
+                                                <?php
+                                                $sql = "SELECT DISTINCT c.c_id, c.c_name 
+                                                        FROM tb_customer c 
+                                                        INNER JOIN tb_invoice iv ON c.c_id = iv.iv_cid 
+                                                        WHERE iv.iv_status = 1";
+                                                $result = mysqli_query($con, $sql);
 
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
-                                                echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
-                                            }
-                                            ?>
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
+                                                    echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
+                                                }
+                                                ?>
+
                                         </select>
                                     </div>
                                     <br>
