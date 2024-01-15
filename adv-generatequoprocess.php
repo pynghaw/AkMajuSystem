@@ -162,19 +162,24 @@ while ($row = mysqli_fetch_assoc($result)) {
     $index++; // Increment the index for the next item
     $pdf->Cell(70, 10, $descLines[0], 1);
     $pdf->Cell(15, 10, $row['o_quantity'], 1);
-    $pdf->Cell(20, 10, $row['i_price'], 1);
+
+    $formattedUnitPrice = number_format($row['i_price'], 2);
+    $formattedDiscountAmountPerItem = number_format($discountAmountPerItem, 2);
+    $formattedDiscountedItemTotal = number_format($discountedItemTotal, 2);
+
+    $pdf->Cell(20, 10, $formattedUnitPrice, 1);
     $pdf->Cell(20, 10, $discount, 1); // Display discount percentage
-    $pdf->Cell(20, 10, $discountAmountPerItem, 1); // Display discount amount per item
-    $pdf->Cell(25, 10, $discountedItemTotal, 1); // Display total incl. discount
+    $pdf->Cell(20, 10, $formattedDiscountAmountPerItem, 1); // Display discount amount per item
+    $pdf->Cell(25, 10, $formattedDiscountedItemTotal, 1); // Display total incl. discount
     $pdf->Ln();
 }
 $updateQuotationSql = "UPDATE tb_quotation SET q_tAmount = '$grandTotal', q_discAmount = '$discountedItemTotal', q_type = 1 WHERE q_no = $quotationNumber";
 $updateQuotationResult = mysqli_query($con, $updateQuotationSql);
 
-
+$formattedGrandTotal=number_format($grandTotal,2);
 // Footer
 $pdf->Cell(165, 10, 'GRAND TOTAL', 1);
-$pdf->Cell(25, 10, $grandTotal, 1);
+$pdf->Cell(25, 10, $formattedGrandTotal, 1);
 $pdf->Ln();
 
 // Output the PDF

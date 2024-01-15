@@ -1,6 +1,7 @@
 <?php
 include 'headermain.php'; 
 include('dbconnect.php');
+
 // Initialize variables to hold customer information
 $customer_id = "";
 
@@ -11,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <div class="content-body">
-
     <div class="row page-titles mx-0">
         <div class="col p-md-0">
             <ol class="breadcrumb">
@@ -32,17 +32,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="container">
                                     <h1>Select Customer</h1>
                                     <div class="col-lg-6">
-                                    <select class="form-control" id="customerSelect" name="customer_id">
-                                        <option value="">Select Customer</option>
-                                        <?php
-                                        $sql = "SELECT * FROM tb_customer";
-                                        $result = mysqli_query($con, $sql);
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
-                                            echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                        <select class="form-control" id="customerSelect" name="customer_id">
+                                            <option value="">Select Customer</option>
+                                            <?php
+                                            // Updated SQL query with INNER JOIN
+                                            $sql = "SELECT c.c_id, c.c_name 
+                                                    FROM tb_customer c 
+                                                    INNER JOIN tb_invoice iv ON c.c_id = iv.iv_cid 
+                                                    WHERE iv.iv_status = 1";
+                                            $result = mysqli_query($con, $sql);
+
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                $selected = ($row['c_id'] == $customer_id) ? "selected" : "";
+                                                echo "<option value='" . $row['c_id'] . "' $selected>" . $row['c_name'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary">Next</button>
@@ -60,15 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Content body end
 ***********************************-->
 <?php include 'footer.php'; ?>       
-
- 
 <script src="plugins/common/common.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/settings.js"></script>
 <script src="js/gleek.js"></script>
 <script src="js/styleSwitcher.js"></script>
 
-
 <script src="./plugins/sweetalert/js/sweetalert.min.js"></script>
 <script src="./plugins/sweetalert/js/sweetalert.init.js"></script>
-

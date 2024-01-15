@@ -171,25 +171,33 @@ while ($row = mysqli_fetch_assoc($orderDetailsResult)) {
     $index++; // Increment the index for the next item
     $pdf->Cell(75, 10, $descLines[0], 1);
     $pdf->Cell(15, 10, $row['o_quantity'], 1);
-    $pdf->Cell(20, 10, $row['i_price'], 1);
+
+    $formattedUnitPrice = number_format($row['i_price'], 2);
+    $formattedDiscountAmountPerItem = number_format($discountAmountPerItem, 2);
+    $formattedDiscountedItemTotal = number_format($discountedItemTotal, 2);
+
+    $pdf->Cell(20, 10, $formattedUnitPrice, 1);
     $pdf->Cell(20, 10, $quotationDetails['q_discPercent'], 1); // Display discount percentage
-    $pdf->Cell(20, 10, $discountAmountPerItem, 1); // Display discount amount per item
-    $pdf->Cell(25, 10, $discountedItemTotal, 1); // Display total incl. discount
+    $pdf->Cell(20, 10, $formattedDiscountAmountPerItem, 1); // Display discount amount per item
+    $pdf->Cell(25, 10, $formattedDiscountedItemTotal, 1); // Display total incl. discount
     $pdf->Ln();
 }
 
+$formattedGrandTotal=number_format($grandTotal,2);
+$formattedUpFront=number_format($upfront,2);
+$formattediv_balance=number_format($iv_balance,2);
 // Footer
 $pdf->Cell(125, 10, '', 0,);
 $pdf->Cell(40, 10, 'GRAND TOTAL', 1,);
-$pdf->Cell(25, 10, $grandTotal, 1);
+$pdf->Cell(25, 10, $formattedGrandTotal, 1);
 $pdf->Ln();
 $pdf->Cell(125, 10, '', 0,);
 $pdf->Cell(40, 10, 'UP FRONT', 1);
-$pdf->Cell(25, 10, $upfront, 1);
+$pdf->Cell(25, 10, $formattedUpFront, 1);
 $pdf->Ln();
 $pdf->Cell(125, 10, '', 0,);
 $pdf->Cell(40, 10, 'BALANCE', 1);
-$pdf->Cell(25, 10, $iv_balance, 1);
+$pdf->Cell(25, 10, $formattediv_balance, 1);
 $pdf->Ln();
 
 // Output the PDF
