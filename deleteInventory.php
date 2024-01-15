@@ -125,7 +125,7 @@ if (isset($_SESSION['error1_message'])) {
                                     <a href="Inventory.php" class="btn btn-primary">Back</a>
                                 </div>
 </div>
-                            <h1 class="mb-4" style="text-align: center;">Inventory Recycle Bin</h1><br><br>
+                            <h1 class="mb-4" style="text-align: center;">Inventory History</h1><br><br>
 
                            <div class="mb-3 d-flex justify-content-between align-items-center">
                                 
