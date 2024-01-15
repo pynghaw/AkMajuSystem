@@ -1,5 +1,6 @@
 <?php
 include('dbconnect.php');
+include('pdffooter.php');
 require 'fpdf186/fpdf.php';
 
 $q_no = $_POST['q_no'];
@@ -201,6 +202,8 @@ $pdf->Cell(25, 10, $formattediv_balance, 1);
 $pdf->Ln();
 
 // Output the PDF
+$pdfFooter = new PDFFooter();
+$pdfFooter->addFooter($pdf);
 $pdf->Output('F', $filePath);
 $pdf->Output();
 
