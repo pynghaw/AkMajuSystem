@@ -105,7 +105,7 @@ $pdf->Cell(0, 8, 'ITEM DETAILS', 0, 1, 'L');
 
 //Header
 $pdf->SetLineWidth(0.3);
-$pdf->SetFont('Arial', 'B', 8); // Bold font for headers
+$pdf->SetFont('Arial', 'B', 9); // Bold font for headers
 $pdf->Cell(10, 10, 'ID', 1, 0, 'C');
 $pdf->Cell(30, 10, 'Name', 1, 0, 'C');
 $pdf->Cell(25, 10, 'Type', 1, 0, 'C');
@@ -114,7 +114,7 @@ $pdf->Cell(30, 10, 'Unit Price', 1, 0, 'C');
 $pdf->Cell(20, 10, 'Quantity', 1, 0, 'C');
 $pdf->Cell(30, 10, 'Material Price', 1, 1, 'C'); // 1 for line break
 
-$pdf->SetFont('Arial', '', 8); // Reset font
+$pdf->SetFont('Arial', '', 9); // Reset font
 
 // Loop through your data and add rows to the table
 $totalPrice = 0;
