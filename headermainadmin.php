@@ -163,7 +163,7 @@
                 <li><a href="const-selectcust.php">Construction</a></li>
             </ul>
         </li>
-        <li><a href="order-manage.php">Manage Order</a></li>
+        <li><a href="order-manage1.php">Manage Order</a></li>
     </ul>
 </li>
 

@@ -1,5 +1,5 @@
 <?php
-include 'headermain.php';
+include 'headermainadmin.php';
 include 'dbconnect.php';
 
 // Check if 'o_no' is set in the URL
@@ -44,7 +44,7 @@ if (isset($_GET['o_no'])) {
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <form method="POST" action="order-modifyprocess.php">
+                            <form method="POST" action="order-modifyprocess1.php">
                                 <div class="container">
                                     <fieldset>
                                         <br>
