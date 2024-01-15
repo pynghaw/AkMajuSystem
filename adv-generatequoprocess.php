@@ -1,5 +1,6 @@
 <?php
 include('dbconnect.php');
+include('pdffooter.php');
 require 'fpdf186/fpdf.php';
 
 // Retrieve data from page3.php
@@ -183,7 +184,9 @@ $pdf->Cell(25, 10, $formattedGrandTotal, 1);
 $pdf->Ln();
 
 // Output the PDF
-$filePath = 'quotation/advertisement/Quotation_' . $quotationDate . '_' . $quotationNumber . '.pdf';
+    $filePath = 'quotation/advertisement/Quotation_' . $quotationDate . '_' . $quotationNumber . '.pdf';
+    $pdfFooter = new PDFFooter();
+    $pdfFooter->addFooter($pdf);
     $pdf->Output('F', $filePath);
     $pdf->Output();
 
