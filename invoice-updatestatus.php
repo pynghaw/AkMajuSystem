@@ -29,5 +29,7 @@ if (isset($_GET['iv_no'])) {
         $inventoryUpdateSql = "UPDATE tb_inventory SET i_qtysold = i_qtysold + $confirmedQuantity WHERE i_no = {$row['o_ino']}";
         mysqli_query($con, $inventoryUpdateSql);
     }
+    
 }
+
 ?>
