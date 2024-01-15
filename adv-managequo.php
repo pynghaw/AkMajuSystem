@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <h2>Manage Quotation</h2>
+                            <h2>Manage Quotation - Advertising</h2>
 
                             <!-- Form for selecting quotation status -->
                             <form method="POST" action="">
@@ -77,6 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         while ($row = mysqli_fetch_assoc($statusResult)) {
                                         ?>
                                             <tr>
+                                                <?php if ($row['q_type'] == 1) { ?>
                                                 <td><?php echo $row['q_no']; ?></td>
                                                 <td><?php echo $row['c_name']; ?></td>
                                                 <td><?php echo $row['q_date']; ?></td>
@@ -97,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     }
                                                     ?>
                                                 </td>
+                                                <?php } ?>
                                             </tr>
                                         <?php
                                         }

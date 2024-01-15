@@ -176,7 +176,7 @@
                             <a href="adv-managequo1.php">Advertising</a>
                             </li>
                             <li>
-                            <a href="const-managequo.php">Construction</a>
+                            <a href="const-managequo1.php">Construction</a>
                             </li>
                         </ul>
                     </li>
@@ -199,8 +199,8 @@
                             <i class="fa fa-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="reporting.php">Generate Report</a></li>
-                            <li><a href="report-manage.php">Manage Report</a></li>
+                            <li><a href="reporting1.php">Generate Report</a></li>
+                            <li><a href="report-manage1.php">Manage Report</a></li>
                             
                         </ul>
                     </li>
