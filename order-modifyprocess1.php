@@ -18,17 +18,26 @@ mysqli_query($con,$sql);
 mysqli_close($con);
 
 //DISPLAY RESULT
-
 ?>
+<br><br><br>
 <div class="container">
-  <br>
-  <h5>Your New Order Details</h5>
-  <br>
-  <h5>Order Number:<?php echo $fno;?></h5>
-  <h5>Item ID:<?php echo $fino;?></h5>
-  <h5>Quantity:<?php echo $fqty;?></h5>
-  <h5>Date:<?php echo $fdate;?></h5>
-
-
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-center">Your New Order Details</h5>
+                    <br>
+                    <h5>Order Number: <?php echo $fno;?></h5>
+                    <h5>Item ID: <?php echo $fino;?></h5>
+                    <h5>Quantity: <?php echo $fqty;?></h5>
+                    <h5>Date: <?php echo $fdate;?></h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div style="text-align: center;">                         
+	<a class="btn btn-primary" href="order-manage1.php">BACK</a>
+	</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <?php include 'footer.php'; ?>

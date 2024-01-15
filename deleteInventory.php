@@ -178,7 +178,7 @@ if (isset($_SESSION['error1_message'])) {
                                                 <td>RM <?php echo $row['i_price']; ?></td>
                                                 <td>
 
-                                                    <a href="Recover.php?id=<?php echo $row['i_no']; ?>" class="btn btn-success btn-sm">Recover</a>
+                                                    <a href="Recover.php?id=<?php echo $row['i_no']; ?>" class="btn btn-success btn-sm">Restore</a>
                                                     
                                                 </td>
                                             </tr>

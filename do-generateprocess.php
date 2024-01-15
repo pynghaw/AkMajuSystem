@@ -1,5 +1,6 @@
 <?php
 include('dbconnect.php');
+include('pdffooter.php');
 require 'fpdf186/fpdf.php';
 
 $customer_id = $_POST['customer_id'];
@@ -151,9 +152,10 @@ $pdf->Cell(20, 10, $grandTotal, 1); // Display the grand total
 $pdf->Ln(); // Add a line break after the grand total
 // Output the PDF
 
+$pdfFooter = new PDFFooter();
+$pdfFooter->addFooter($pdf);
 $pdf->Output('F', $filePath);
 $pdf->Output();
-$pdf->Close();
 
 
 // Close the database connection

@@ -32,14 +32,16 @@ $result = mysqli_query($con, $sql);
                             <?php
                             // Check if there are reports
                             if (mysqli_num_rows($result) > 0) {
-                                echo '<table class="table">';
+                                echo '<table class="table fixed-table table-bordered">';
+                                echo '<thead class="thead-dark">';
                                 echo '<tr>';
                                 echo '<th>Report No</th>';
                                 echo '<th>Report Name</th>';
                                 echo '<th>Report Date</th>';
                                 echo '<th>Description</th>';
-                                echo '<th>Action</th>';
+                                echo '<th style="text-align: center;">Action</th>';
                                 echo '</tr>';
+                                echo '</thead>';
 
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $r_id = $row['r_id'];
@@ -55,7 +57,7 @@ $result = mysqli_query($con, $sql);
                                     echo '<td>' . $row['r_name'] . '</td>';
                                     echo '<td>' . $row['r_date'] . '</td>';
                                     echo '<td>' . $row['r_desc'] . '</td>';
-                                    echo "<td><a href='$pdfPath' class='btn btn-secondary btn-sm padd'>View</a> &nbsp;";
+                                    echo "<td style='text-align: center;'><a href='$pdfPath' class='btn btn-secondary btn-sm padd'>View</a> &nbsp;";
                                     echo '<a href="report-tomanagerprocess.php?r_id=' . $row['r_id'] . '" class="btn btn-success btn-sm padd">Send to Manager</a></td>';
                                     echo '</tr>';
                                 }
