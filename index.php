@@ -87,9 +87,7 @@ include("headernotification.php")
                                     <div class="text-center">
                                         <a class="" href="forgot password.php">Forgot Password?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="" href="register.php">Create an Account!</a>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
