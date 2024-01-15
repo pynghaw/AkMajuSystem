@@ -1,11 +1,11 @@
-<?php include 'headermain.php'; ?>
+<?php include 'headermainadmin.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Added Successfully</title>
+    <title>Customer Removed Successfully</title>
 </head>
 <body>
     <div class="content-body">
@@ -14,7 +14,7 @@
 
             <script>
                 // JavaScript code to show a prompt
-                alert("Customer Added Successfully");
+                alert("Customer Removed Successfully");
                 // Redirect to another page
                 window.location.href = "customer-manage1.php"; // Change "index.php" to the desired page
             </script>

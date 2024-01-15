@@ -145,8 +145,8 @@
                             <i class="fa fa-user"></i> <span class="nav-text">Customer</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="customer-add.php">Add Customer</a></li>
-                            <li><a href="customer-manage.php">Manage Customer</a></li>
+                            <li><a href="customer-add1.php">Add Customer</a></li>
+                            <li><a href="customer-manage1.php">Manage Customer</a></li>
                             
                         </ul>
                     </li>
@@ -159,7 +159,7 @@
         <li>
             <a class="has-arrow" href="javascript:void()">Place Order</a>
             <ul aria-expanded="false">
-                <li><a href="order-place.php">Advertisement</a></li>
+                <li><a href="order-place1.php">Advertisement</a></li>
                 <li><a href="const-selectcust.php">Construction</a></li>
             </ul>
         </li>
@@ -173,7 +173,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li>
-                            <a href="adv-managequo.php">Advertising</a>
+                            <a href="adv-managequo1.php">Advertising</a>
                             </li>
                             <li>
                             <a href="const-managequo.php">Construction</a>
@@ -181,7 +181,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="invoice-manage.php" aria-expanded="false">
+                        <a href="invoice-manage1.php" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Invoice</span>
                         </a>
                     </li>
@@ -190,8 +190,8 @@
                             <i class="fa fa-truck menu-icon"></i> <span class="nav-text">Delivery Order</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="do-generate-1.php">Generate</a></li>
-                            <li><a href="do-manage.php">Manage</a></li>
+                            <li><a href="do-generate-1_1.php">Generate</a></li>
+                            <li><a href="do-manage1.php">Manage</a></li>
                         </ul>
                     </li>
                     <li>

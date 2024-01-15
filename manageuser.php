@@ -99,8 +99,8 @@ include('headermainadmin.php');
         
         <select id="status" class="form-control form-control-sm" name="status" onchange="filterAccounts(this.value)">
             <option value="all" <?php echo ($statusFilter === 'all') ? 'selected' : ''; ?>>Show All Status</option>
-            <option value="activate" <?php echo ($statusFilter === 'activate') ? 'selected' : ''; ?>>Activate Category</option>
-            <option value="deactivate" <?php echo ($statusFilter === 'deactivate') ? 'selected' : ''; ?>>Deactivate Category</option>
+            <option value="activate" <?php echo ($statusFilter === 'activate') ? 'selected' : ''; ?>>Active Category</option>
+            <option value="deactivate" <?php echo ($statusFilter === 'deactivate') ? 'selected' : ''; ?>>Inactivate Category</option>
         </select>
     </div>
 </div>

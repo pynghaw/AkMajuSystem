@@ -1,5 +1,5 @@
 <?php 
-include 'headermain.php';
+include 'headermainadmin.php';
 include('dbconnect.php');
 
 //retrieve data from form and session
@@ -43,7 +43,7 @@ mysqli_close($con);
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                        <h4 style="color: green;"><b>Successfully modified customer Information. Here is the detail:</b></h4>
+                            <h4 style="color: green;"><b>Successfully modified customer Information. Here is the detail:</b></h4>
                             <br>
                             <p><b>Name:</b> <?php echo $cname;?></p>
                             <p><b>Address:</b> <?php echo $cadd;?></p>
@@ -52,7 +52,7 @@ mysqli_close($con);
                             <p><b>Contact Number: </b><?php echo $cphone;?></p>
                             <br><br>
                                 <div style="text-align: center;">                         
-                                <a class="btn btn-primary" href="customer-manage.php">BACK</a>
+                                <a class="btn btn-primary" href="customer-manage1.php">BACK</a>
                                 </div>
                         </div>
                     </div>
