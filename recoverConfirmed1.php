@@ -16,10 +16,10 @@ if (isset($_GET['id'])) {
 
     if ($result) {
         // Successful status update
-        $_SESSION['success1_message'] = "Item had recover back to the inventoy.";
+        $_SESSION['success1_message'] = "Item had restore back to the inventoy.";
     } else {
         // Error in status update
-        $_SESSION['error1_message'] = "Error recover item status: " . mysqli_error($con);
+        $_SESSION['error1_message'] = "Error restore item status: " . mysqli_error($con);
     }
 
     // Close the database connection
