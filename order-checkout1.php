@@ -56,23 +56,25 @@ if (isset($_GET['id'], $_GET['name'], $_GET['desc'], $_GET['unitPrice'], $_GET['
         $itemUnitPrice = mysqli_real_escape_string($con, $itemUnitPrices[$i]);
         $itemQuantity = mysqli_real_escape_string($con, $itemQuantities[$i]);
 
-        $totalPrice += $itemUnitPrice * $itemQuantity;
+        $formattedItemUnitPrice=number_format($itemUnitPrice,2);
+        $totalPrice += $formattedItemUnitPrice * $itemQuantity;
 
         echo "<tr>";
         echo "<td>$itemId</td>";
         echo "<td>$itemName</td>";
         echo "<td>$itemDesc</td>";
-        echo "<td>$itemUnitPrice</td>";
+        echo "<td>$formattedItemUnitPrice</td>";
         echo "<td>$itemQuantity</td>";
-        echo "<td>" . ($itemUnitPrice * $itemQuantity) . "</td>";
+        echo "<td>" . number_format(($formattedItemUnitPrice * $itemQuantity),2) . "</td>";
         echo "</tr>";
     }
 
+    $formattedTotalPrice=number_format($totalPrice,2);
     echo "</tbody>";
     echo "<tfoot>";
     echo "<tr>";
     echo "<td colspan='5' style='text-align:right;'><strong>Total Price:</strong></td>";
-    echo "<td><strong>$totalPrice</strong></td>";
+    echo "<td><strong>$formattedTotalPrice</strong></td>";
     echo "</tr>";
 
     echo "</tfoot>";
@@ -107,5 +109,5 @@ if (isset($_GET['id'], $_GET['name'], $_GET['desc'], $_GET['unitPrice'], $_GET['
     echo "Missing parameters.";
 }
 
-include 'adv-generatequo-footer1.php';
+include 'adv-generatequo-footer.php';
 ?>
