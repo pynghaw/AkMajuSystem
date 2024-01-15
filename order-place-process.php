@@ -50,9 +50,9 @@ $resultr = mysqli_query($con, $sqlr);
                                         // Display available items for selection
                                         while ($row = mysqli_fetch_array($resultr)) {
                                             // Calculate discounted unit price
-                                            $discountedPrice = $row['i_price'] * (1 - $discount / 100);
-                                            echo "<option value='{$row['i_no']}' data-desc='{$row['i_desc']}' data-unit-price='{$discountedPrice}'>{$row['i_name']} (RM {$discountedPrice})</option>";
-                                        }
+                                            $discountedPrice = number_format(($row['i_price'] * (1 - $discount / 100)),2);
+                                            echo "<option value='{$row['i_no']}' data-desc='{$row['i_desc']}' data-unit-price='{$discountedPrice}' data-available-stock='{$row['i_qty']}'>{$row['i_name']} (RM {$discountedPrice})</option>";
+                                        }                                        
                                         ?>
                                     </select>
                                     <input type="number" id="orderQuantity" placeholder="Quantity" min="0">
@@ -95,28 +95,59 @@ $resultr = mysqli_query($con, $sqlr);
         var selectedOrders = [];
 
         function addOrder() {
-            var selectedItem = document.getElementById('selectItem');
-            var orderQuantity = document.getElementById('orderQuantity');
+    // Get selected item and quantity
+    var selectedItem = document.getElementById('selectItem');
+    var orderQuantity = document.getElementById('orderQuantity');
 
-            if (orderQuantity.value && orderQuantity.value > 0) {
-                var selectedOption = selectedItem.options[selectedItem.selectedIndex];
-                var desc = selectedOption.getAttribute('data-desc');
-                var unitPrice = selectedOption.getAttribute('data-unit-price');
-                var discount = document.getElementById('discount').value;
-                var order = {
-                    id: selectedItem.value,
-                    name: selectedOption.text,
-                    desc: desc,
-                    unitPrice: unitPrice,
-                    quantity: orderQuantity.value
-                };
+    // Check if a valid quantity is provided
+    if (orderQuantity.value && orderQuantity.value > 0) {
+        var selectedOption = selectedItem.options[selectedItem.selectedIndex];
 
-                selectedOrders.push(order);
-                displayOrders();
+        // Create a new order object
+        var order = {
+            id: selectedItem.value,
+            name: selectedOption.text,
+            desc: selectedOption.getAttribute('data-desc'),
+            unitPrice: selectedOption.getAttribute('data-unit-price'),
+            quantity: orderQuantity.value
+        };
+
+        // Check if an order with the same ID already exists
+        var orderExists = selectedOrders.some(function (existingOrder) {
+            return existingOrder.id === order.id;
+        });
+
+        // Check if there is enough stock
+        var availableStock = parseInt(selectedOption.getAttribute('data-available-stock'));
+        var totalOrderedQuantity = orderExists ? (parseInt(orderQuantity.value) + parseInt(selectedOrders.find(o => o.id === order.id).quantity)) : parseInt(orderQuantity.value);
+
+        if (totalOrderedQuantity <= availableStock) {
+            // If the order already exists, increment the quantity
+            if (orderExists) {
+                selectedOrders.forEach(function (existingOrder) {
+                    if (existingOrder.id === order.id) {
+                        existingOrder.quantity = parseInt(existingOrder.quantity) + parseInt(order.quantity);
+                    }
+                });
             } else {
-                alert('Please enter a valid quantity.');
+                // If the order is new, add it to the array
+                selectedOrders.push(order);
             }
+
+            // Provide user feedback
+            alert('Order added successfully!');
+            displayOrders();
+        } else {
+            // Alert the user if there is not enough stock
+            alert('Not enough stock. Available stock: ' + availableStock);
         }
+    } else {
+        // Alert the user if an invalid quantity is provided
+        alert('Please enter a valid quantity.');
+    }
+}
+
+
 
         function displayOrders() {
             var selectedOrdersBody = document.getElementById('selectedOrdersBody');
