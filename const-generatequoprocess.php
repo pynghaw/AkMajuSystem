@@ -2,7 +2,7 @@
 include('dbconnect.php');
 require_once('fpdf186/fpdf.php'); // Include the FPDF library
 
-$customer_id = $_POST['customer_id'];
+//$customer_id = $_POST['customer_id'];
 
 // Fetch data from the database
 $sql = "SELECT * FROM tb_matlist";
@@ -19,18 +19,42 @@ $resultc = mysqli_stmt_get_result($stmt);
 // Fetch the customer data
 $customerData = mysqli_fetch_assoc($resultc);
 
-// Fetch Billing Address from Customer Database
-$billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = $customer_id";
-$billingAddressResult = mysqli_query($con, $billingAddressSql);
+// Prepare the SQL statement
+$billingAddressSql = "SELECT c_billAdd FROM tb_customer WHERE c_id = ?";
+$billingAddressStmt = mysqli_prepare($con, $billingAddressSql);
+
+// Check if the statement was prepared successfully
+if(!$billingAddressStmt) {
+    die("Error preparing statement: " . mysqli_error($con));
+}
+
+// Bind the customer_id parameter to the prepared statement
+mysqli_stmt_bind_param($billingAddressStmt, "i", $customer_id);
+
+// Execute the prepared statement
+mysqli_stmt_execute($billingAddressStmt);
+
+// Get the result set from the prepared statement
+$billingAddressResult = mysqli_stmt_get_result($billingAddressStmt);
+
+// Fetch the row from the result set
 $billingAddressRow = mysqli_fetch_assoc($billingAddressResult);
-$billingAddress = $billingAddressRow['c_billAdd'];
+
+// Extract the billing address
+$billingAddress = isset($billingAddressRow['c_billAdd']) ? $billingAddressRow['c_billAdd'] : '';
+
+// Convert the billing address to uppercase
 $billingAddress = strtoupper($billingAddress);
 
-$customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
-$customerInfoResult = mysqli_query($con, $customerInfoSql);
-$customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
-$customerName = $customerInfoRow['c_name'];
-$billingAddress = $customerInfoRow['c_billAdd'];
+// Close the statement
+mysqli_stmt_close($billingAddressStmt);
+
+
+// $customerInfoSql = "SELECT c_name, c_billAdd FROM tb_customer WHERE c_id = $customer_id";
+// $customerInfoResult = mysqli_query($con, $customerInfoSql);
+// $customerInfoRow = mysqli_fetch_assoc($customerInfoResult);
+// $customerName = $customerInfoRow['c_name'];
+// $billingAddress = $customerInfoRow['c_billAdd'];
 
 // PDF AREA
 // Create a new PDF document
@@ -76,8 +100,11 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->Cell(0, 5, 'TO,', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 8);
-$pdf->MultiCell(30, 2.5, "$customerName\n
-$billingAddress");
+$pdf->MultiCell(30, 2.5, "Chen Pyng Haw\n
+No 17 Jalan RP 4/& 
+Taman Rawang Perdana
+48000 Rawang
+Selangor");
 $pdf->SetXY(126, 56);
 $pdf->SetFont('Arial', 'B', 8);
 $pdf->MultiCell(0, 2.5, 

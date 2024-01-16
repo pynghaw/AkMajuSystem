@@ -3,7 +3,7 @@ include 'headermain.php';
 include('dbconnect.php');
 
 $customer_id = $_POST['customer_id'];
-$discount = $_POST['discount'];
+//$discount = $_POST['discount'];
 
 $sql = "SELECT * FROM tb_matlist";
 $result = mysqli_query($con, $sql);
@@ -33,8 +33,8 @@ $totalPrice = 0; // Initialize total price
                     <div class="card-body">
                     <div class="container">
                         <h2>Check Out Summary</h2>
-                        <?php echo "<p>Customer ID: $customer_id</p>";?>
-                        <?php echo "<p>Discount: $discount %</p>";?>
+                        <!-- <?php echo "<p>Customer ID: $customer_id</p>";?>
+                        <?php echo "<p>Discount: $discount %</p>";?> -->
                         <table class="table">
                             <thead>
                                 <tr>
@@ -69,12 +69,12 @@ $totalPrice = 0; // Initialize total price
                                     <td colspan="6" style="text-align:right;"><strong>Total Price:</strong></td>
                                     <td><strong><?php echo $totalPrice ; ?></strong></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <?php $discountedPrice = $totalPrice * (1 - ($discount / 100)); ?>
                                     
                                     <td colspan="6" style="text-align:right;"><strong>Total Price (include discount):</strong></td>
                                     <td><strong><?php echo $discountedPrice ; ?></strong></td>
-                                </tr>
+                                </tr> -->
                             </tfoot>
                         </table>
                     </div>
