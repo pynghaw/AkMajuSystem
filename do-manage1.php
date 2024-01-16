@@ -51,7 +51,7 @@ $result = mysqli_query($con, $sql);
                                 echo '<td>' . $row['d_date'] . '</td>';
                                 echo '<td>' . $row['d_terms'] . '</td>';
                                 echo '<td>' . $row['d_recpAdd'] . '</td>';
-                                echo '<td  style="text-align: center;"><a href="do-review.php?d_no=' . $row['d_no'] . '" class="btn btn-secondary btn-sm padd">View</a> &nbsp;';
+                                echo '<td  style="text-align: center;"><a href="do-review.php?d_no=' . $row['d_no'] . '" class="btn btn-secondary btn-sm padd">Review</a> &nbsp;';
                                 echo '<a href="do-delete1.php?d_no=' . $row['d_no'] . '" class="btn btn-danger btn-sm padd">Delete</a></td>';
                                 echo '</tr>';
                             }
