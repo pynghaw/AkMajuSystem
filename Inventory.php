@@ -117,15 +117,19 @@ if (isset($_SESSION['error_message'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card"><br>
-                         <div class="container mt-4">
+                         
+                        <div class="container mt-4">
+                            <h1 class="mb-4" style="text-align: center;">Inventory</h1><br>
+
                          <div class="mb-3 d-flex justify-content-between align-items-center">
     <div>
         <a href="deleteInventory.php" class="btn btn-primary ml-auto">Inventory History</a>
     </div>
-</div>
-</div>
-                        <div class="container mt-4">
-                            <h1 class="mb-4" style="text-align: center;">Inventory</h1><br><br>
+    <div>
+        <a href="stockbalance.php" class="btn btn-primary ml-auto">Stock Balance Report</a>
+    </div>
+</div><br>
+
                            <div class="mb-3 d-flex justify-content-between align-items-center">
                                 <div>
                                     <a href="AddInventory.php" class="btn btn-success"><i class="fa fa-plus-circle" style="font-size:15px;"></i>Add Inventory</a>
