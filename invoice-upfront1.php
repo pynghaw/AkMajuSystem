@@ -24,7 +24,7 @@ if (isset($_GET['q_no'])) {
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <form method="POST" action="invoice-generateprocess1.php">
+                            <form method="POST" action="invoice-generateprocess.php">
                                 <div class="container">
                                     <h1>Upfront Payment (RM)</h1>
                                     <div class="col-lg-6">
