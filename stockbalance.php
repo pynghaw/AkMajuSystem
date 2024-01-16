@@ -2,22 +2,18 @@
 include('dbconnect.php');
 require 'fpdf186/fpdf.php';
 
-
 // INSERT Data into tb_salesreport
 // Define your r_id, r_name, r_date, and r_desc here. This is an example.
 $query = "SELECT * FROM tb_inventory WHERE i_status='1' ";
 $resultid = $con->query($query);
 $row = $resultid->fetch_assoc();
 
-
 $r_name = "Stock Balance Report"; // Example name
 $r_date = date("Y-m-d"); // Current date
 $r_desc = "Stock Balance Report"; // Example description
 
-
 // Prepare and execute query
 $sql = $con->prepare("SELECT * FROM tb_inventory WHERE i_status='1' ");
-
 $sql->execute();
 $result = $sql->get_result();
 
@@ -25,7 +21,7 @@ $result = $sql->get_result();
 $pdf = new FPDF();
 $pdf->AddPage();
 
-//place img and report id
+// Place img and report id
 $imagePath = 'images/akmaju.jpeg';
 $pdf->Image($imagePath, 10, 10, 25);
 $pdf->SetFont('Times', '', 10);
@@ -36,7 +32,7 @@ $newYPosition = 20 + 12 + 10;
 // Set font for the title
 $pdf->SetFont('Times', 'B', 12);
 $pdf->SetY($newYPosition);
-$pdf->Cell(0, 5, 'Stock Balance Report' , 0, 1, 'C'); // Centered title with line 
+$pdf->Cell(0, 5, 'Stock Balance Report - ' . $r_date, 0, 1, 'C'); // Centered title with line 
 $pdf->SetDrawColor(0, 0, 0); // Set line color to black
 $pdf->SetLineWidth(0.3); // Set line width (adjust as needed)
 $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY()); // Adjust the coordinates and width as needed
@@ -53,14 +49,9 @@ $pdf->Cell(45, 10, 'Unit Price', 1);
 $pdf->Ln();
 
 
-// Table data
-$total = 0;
-$grandTotal = 0;
-$index = 1; // Initialize the index
 
 $pdf->SetFont('Times', '', 9);
 while ($row = $result->fetch_assoc()) {
-
     $pdf->Cell(30, 10, $row['i_no'], 1);
     $pdf->Cell(30, 10, $row['i_name'], 1);
     $pdf->Cell(40, 10, $row['i_desc'], 1);
@@ -69,17 +60,11 @@ while ($row = $result->fetch_assoc()) {
     $pdf->Ln();
 }
 
-
-
-
-//Save PDF to a directory
+// Save PDF to a directory
 $filePath = 'report/StockbalanceReport_' . $r_date . '.pdf';
 $pdf->Output('F', $filePath);
 $pdf->Output();
 
-
-
 // Close the database connection
 $con->close();
-
 ?>
