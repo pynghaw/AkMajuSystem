@@ -61,7 +61,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Save PDF to a directory
-$filePath = 'report/StockbalanceReport_' . $r_date . '.pdf';
+$filePath = 'report/StockbalanceReport1_' . $r_date . '.pdf';
 $pdf->Output('F', $filePath);
 $pdf->Output();
 
