@@ -31,27 +31,30 @@ if ($row) {
             $_SESSION['u_name'] = session_id();
             $_SESSION['suname'] = $fname;
             $_SESSION['u_id'] = $row['u_id'];
- if ($row['u_type'] == '1') {
-    $_SESSION['user_role'] = 'staff';
-    header('Location: staff.php');
-} else {
-    $_SESSION['user_role'] = 'admin';
-    header('Location: admin.php');
-}else {
+
+            if ($row['u_type'] == '1') {
+                $_SESSION['user_role'] = 'staff';
+                header('Location: staff.php');
+            } else {
+                $_SESSION['user_role'] = 'admin';
+                header('Location: admin.php');
+            }
+        } else {
             // Password is incorrect
             $_SESSION['error_message'] = 'Incorrect password.';
-            header('Location:index.php');
+            header('Location: index.php');
         }
     } else {
         // Account is not activated
-        $_SESSION['error_message'] = 'Your account is not activated. Please find admin to activate your account.';
-        header('Location:index.php');
+        $_SESSION['error_message'] = 'Your account is not activated. Please find an admin to activate your account.';
+        header('Location: index.php');
     }
 } else {
     // User not found
     $_SESSION['error_message'] = 'Incorrect username or password.';
-    header('Location:index.php');
+    header('Location: index.php');
 }
+
 
 // Close DB Connection
 mysqli_close($con);
