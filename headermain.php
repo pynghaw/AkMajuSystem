@@ -19,10 +19,13 @@
     <link rel="stylesheet" href="./plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./icons/simple-line-icons/css/simple-line-icon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/f19eed9c2c.js" crossorigin="anonymous"></script>
+    
     
 
 
@@ -74,7 +77,7 @@
                 
                 <div class="nav-control">
                     <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    <span class="toggle-icon"><i class="fa-solid fa-bars"></i></span>
                     </div>
                 </div>
                 <div class="header-left">
@@ -122,7 +125,7 @@
                     <li class="nav-label">Operations</li>
                     <li>
                         <a href="staff.php" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                        <i class="fa-solid fa-gauge"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
@@ -177,7 +180,7 @@
                     </li>
                     <li>
                         <a href="invoice-manage.php" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Invoice</span>
+                        <i class="fa-solid fa-file-invoice-dollar"></i></i><span class="nav-text">Invoice</span>
                         </a>
                     </li>
                     <li>
