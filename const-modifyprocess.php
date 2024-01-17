@@ -25,13 +25,15 @@
         $updateSql = "UPDATE tb_matlist SET m_qty = $newQty WHERE m_id = $id";
         mysqli_query($con, $updateSql);
     }
-    
+
     // Redirect back to the list page
     header('Location: const-matlist.php');
     exit;
 }
 
 ?>
+
+
 
 
 

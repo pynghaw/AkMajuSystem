@@ -24,7 +24,7 @@ mysqli_query($con,$sql);
 mysqli_close($con);
 
 //Display result
-header("Location:profile1.php");
+header("Location:profile.php");
 
 ?>
 

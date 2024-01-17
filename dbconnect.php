@@ -2,8 +2,8 @@
 
 //Parameters
 $servername="localhost";
-$username="root";
-$password="";
+$username="if0_35803859";
+$password="crypto2003";
 $dbname="db_cryptoknights";
 
 //Connection

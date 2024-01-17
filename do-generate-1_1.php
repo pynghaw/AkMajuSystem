@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <select class="form-control" id="customerSelect" name="customer_id">
                                             <option value="">Select Customer</option>
                                             <?php
-                                            // Updated SQL query with INNER JOIN
-                                            $sql = "SELECT c.c_id, c.c_name 
+                                            // Updated SQL query with INNER JOIN and DISTINCT
+                                            $sql = "SELECT DISTINCT c.c_id, c.c_name 
                                                     FROM tb_customer c 
                                                     INNER JOIN tb_invoice iv ON c.c_id = iv.iv_cid 
                                                     WHERE iv.iv_status = 1";
