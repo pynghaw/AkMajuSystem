@@ -37,7 +37,7 @@ try {
     $mail->Subject = 'Password Reset';
     $mail->Body    = 'To reset your password please click <a href="'.$link.'">here</a>. <br>Reset your password in a day.';
 
-    $conn = new mySqli('localhost', 'root', '', 'db_cryptoknights');
+    $conn = new mySqli('localhost', 'if0_35803859', 'crypto2003', 'db_cryptoknights');
 
     if($conn->connect_error){
       die('Could not connect to the database.');
