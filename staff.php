@@ -62,14 +62,51 @@ while ($row = mysqli_fetch_assoc($profitByDateResult)) {
     $profitByDateData[] = $row;
 }
 $encodedProfitByDateData = json_encode($profitByDateData);
-?>
 
+// Fetch low stock products
+$lowStockProductsSql = "SELECT * FROM tb_inventory WHERE i_qty < 5";
+$lowStockProductsResult = mysqli_query($con, $lowStockProductsSql);
+$lowStockProducts = mysqli_fetch_all($lowStockProductsResult, MYSQLI_ASSOC);
+
+?>
 
 <body>
     <!--**********************************
             Content body start
         ***********************************-->
-    <div class="content-body">
+        <div class="content-body">
+        <?php
+        // Display success message
+        if (isset($_SESSION['success_message'])) {
+            echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    {$_SESSION['success_message']}
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+
+            unset($_SESSION['success_message']);
+        }
+
+        // Display error message
+        if (isset($_SESSION['error_message'])) {
+            echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                    {$_SESSION['error_message']}
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+
+            unset($_SESSION['error_message']);
+        }
+        ?>
+         <?php if (!empty($lowStockProducts)) : ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Low in stock:</strong>
+                    <ul>
+                        <?php foreach ($lowStockProducts as $product) : ?>
+                            <li><b>Product: </b><?php echo $product['i_name']; ?> (Quantity left: <?php echo $product['i_qty']; ?>)</li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            <?php endif; ?>
         <div class="container-fluid mt-3">
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
