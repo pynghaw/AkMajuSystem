@@ -31,13 +31,13 @@ if ($row) {
             $_SESSION['u_name'] = session_id();
             $_SESSION['suname'] = $fname;
             $_SESSION['u_id'] = $row['u_id'];
-
-            if ($row['u_type'] == '1') {
-                header('Location:staff.php');
-            } else {
-                header('Location:admin.php');
-            }
-        } else {
+ if ($row['u_type'] == '1') {
+    $_SESSION['user_role'] = 'staff';
+    header('Location: staff.php');
+} else {
+    $_SESSION['user_role'] = 'admin';
+    header('Location: admin.php');
+}else {
             // Password is incorrect
             $_SESSION['error_message'] = 'Incorrect password.';
             header('Location:index.php');

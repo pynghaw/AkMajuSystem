@@ -7,6 +7,12 @@ if (!session_id()) {
 if (isset($_GET['id'])) {
     $fid = $_GET['id'];
 }
+
+if ($_SESSION['user_role'] != 'staff') {
+    
+    header('Location: unauthorized.php');
+    exit();
+}
 include 'headermain.php';
 function fetchSingleValue($con, $sql)
 {

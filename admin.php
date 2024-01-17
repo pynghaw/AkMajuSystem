@@ -5,6 +5,12 @@ include 'dbconnect.php';
 if (!session_id()) {
     session_start();
 }
+
+if ($_SESSION['user_role'] != 'admin') {
+    // Redirect to an unauthorized page or display an error
+    header('Location: unauthorized.php');
+    exit();
+}
 if (isset($_GET['id'])) {
     $fid = $_GET['id'];
 }
