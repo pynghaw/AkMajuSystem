@@ -59,9 +59,7 @@ use PHPMailer\PHPMailer\PHPMailer;
     <button type="submit" name="reset" class="btn btn-primary btn-user btn-block">Reset Password</button>
 </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="" href="register.php">Create an Account!</a>
-                                    </div>
+                                   
                                     <div class="text-center">
                                         <a class="" href="index.php">Already have an account? Login!</a>
                                     </div>
