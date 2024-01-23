@@ -24,7 +24,7 @@
                                     <div class="container">
                                         <fieldset>
                                             <br>
-                                            <h2 class="mb-4">Generate Monthly Sales Report</h2>
+                                            <h2 class="mb-4">Generate Sales Report</h2>
 
                                             <!-- Start Date Selection -->
                                             <div class="form-group">

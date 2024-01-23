@@ -226,7 +226,7 @@ echo "<script> var invoicePieData = " . json_encode($invoicePieData) . "; </scri
                                 <h2 class="text-white"><?php echo $topSoldItem['i_name']; ?></h2>
                                 <p class="text-white mb-0">Number sold:<?php echo $topSoldItem['i_qtysold']; ?></p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa-solid fa-bag-shopping"></i></i></span>
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@ echo "<script> var invoicePieData = " . json_encode($invoicePieData) . "; </scri
                                 <h2 class="text-white">8</h2> <!-- Update this number with the actual total -->
                                 <p class="text-white mb-0">Number of Employees</p>
                             </div>
-                            <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            <span class="float-right display-5 opacity-5"><i class="fa-solid fa-user-tie"></i></span>
                         </div>
                     </div>
                 </div>

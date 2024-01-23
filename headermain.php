@@ -192,16 +192,6 @@
                             <li><a href="do-manage.php">Manage</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fa fa-envelope menu-icon"></i> <span class="nav-text">Reporting</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="reporting.php">Generate Report</a></li>
-                            <li><a href="report-manage.php">Manage Report</a></li>
-                            
-                        </ul>
-                    </li>
                    
                 </ul>
             </div>
